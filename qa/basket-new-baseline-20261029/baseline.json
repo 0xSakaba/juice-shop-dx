@@ -1,0 +1,180 @@
+{
+  "label": "NEW baseline",
+  "sourceRepository": "https://github.com/0xSakaba/juice-shop-dx",
+  "sourceCommit": "f189f521266f42c6bd05884468292000cee852ed",
+  "sourceTree": "2be04081a83ab04a5baaa43f1a98146cf7904f8a",
+  "historicalImageSourceEquivalence": "UNVERIFIED; not asserted",
+  "startedAt": "2026-10-29T04:15:00.108Z",
+  "setup": [
+    {
+      "operation": "register-A",
+      "status": 201,
+      "userId": 25
+    },
+    {
+      "operation": "login-A",
+      "status": 200,
+      "userId": 25,
+      "basketId": 6
+    },
+    {
+      "operation": "register-B",
+      "status": 201,
+      "userId": 26
+    },
+    {
+      "operation": "login-B",
+      "status": 200,
+      "userId": 26,
+      "basketId": 7
+    }
+  ],
+  "observations": [
+    {
+      "case": "own-A",
+      "status": 200,
+      "actorUserId": 25,
+      "requestedBasketId": 6,
+      "requestedOwnerId": 25,
+      "matchesTargetFixture": true,
+      "responseBody": {
+        "status": "success",
+        "data": {
+          "id": 6,
+          "coupon": null,
+          "UserId": 25,
+          "createdAt": "2026-10-29T04:15:00.316Z",
+          "updatedAt": "2026-10-29T04:15:00.316Z",
+          "Products": []
+        }
+      },
+      "baselineExpectation": "200 and matches requested basket owner",
+      "remediationExpectation": "200 and own basket data"
+    },
+    {
+      "case": "own-B",
+      "status": 200,
+      "actorUserId": 26,
+      "requestedBasketId": 7,
+      "requestedOwnerId": 26,
+      "matchesTargetFixture": true,
+      "responseBody": {
+        "status": "success",
+        "data": {
+          "id": 7,
+          "coupon": null,
+          "UserId": 26,
+          "createdAt": "2026-10-29T04:15:00.383Z",
+          "updatedAt": "2026-10-29T04:15:00.383Z",
+          "Products": []
+        }
+      },
+      "baselineExpectation": "200 and matches requested basket owner",
+      "remediationExpectation": "200 and own basket data"
+    },
+    {
+      "case": "cross-A-to-B",
+      "status": 200,
+      "actorUserId": 25,
+      "requestedBasketId": 7,
+      "requestedOwnerId": 26,
+      "matchesTargetFixture": true,
+      "responseBody": {
+        "status": "success",
+        "data": {
+          "id": 7,
+          "coupon": null,
+          "UserId": 26,
+          "createdAt": "2026-10-29T04:15:00.383Z",
+          "updatedAt": "2026-10-29T04:15:00.383Z",
+          "Products": []
+        }
+      },
+      "baselineExpectation": "200 and matches requested basket owner",
+      "remediationExpectation": "401/403/404 and no other-user basket data"
+    },
+    {
+      "case": "cross-B-to-A",
+      "status": 200,
+      "actorUserId": 26,
+      "requestedBasketId": 6,
+      "requestedOwnerId": 25,
+      "matchesTargetFixture": true,
+      "responseBody": {
+        "status": "success",
+        "data": {
+          "id": 6,
+          "coupon": null,
+          "UserId": 25,
+          "createdAt": "2026-10-29T04:15:00.316Z",
+          "updatedAt": "2026-10-29T04:15:00.316Z",
+          "Products": []
+        }
+      },
+      "baselineExpectation": "200 and matches requested basket owner",
+      "remediationExpectation": "401/403/404 and no other-user basket data"
+    },
+    {
+      "case": "anonymous-A",
+      "status": 401,
+      "actorUserId": null,
+      "requestedBasketId": 6,
+      "requestedOwnerId": 25,
+      "matchesTargetFixture": false,
+      "responseBody": "<html>\n  <head>\n    <meta charset='utf-8'> \n    <title>UnauthorizedError: No Authorization header was found</title>\n    <style>* {\n  margin: 0;\n  padding: 0;\n  outline: 0;\n}\n\nbody {\n  padding: 80px 100px;\n  font: 13px \"Helvetica Neue\", \"Lucida Grande\", \"Arial\";\n  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));\n  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);\n  background-repeat: no-repeat;\n  color: #555;\n  -webkit-font-smoothing: antialiased;\n}\nh1, h2 {\n  font-size: 22px;\n  color: #343434;\n}\nh1 em, h2 em {\n  padding: 0 5px;\n  font-weight: normal;\n}\nh1 {\n  font-size: 60px;\n}\nh2 {\n  margin-top: 10px;\n}\nul li {\n  list-style: none;\n}\n#stacktrace {\n  margin-left: 60px;\n}\n</style>\n  </head>\n  <body>\n    <div id=\"wrapper\">\n      <h1>OWASP Juice Shop (Express ^4.22.1)</h1>\n      <h2><em>401</em> UnauthorizedError: No Authorization header was found</h2>\n      <ul id=\"stacktrace\"></ul>\n    </div>\n  </body>\n</html>\n",
+      "baselineExpectation": "401 and no basket data",
+      "remediationExpectation": "401 and no basket data"
+    },
+    {
+      "case": "anonymous-B",
+      "status": 401,
+      "actorUserId": null,
+      "requestedBasketId": 7,
+      "requestedOwnerId": 26,
+      "matchesTargetFixture": false,
+      "responseBody": "<html>\n  <head>\n    <meta charset='utf-8'> \n    <title>UnauthorizedError: No Authorization header was found</title>\n    <style>* {\n  margin: 0;\n  padding: 0;\n  outline: 0;\n}\n\nbody {\n  padding: 80px 100px;\n  font: 13px \"Helvetica Neue\", \"Lucida Grande\", \"Arial\";\n  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));\n  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);\n  background-repeat: no-repeat;\n  color: #555;\n  -webkit-font-smoothing: antialiased;\n}\nh1, h2 {\n  font-size: 22px;\n  color: #343434;\n}\nh1 em, h2 em {\n  padding: 0 5px;\n  font-weight: normal;\n}\nh1 {\n  font-size: 60px;\n}\nh2 {\n  margin-top: 10px;\n}\nul li {\n  list-style: none;\n}\n#stacktrace {\n  margin-left: 60px;\n}\n</style>\n  </head>\n  <body>\n    <div id=\"wrapper\">\n      <h1>OWASP Juice Shop (Express ^4.22.1)</h1>\n      <h2><em>401</em> UnauthorizedError: No Authorization header was found</h2>\n      <ul id=\"stacktrace\"></ul>\n    </div>\n  </body>\n</html>\n",
+      "baselineExpectation": "401 and no basket data",
+      "remediationExpectation": "401 and no basket data"
+    },
+    {
+      "case": "invalid-A",
+      "status": 401,
+      "actorUserId": null,
+      "requestedBasketId": 6,
+      "requestedOwnerId": 25,
+      "matchesTargetFixture": false,
+      "responseBody": "<html>\n  <head>\n    <meta charset='utf-8'> \n    <title>UnauthorizedError: Invalid token: no header in signature &#39;not-a-jwt&#39;</title>\n    <style>* {\n  margin: 0;\n  padding: 0;\n  outline: 0;\n}\n\nbody {\n  padding: 80px 100px;\n  font: 13px \"Helvetica Neue\", \"Lucida Grande\", \"Arial\";\n  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));\n  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);\n  background-repeat: no-repeat;\n  color: #555;\n  -webkit-font-smoothing: antialiased;\n}\nh1, h2 {\n  font-size: 22px;\n  color: #343434;\n}\nh1 em, h2 em {\n  padding: 0 5px;\n  font-weight: normal;\n}\nh1 {\n  font-size: 60px;\n}\nh2 {\n  margin-top: 10px;\n}\nul li {\n  list-style: none;\n}\n#stacktrace {\n  margin-left: 60px;\n}\n</style>\n  </head>\n  <body>\n    <div id=\"wrapper\">\n      <h1>OWASP Juice Shop (Express ^4.22.1)</h1>\n      <h2><em>401</em> UnauthorizedError: Invalid token: no header in signature &#39;not-a-jwt&#39;</h2>\n      <ul id=\"stacktrace\"></ul>\n    </div>\n  </body>\n</html>\n",
+      "baselineExpectation": "401 and no basket data",
+      "remediationExpectation": "401 and no basket data"
+    },
+    {
+      "case": "invalid-B",
+      "status": 401,
+      "actorUserId": null,
+      "requestedBasketId": 7,
+      "requestedOwnerId": 26,
+      "matchesTargetFixture": false,
+      "responseBody": "<html>\n  <head>\n    <meta charset='utf-8'> \n    <title>UnauthorizedError: Invalid token: no header in signature &#39;not-a-jwt&#39;</title>\n    <style>* {\n  margin: 0;\n  padding: 0;\n  outline: 0;\n}\n\nbody {\n  padding: 80px 100px;\n  font: 13px \"Helvetica Neue\", \"Lucida Grande\", \"Arial\";\n  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));\n  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);\n  background-repeat: no-repeat;\n  color: #555;\n  -webkit-font-smoothing: antialiased;\n}\nh1, h2 {\n  font-size: 22px;\n  color: #343434;\n}\nh1 em, h2 em {\n  padding: 0 5px;\n  font-weight: normal;\n}\nh1 {\n  font-size: 60px;\n}\nh2 {\n  margin-top: 10px;\n}\nul li {\n  list-style: none;\n}\n#stacktrace {\n  margin-left: 60px;\n}\n</style>\n  </head>\n  <body>\n    <div id=\"wrapper\">\n      <h1>OWASP Juice Shop (Express ^4.22.1)</h1>\n      <h2><em>401</em> UnauthorizedError: Invalid token: no header in signature &#39;not-a-jwt&#39;</h2>\n      <ul id=\"stacktrace\"></ul>\n    </div>\n  </body>\n</html>\n",
+      "baselineExpectation": "401 and no basket data",
+      "remediationExpectation": "401 and no basket data"
+    }
+  ],
+  "fixture": [
+    {
+      "actor": "A",
+      "userId": 25,
+      "basketId": 6,
+      "emptyBasket": true
+    },
+    {
+      "actor": "B",
+      "userId": 26,
+      "basketId": 7,
+      "emptyBasket": true
+    }
+  ],
+  "vulnerableReproduced": true,
+  "patchedHeadTested": false,
+  "totalHttpRequests": 12,
+  "completedAt": "2026-10-29T04:15:00.550Z"
+}

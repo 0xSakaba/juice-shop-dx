@@ -1,0 +1,56 @@
+TAP version 13
+# (node:274754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: /rest/basket/:id
+    # Subtest: GET existing basket by id is not allowed via public API
+    ok 1 - GET existing basket by id is not allowed via public API
+      ---
+      duration_ms: 20.162127
+      type: 'test'
+      ...
+    # Subtest: GET empty basket when requesting non-existing basket id
+    ok 2 - GET empty basket when requesting non-existing basket id
+      ---
+      duration_ms: 46.730237
+      type: 'test'
+      ...
+    # Subtest: GET existing basket with contained products by id
+    ok 3 - GET existing basket with contained products by id
+      ---
+      duration_ms: 38.159106
+      type: 'test'
+      ...
+    # Subtest: GET basket should accept forged JWTs
+    ok 4 - GET basket should accept forged JWTs
+      ---
+      duration_ms: 32.639716
+      type: 'test'
+      ...
+    1..4
+ok 1 - /rest/basket/:id
+  ---
+  duration_ms: 953.083313
+  type: 'suite'
+  ...
+# Subtest: /rest/basket/:id
+    # Subtest: GET existing basket of another user
+    ok 1 - GET existing basket of another user
+      ---
+      duration_ms: 55.222367
+      type: 'test'
+      ...
+    1..1
+ok 2 - /rest/basket/:id
+  ---
+  duration_ms: 55.799165
+  type: 'suite'
+  ...
+1..2
+# tests 5
+# suites 2
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2822.142679

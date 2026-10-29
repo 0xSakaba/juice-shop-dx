@@ -1,0 +1,27 @@
+
+> juice-shop@20.3.0 lint
+> eslint *.ts data lib models routes test/**/*.ts views && npm run lint:config && cd frontend && npm run lint && npm run lint:scss && cd ..
+
+
+> juice-shop@20.3.0 lint:config
+> tsx lib/scripts/lintConfig.ts
+
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/7ms.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/addo.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/bodgeit.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/ctf.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/default.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/defcon33.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/fbctf.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/juicebox.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/mozilla.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/oss.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/quiet.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/test.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/tutorial.yml[22m passed ([32mSUCCESS[39m)
+Config schema validation of [1m/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/config/unsafe.yml[22m passed ([32mSUCCESS[39m)
+
+> frontend@20.3.0 lint
+> ng lint
+
+sh: 1: ng: not found

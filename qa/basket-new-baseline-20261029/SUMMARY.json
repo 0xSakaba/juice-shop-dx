@@ -1,0 +1,107 @@
+{
+  "label": "NEW baseline",
+  "repository": "https://github.com/0xSakaba/juice-shop-dx",
+  "testedSourceCommit": "f189f521266f42c6bd05884468292000cee852ed",
+  "testedSourceTree": "2be04081a83ab04a5baaa43f1a98146cf7904f8a",
+  "baselineTimestamp": "2026-10-29T04:15:00.108Z",
+  "fixture": [
+    {
+      "actor": "A",
+      "userId": 25,
+      "basketId": 6,
+      "emptyBasket": true
+    },
+    {
+      "actor": "B",
+      "userId": 26,
+      "basketId": 7,
+      "emptyBasket": true
+    }
+  ],
+  "controls": [
+    {
+      "case": "own-A",
+      "status": 200,
+      "matchesTargetFixture": true
+    },
+    {
+      "case": "own-B",
+      "status": 200,
+      "matchesTargetFixture": true
+    },
+    {
+      "case": "cross-A-to-B",
+      "status": 200,
+      "matchesTargetFixture": true
+    },
+    {
+      "case": "cross-B-to-A",
+      "status": 200,
+      "matchesTargetFixture": true
+    },
+    {
+      "case": "anonymous-A",
+      "status": 401,
+      "matchesTargetFixture": false
+    },
+    {
+      "case": "anonymous-B",
+      "status": 401,
+      "matchesTargetFixture": false
+    },
+    {
+      "case": "invalid-A",
+      "status": 401,
+      "matchesTargetFixture": false
+    },
+    {
+      "case": "invalid-B",
+      "status": 401,
+      "matchesTargetFixture": false
+    }
+  ],
+  "httpRequests": 12,
+  "vulnerableReproduced": true,
+  "patchedHeadTested": false,
+  "checks": {
+    "baseline": {
+      "pass": 1,
+      "fail": 0,
+      "skip": 0,
+      "cancelled": 0,
+      "exit": 0
+    },
+    "originalNamedReadTests": {
+      "pass": 5,
+      "fail": 0,
+      "skip": 0,
+      "cancelled": 0,
+      "exit": 0,
+      "completeSuite": false
+    },
+    "isolationSelfTest": {
+      "pass": 1,
+      "fail": 0,
+      "skip": 0,
+      "exit": 0
+    },
+    "productSourceIntegrity": {
+      "files": 211,
+      "allMatch": true,
+      "trackedDiff": ""
+    },
+    "lint": {
+      "rootEslint": "pass",
+      "configSchemas": "14 pass",
+      "frontend": "ng not found; frontend dependencies not installed",
+      "overallExit": 127
+    }
+  },
+  "notVerified": [
+    "patched head / after / verifier / policy exceptions",
+    "full test suite / frontend / image build / UI / live",
+    "historical Hibiki image-to-source equivalence",
+    "canonical stable report ID"
+  ],
+  "nextAction": "Create basket-only patch and new regression preserving existing tests; measure full patched suite before deciding basket-specific verifier/policy."
+}

@@ -1,0 +1,8 @@
+{
+  "startupSeamLoads": 2,
+  "blockedConnections": 0,
+  "forcedLoopbackListeners": 7,
+  "allowedConnectionHosts": {
+    "127.0.0.1": 7
+  }
+}

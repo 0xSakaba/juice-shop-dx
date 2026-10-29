@@ -1,0 +1,36 @@
+Error in timed startup function: validatePreconditions TypeError: func is not a function
+    at <anonymous> (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/server.ts:154:25)
+    at datacreator (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/server.ts:167:75)
+    at Object.<anonymous> (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/server.ts:822:41)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object.transformer (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/node_modules/tsx/dist/register-B1c7OH6V.cjs:22:2188)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1443:12)
+    at Module._load (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/evidence/isolation.cjs:8:31)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.require (node:internal/modules/cjs/loader:1674:12)
+    at require (node:internal/modules/helpers:157:16)
+    at <anonymous> (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/test/api/helpers/setup.ts:8:27)
+    at Object.<anonymous> (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/test/api/helpers/setup.ts:10:23)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object.transformer (/data/.openmausbot/task-workspaces/dde8285a-9fd3-4af3-a8ad-1a47f4f295e2/979e5ce5-71b5-4af6-ad87-df2a444e49b0/juice/node_modules/tsx/dist/register-B1c7OH6V.cjs:22:2188)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+(node:273373) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ NEW baseline: f189 cross_user_basket_read with two disposable users (1210.535823ms)
+ℹ Error: A resource generated asynchronous activity after the test ended. This activity created the error "TypeError: func is not a function" which triggered an unhandledRejection event, caught by the test runner.
+✖ ../evidence/baseline.cjs (3725.339695ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3760.049932
+
+✖ failing tests:
+
+test at ../evidence/baseline.cjs:1:1
+✖ ../evidence/baseline.cjs (3725.339695ms)
+  'test failed'
