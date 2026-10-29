@@ -1,0 +1,27 @@
+
+> juice-shop@20.3.0 lint
+> eslint *.ts data lib models routes test/**/*.ts views && npm run lint:config && cd frontend && npm run lint && npm run lint:scss && cd ..
+
+
+> juice-shop@20.3.0 lint:config
+> tsx lib/scripts/lintConfig.ts
+
+Config schema validation of $WORKSPACE/basket-repair/config/7ms.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/addo.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/bodgeit.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/ctf.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/default.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/defcon33.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/fbctf.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/juicebox.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/mozilla.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/oss.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/quiet.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/test.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/tutorial.yml passed (SUCCESS)
+Config schema validation of $WORKSPACE/basket-repair/config/unsafe.yml passed (SUCCESS)
+
+> frontend@20.3.0 lint
+> ng lint
+
+sh: 1: ng: not found

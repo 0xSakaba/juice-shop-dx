@@ -1,0 +1,6 @@
+
+> juice-shop@20.3.0 build:server
+> tsc
+
+test/api/basket.test.ts(137,13): error TS7022: 'other' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+test/api/basket.test.ts(138,13): error TS7022: 'cross' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.

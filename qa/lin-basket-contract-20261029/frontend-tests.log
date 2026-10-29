@@ -1,0 +1,23 @@
+
+> juice-shop@20.3.0 test:frontend
+> cd frontend && npm run test
+
+
+> frontend@20.3.0 test
+> ng test
+
+Automatically searching for and using Vitest configuration file.
+❯ Building...
+✔ Building...
+Application bundle generation complete. [47.718 seconds] - 2026-10-29T10:41:42.276Z
+
+
+ RUN  v4.1.12 $WORKSPACE/basket-repair/frontend
+
+Not implemented: navigation to another Document
+
+ Test Files  123 passed (123)
+      Tests  1372 passed (1372)
+   Start at  10:41:43
+   Duration  83.59s (transform 23.25s, setup 37.29s, import 88.93s, tests 396.62s, environment 511.19s)
+

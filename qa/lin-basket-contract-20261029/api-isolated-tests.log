@@ -1,0 +1,1952 @@
+(node:392603) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/2fa/verify
+  ✔ POST should return a valid authentication when a valid tmp token is passed (337.246526ms)
+  ✔ POST should fail if a invalid totp token is used (36.621972ms)
+  ✔ POST should fail if a unsigned tmp token is used (12.20624ms)
+  ✔ POST should fail if the token type is invalid (10.349598ms)
+  ✔ POST should fail if the user doesn't exist (33.446442ms)
+✔ /rest/2fa/verify (3569.412165ms)
+▶ /rest/2fa/status
+  ✔ GET should indicate 2fa is setup for 2fa enabled users (214.250529ms)
+  ✔ GET should indicate 2fa is not setup for users with 2fa disabled (187.805361ms)
+  ✔ GET should return 401 when not logged in (25.238281ms)
+✔ /rest/2fa/status (431.390459ms)
+▶ /rest/2fa/setup
+  ✔ POST should be able to setup 2fa for accounts without 2fa enabled (301.659939ms)
+  ✔ POST should fail if the password doesnt match (295.898717ms)
+  ✔ POST should fail if the initial token is incorrect (277.010581ms)
+  ✔ POST should fail if the token is of the wrong type (391.874002ms)
+  ✔ POST should fail if the account has already set up 2fa (153.336409ms)
+  ✔ POST should fail if the user doesn't exist (45.266929ms)
+✔ /rest/2fa/setup (1467.309724ms)
+▶ /rest/2fa/disable
+  ✔ POST should be able to disable 2fa for account with 2fa enabled (441.049717ms)
+  ✔ POST should not be possible to disable 2fa without the correct password (385.891278ms)
+  ✔ POST should fail if the user doesn't exist (21.894916ms)
+✔ /rest/2fa/disable (849.769753ms)
+(node:392604) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Addresss
+  ✔ GET all addresses is forbidden via public API (44.242044ms)
+  ✔ GET all addresses (39.742793ms)
+  ✔ POST new address with all valid fields (137.560928ms)
+  ✔ POST new address with invalid pin code (65.103408ms)
+  ✔ POST new address with invalid mobile number (29.426987ms)
+  ✔ POST new address is forbidden via public API (9.710717ms)
+✔ /api/Addresss (3091.518142ms)
+▶ /api/Addresss/:id
+  ✔ GET address by id is forbidden via public API (28.680314ms)
+  ✔ PUT update address is forbidden via public API (35.625463ms)
+  ✔ DELETE address by id is forbidden via public API (5.658804ms)
+  ✔ GET address by id (21.499078ms)
+  ✔ GET address by non-existing id returns 400 for authorized user (20.981615ms)
+  ✔ PUT update address by id (49.791179ms)
+  ✔ PUT update address by id with invalid mobile number is forbidden (42.428402ms)
+  ✔ PUT update address by id with invalid pin code is forbidden (53.860344ms)
+  ✔ DELETE address by id (7.348236ms)
+  ✔ DELETE address by id again returns 400 for authorized user (5.225049ms)
+✔ /api/Addresss/:id (495.905028ms)
+(node:392605) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/admin/application-version
+  ✔ GET application version from package.json (116.540562ms)
+✔ /rest/admin/application-version (2342.752303ms)
+▶ /rest/admin/application-configuration
+  ✔ GET application configuration (96.580581ms)
+✔ /rest/admin/application-configuration (97.644674ms)
+(node:392606) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api
+  ✖ GET main.js contains Cryptocurrency URLs (164.783977ms)
+  ✖ GET main.js contains password hint for support team (91.446199ms)
+✖ /api (2706.174951ms)
+(node:392607) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api
+  ✔ GET error when query /api without actual resource (160.600229ms)
+✔ /api (2311.920511ms)
+▶ /rest
+  ✔ GET error message with information leakage when calling unrecognized path with /rest in it (63.653769ms)
+✔ /rest (65.023115ms)
+(node:392608) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/user/authentication-details
+  ✔ GET all users with password replaced by asterisks (218.548069ms)
+  ✔ GET returns lastLoginTime for users with active sessions (417.531661ms)
+✔ /rest/user/authentication-details (3409.817696ms)
+(node:392609) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /b2b/v2/orders
+  ✖ POST endless loop exploit in "orderLinesData" will raise explicit error (471.489963ms)
+  ✖ POST busy spinning regex attack does not raise an error (101.887007ms)
+  ✖ POST sandbox breakout attack in "orderLinesData" will raise error (59.922192ms)
+  ✔ POST new B2B order is forbidden without authorization token (29.335902ms)
+  ✔ POST new B2B order accepts arbitrary valid JSON (54.02597ms)
+  ✔ POST new B2B order has passed "cid" in response (32.781394ms)
+✖ /b2b/v2/orders (2527.233841ms)
+(node:392815) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/BasketItems
+  ✔ GET all basket items is forbidden via public API (28.068933ms)
+  ✔ POST new basket item is forbidden via public API (19.004888ms)
+  ✔ GET all basket items (255.42421ms)
+  ✔ POST new basket item (48.91613ms)
+  ✔ POST new basket item with more than available quantity is forbidden (32.482016ms)
+  ✔ POST new basket item with more than allowed quantity is forbidden (25.270198ms)
+  ✔ POST new basket item with invalid basket ID is forbidden (35.712255ms)
+  ✔ POST new basket item with non-existent product ID is forbidden (38.115736ms)
+✔ /api/BasketItems (3019.980631ms)
+▶ /api/BasketItems/:id
+  ✔ GET basket item by id is forbidden via public API (37.444771ms)
+  ✔ PUT update basket item is forbidden via public API (17.592958ms)
+  ✔ DELETE basket item is forbidden via public API (12.282866ms)
+  ✔ GET newly created basket item by id (285.286993ms)
+  ✔ PUT update newly created basket item (176.21971ms)
+  ✔ PUT update basket ID of basket item is forbidden (231.928654ms)
+  ✔ PUT update basket ID of basket item without basket ID (227.129692ms)
+  ✔ PUT update product ID of basket item is forbidden (163.87101ms)
+  ✔ PUT update newly created basket item with more than available quantity is forbidden (46.162687ms)
+  ✔ PUT update basket item with more than allowed quantity is forbidden (65.181408ms)
+  ✔ DELETE newly created basket item (116.537937ms)
+  ✔ PUT update non-existent basket item (7.635656ms)
+  ✔ PUT update basket item with failing quantity lookup returns 500 (22.213502ms)
+✔ /api/BasketItems/:id (1417.10454ms)
+(node:392816) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/basket/:id
+  ✔ GET existing basket by id is not allowed via public API (70.888171ms)
+  ✔ GET empty basket when requesting non-existing basket id (283.674852ms)
+  ✔ GET existing basket with contained products by id (366.811014ms)
+  ✔ GET own basket as a regular user (537.904467ms)
+  ✔ GET basket rejects forged JWTs without an authenticated user (80.280844ms)
+  ✔ GET basket rejects a forged JWT claiming the owner identity (43.842081ms)
+  ✔ GET basket rejects a signed token missing the user identity (90.326314ms)
+  ✔ GET enforces ownership for two populated baskets with distinct user and basket IDs (779.463254ms)
+  ✔ GET populated basket of another user is forbidden for a regular user (70.504917ms)
+✔ /rest/basket/:id (6075.409513ms)
+▶ /api/Baskets
+  ✔ POST new basket is not part of API (29.947117ms)
+  ✔ GET all baskets is not part of API (23.861642ms)
+✔ /api/Baskets (55.181939ms)
+▶ /api/Baskets/:id
+  ✔ GET existing basket is not part of API (25.274156ms)
+  ✔ PUT update existing basket is not part of API (49.278133ms)
+  ✔ DELETE existing basket is not part of API (25.189238ms)
+✔ /api/Baskets/:id (101.09904ms)
+▶ /rest/basket/:id
+  ✔ GET existing basket of another user is forbidden (694.961537ms)
+✔ /rest/basket/:id (695.550668ms)
+▶ /rest/basket/:id/checkout
+  ✔ POST placing an order for a basket is not allowed via public API (8.474788ms)
+  ✔ POST placing an order for an existing basket returns orderId (552.650065ms)
+  ✔ POST placing an order for a non-existing basket fails (163.125086ms)
+  ✔ POST placing an order for a basket with a negative total cost is possible (300.701847ms)
+  ✔ POST placing an order for a basket with 99% discount is possible (521.486853ms)
+  ✔ POST placing an order applies campaign discount and delivery method for deluxe user (242.907466ms)
+  ✔ POST placing an order charges the wallet when the balance is sufficient (215.928419ms)
+  ✔ POST placing an order returns an error when the wallet balance is insufficient (463.857725ms)
+  ▶ error cases
+    ✔ should return 500 if QuantityModel.findOne fails during checkout (339.41463ms)
+    ✔ should return 500 if WalletModel.findOne fails during checkout (626.295762ms)
+    ✔ should return 500 if ordersCollection.insert fails during checkout (541.332333ms)
+    ✔ should return 500 if basket item cleanup fails after checkout (259.269163ms)
+    ✔ should return 500 if wallet bonus increment fails during checkout (321.412334ms)
+  ✔ error cases (2092.717061ms)
+✔ /rest/basket/:id/checkout (4567.538197ms)
+▶ /rest/basket/:id/coupon/:coupon
+  ✔ PUT apply valid coupon to existing basket (109.733289ms)
+  ✔ PUT apply invalid coupon is not accepted (96.048242ms)
+  ✔ PUT apply outdated coupon is not accepted (76.505849ms)
+  ✔ PUT apply valid coupon to non-existing basket throws error (161.376819ms)
+✔ /rest/basket/:id/coupon/:coupon (448.760873ms)
+(node:392827) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Challenges
+  ✔ GET all challenges (599.059921ms)
+  ✔ POST new challenge is forbidden via public API even when authenticated (393.666102ms)
+✔ /api/Challenges (4604.337796ms)
+▶ /api/Challenges/:id
+  ✔ GET existing challenge by id is forbidden via public API even when authenticated (67.330388ms)
+  ✔ PUT update existing challenge is forbidden via public API even when authenticated (18.922387ms)
+  ✔ DELETE existing challenge is forbidden via public API even when authenticated (27.415551ms)
+✔ /api/Challenges/:id (117.270652ms)
+▶ /rest/continue-code
+  ✔ GET can retrieve continue code for currently solved challenges (56.217699ms)
+  ✔ PUT invalid continue code is rejected (alphanumeric) (65.524953ms)
+  ✔ PUT invalid continue code is rejected (non-alphanumeric) (35.309668ms)
+  ✔ PUT continue code for more than one challenge is accepted (49.172632ms)
+  ✔ PUT continue code for non-existent challenge #999 is accepted (119.724634ms)
+✔ /rest/continue-code (341.532233ms)
+▶ /rest/continue-code-findIt
+  ✔ GET can retrieve continue code for currently solved challenges (429.607567ms)
+  ✔ PUT invalid continue code is rejected (alphanumeric) (60.492323ms)
+  ✔ PUT completely invalid continue code is rejected (non-alphanumeric) (73.296027ms)
+  ✔ PUT continue code for more than one challenge is accepted (156.523523ms)
+✔ /rest/continue-code-findIt (725.611911ms)
+▶ /rest/continue-code-fixIt
+  ✔ GET can retrieve continue code for currently solved challenges (61.464915ms)
+  ✔ PUT invalid continue code is rejected (alphanumeric) (63.77277ms)
+  ✔ PUT completely invalid continue code is rejected (non-alphanumeric) (47.864703ms)
+  ✔ PUT continue code for more than one challenge is accepted (239.297348ms)
+✔ /rest/continue-code-fixIt (413.073785ms)
+(node:392829) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/chat
+  ✖ POST returns streamed text content as SSE events (710.111472ms)
+  ✔ POST sets correct SSE response headers (163.010043ms)
+  ✖ POST includes system prompt and user messages in LLM request (57.357043ms)
+  ✖ POST sends searchProducts tool definition to LLM (88.037333ms)
+  ✖ POST handles searchProducts tool call and returns follow-up response (50.385061ms)
+  ✔ POST handles LLM API error gracefully (22.069584ms)
+  ✔ POST with empty messages returns error SSE stream (28.663147ms)
+  ✖ POST includes authenticated user name in system prompt (671.937361ms)
+  ✖ POST handles getProductReviews tool call by returning matching reviews (44.078667ms)
+  ✖ POST handles getOrderById tool call by reporting unauthenticated customer (22.873092ms)
+  ✖ POST handles getOrderById tool call by reporting order not found for authenticated customer (153.912666ms)
+  ✖ POST handles generateCoupon tool call and includes coupon code in tool response (16.348613ms)
+  ✖ POST response SSE data lines contain valid JSON (25.703118ms)
+✖ /rest/chat (5949.563447ms)
+(node:392843) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ Web3 Key Derivation & NFT Unlock
+  ▶ /rest/web3/submitKey
+    ✔ POST missing key in request body gets rejected as non-Ethereum key (1083.13817ms)
+    ✔ POST arbitrary string in request body gets rejected as non-Ethereum key (88.265002ms)
+    ✔ POST public wallet key in request body gets rejected as such (98.97077ms)
+    ✔ POST wallet address in request body gets rejected as such (67.595682ms)
+    ✔ POST private key in request body gets accepted (65.312244ms)
+  ✔ /rest/web3/submitKey (1405.572682ms)
+  ▶ /rest/web3/nftUnlocked
+    ✔ GET solution status of "Unlock NFT" challenge (53.98222ms)
+  ✔ /rest/web3/nftUnlocked (54.456099ms)
+✔ Web3 Key Derivation & NFT Unlock (3948.625506ms)
+(node:392850) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Complaints
+  ✔ POST new complaint (743.202827ms)
+  ✔ GET all complaints is forbidden via public API (80.078925ms)
+  ✔ GET all complaints (167.201458ms)
+✔ /api/Complaints (5855.202054ms)
+▶ /api/Complaints/:id
+  ✔ GET existing complaint by id is forbidden (88.774382ms)
+  ✔ PUT update existing complaint is forbidden (109.325577ms)
+  ✔ DELETE existing complaint is forbidden (83.036745ms)
+✔ /api/Complaints/:id (304.045587ms)
+(node:392964) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/country-mapping
+  ✔ GET no country mapping present in default configuration (104.83991ms)
+✔ /rest/country-mapping (3703.405726ms)
+(node:393005) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/user/data-export
+  ✔ Export data without authentication is rejected (670.430555ms)
+  ✔ Export data with invalid Bearer [REDACTED] is rejected (226.954315ms)
+  ✔ Export data with empty Bearer [REDACTED] is rejected (115.660303ms)
+  ✔ Export data with empty JSON body but valid token still succeeds without CAPTCHA (480.842218ms)
+  ✔ CAPTCHA cannot be requested without authentication (306.254191ms)
+  ✔ Export data without use of CAPTCHA (367.488729ms)
+  ✔ Export data when CAPTCHA requested need right answer (402.190557ms)
+  ✔ Export data using right answer to CAPTCHA (599.726261ms)
+  ✔ Export data including orders without use of CAPTCHA (1181.995481ms)
+  ✔ Export data including reviews without use of CAPTCHA (411.424228ms)
+  ✖ Export data including memories without use of CAPTCHA (539.202771ms)
+  ✔ Export data including orders with use of CAPTCHA (813.053114ms)
+  ✔ Export data including reviews with use of CAPTCHA (765.413038ms)
+  ✖ Export data including memories with use of CAPTCHA (875.216536ms)
+  ▶ error cases
+    ✔ should return 500 if MemoryModel.findAll fails (319.5784ms)
+    ✔ should return 500 if ordersCollection.find fails (282.188463ms)
+    ✔ should return 500 if reviewsCollection.find fails (387.2725ms)
+  ✔ error cases (991.324135ms)
+✖ /rest/user/data-export (14071.947131ms)
+(node:393019) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Deliverys
+  ▶ for regular customer
+    ✔ GET delivery methods (71.852764ms)
+  ✔ for regular customer (1394.946872ms)
+  ▶ for deluxe customer
+    ✔ GET delivery methods (59.703232ms)
+  ✔ for deluxe customer (350.153315ms)
+✔ /api/Deliverys (7631.911707ms)
+▶ /api/Deliverys/:id
+  ▶ for regular customer
+    ✔ GET delivery method (81.348478ms)
+    ✔ GET non-existing delivery method returns 400 (47.775785ms)
+  ✔ for regular customer (336.437019ms)
+  ▶ for deluxe customer
+    ✔ GET delivery method (25.095321ms)
+  ✔ for deluxe customer (224.377124ms)
+✔ /api/Deliverys/:id (562.729993ms)
+(node:393040) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/deluxe-membership
+  ✔ GET deluxe membership status for customers (888.037865ms)
+  ✔ GET deluxe membership status for deluxe members throws error (529.971683ms)
+  ✔ GET deluxe membership status for admin throws error (199.762558ms)
+  ✔ GET deluxe membership status for accountant throws error (450.174428ms)
+  ✔ POST upgrade deluxe membership status for customers with card payment (482.072272ms)
+  ✔ POST upgrade deluxe membership status for customers with wallet payment (274.227554ms)
+  ✔ POST upgrade deluxe membership fails for customers with insufficient wallet balance (437.263431ms)
+  ✔ POST deluxe membership status with wrong card id throws error (586.217549ms)
+  ✔ POST deluxe membership status for deluxe members throws error (397.207552ms)
+  ✔ POST deluxe membership status for admin throws error (457.943793ms)
+  ✔ POST deluxe membership status for accountant throws error (323.592272ms)
+✔ /rest/deluxe-membership (8300.133241ms)
+(node:393045) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /dataerasure
+  ✔ GET erasure form for logged-in users includes their email and security question (1849.48405ms)
+  ✔ GET erasure form rendering fails for users without assigned security answer (569.408057ms)
+  ✔ GET erasure form rendering fails on unauthenticated access (99.115605ms)
+  ✔ POST erasure request does not actually delete the user (763.098266ms)
+  ✔ POST erasure form  fails on unauthenticated access (190.905932ms)
+  ✔ POST erasure request with empty layout parameter returns (536.280369ms)
+  ✔ POST erasure request with non-existing file path as layout parameter throws error (592.386899ms)
+  ✖ POST erasure request with existing file path as layout parameter returns content truncated (775.38209ms)
+✖ /dataerasure (10115.82793ms)
+(node:393077) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Feedbacks
+  ✔ GET all feedback (797.560301ms)
+  ✔ POST sanitizes unsafe HTML from comment (1110.370261ms)
+  ✖ POST fails to sanitize masked XSS-attack by not applying sanitization recursively (537.926259ms)
+  ✔ POST feedback in another users name as anonymous user (572.558462ms)
+  ✔ POST feedback in a non-existing users name as anonymous user fails with constraint error (183.332736ms)
+  ✔ POST feedback is associated with current user (581.365837ms)
+  ✔ POST feedback is associated with any passed user ID (284.948781ms)
+  ✔ POST feedback can be created without actually supplying comment (157.630825ms)
+  ✔ POST feedback cannot be created without actually supplying rating (164.50164ms)
+  ✔ POST feedback cannot be created with wrong CAPTCHA answer (229.01521ms)
+  ✔ POST feedback cannot be created with invalid CAPTCHA id (120.5286ms)
+✖ /api/Feedbacks (11005.170433ms)
+▶ /api/Feedbacks/:id
+  ✔ GET existing feedback by id is forbidden via public API (50.503061ms)
+  ✔ GET existing feedback by id (153.851539ms)
+  ✔ PUT update existing feedback is forbidden via public API (5.334926ms)
+  ✔ PUT update existing feedback (34.10274ms)
+  ✔ DELETE existing feedback is forbidden via public API (7.442445ms)
+  ✔ DELETE existing feedback (448.982667ms)
+✔ /api/Feedbacks/:id (701.841977ms)
+(node:393101) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ Server
+  ✖ GET responds with index.html when visiting application URL (468.574728ms)
+  ✖ GET responds with index.html when visiting application URL with any path (284.605653ms)
+  ✖ GET a restricted file directly from file system path on server via URL-encoded Directory Traversal attack loads index.html instead (91.608701ms)
+  ✔ GET serves a security.txt file (76.548892ms)
+  ✔ GET serves a security.txt file under well-known subfolder (69.239114ms)
+  ✔ GET serves a robots.txt file (79.178708ms)
+  ✔ GET serves a csaf provider-metadata.json (78.457576ms)
+  ✔ GET serves a csaf index.txt (50.013474ms)
+  ✔ GET serves a csaf changes.csv (66.17071ms)
+  ✔ GET serves a csaf juice-shop-sa-20200513-express-jwt.json (150.829844ms)
+✖ Server (8045.00741ms)
+▶ /public/images/padding
+  ✖ GET tracking image for "Score Board" page access challenge (144.53866ms)
+  ✖ GET tracking image for "Administration" page access challenge (174.915864ms)
+  ✖ GET tracking image for "Token Sale" page access challenge (89.333095ms)
+  ✖ GET tracking image for "Privacy Policy" page access challenge (56.833913ms)
+✖ /public/images/padding (476.004756ms)
+▶ /encryptionkeys
+  ✔ GET serves a directory listing (280.486238ms)
+  ✔ GET a non-existing file in will return a 404 error (15.302603ms)
+  ✔ GET the Premium Content AES key (38.235945ms)
+  ✔ GET a key file whose name contains a "/" fails with a 403 error (38.534615ms)
+✔ /encryptionkeys (374.445045ms)
+▶ Hidden URL
+  ✖ GET the second easter egg by visiting the Base64>ROT13-decrypted URL (58.275885ms)
+  ✖ GET the premium content by visiting the AES decrypted URL (85.079347ms)
+  ✔ GET the missing "Thank you!" image for assembling the URL hidden in the Privacy Policy (131.632663ms)
+  ✖ GET Klingon translation file for "Extra Language" challenge (180.048913ms)
+  ✖ GET blueprint file for "Retrieve Blueprint" challenge (183.854324ms)
+  ✖ GET crazy cat photo for "Missing Encoding" challenge (94.821564ms)
+  ✔ GET folder containing access log files for "Access Log" challenge (83.982712ms)
+✖ Hidden URL (820.865104ms)
+(node:393198) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /file-upload
+  ✔ POST file valid PDF for client and API (181.804888ms)
+  ✔ POST file too large for client validation but valid for API (149.130621ms)
+  ✔ POST file with illegal type for client validation but valid for API (79.730297ms)
+  ✔ POST file type XML deprecated for API (180.594835ms)
+  ✔ POST large XML file near upload size limit (124.113008ms)
+  ✔ POST file type XML with XXE attack against Windows (91.664535ms)
+  ✔ POST file type XML with XXE attack against Linux (41.312224ms)
+  ✖ POST file type XML with Billion Laughs attack is caught by parser (151.815646ms)
+  ✔ POST file type XML with Quadratic Blowup attack (72.75173ms)
+  ✔ POST file type XML with dev/random attack (92.311082ms)
+  ✔ POST file type YAML with Billion Laughs-style attack (37.311978ms)
+  ✔ POST file too large for API (41.742603ms)
+  ✔ POST zip file with directory traversal payload (24.095395ms)
+  ✖ POST zip file with password protection (29.384903ms)
+  ﹣ POST valid file with tampered content length (1.174844ms) # Fails on CI/CD pipeline
+✖ /file-upload (7492.82489ms)
+(node:393368) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /ftp
+  ✔ GET serves a directory listing (139.643363ms)
+  ✔ GET a non-existing Markdown file in /ftp will return a 404 error (45.735266ms)
+  ✔ GET a non-existing PDF file in /ftp will return a 404 error (38.578615ms)
+  ✔ GET a non-existing file in /ftp will return a 403 error for invalid file type (20.394777ms)
+  ✔ GET an existing file in /ftp will return a 403 error for invalid file type .gg (13.755547ms)
+  ✔ GET existing file /ftp/coupons_2013.md.bak will return a 403 error for invalid file type .bak (14.426803ms)
+  ✔ GET existing file /ftp/package.json.bak will return a 403 error for invalid file type .bak (15.772108ms)
+  ✔ GET existing file /ftp/suspicious_errors.yml will return a 403 error for invalid file type .yml (17.5475ms)
+  ✔ GET the confidential file in /ftp (12.445535ms)
+  ✔ GET the KeePass database in /ftp (34.748662ms)
+  ✔ GET the easter egg file by using Poison Null Byte attack with .pdf suffix (25.149154ms)
+  ✔ GET the easter egg file by using Poison Null Byte attack with .md suffix (22.641256ms)
+  ✔ GET the SIEM signature file by using Poison Null Byte attack with .pdf suffix (22.046334ms)
+  ✔ GET the SIEM signature file by using Poison Null Byte attack with .md suffix (36.017799ms)
+  ✔ GET the 2013 coupon code file by using Poison Null Byte attack with .pdf suffix (29.657114ms)
+  ✔ GET the 2013 coupon code file by using an Poison Null Byte attack with .md suffix (21.640913ms)
+  ✔ GET the package.json.bak file by using Poison Null Byte attack with .pdf suffix (25.606742ms)
+  ✔ GET the package.json.bak file by using Poison Null Byte attack with .md suffix (15.601231ms)
+  ✔ GET a restricted file directly from file system path on server by tricking route definitions fails with 403 error (8.46733ms)
+  ✔ GET a restricted file directly from file system path on server by appending URL parameter fails with 403 error (10.563475ms)
+  ✔ GET a file whose name contains a "/" fails with a 403 error (9.326505ms)
+  ✔ GET an accessible file directly from file system path on server (12.943915ms)
+  ✔ GET a non-existing file via direct server file path /ftp will return a 404 error (11.246315ms)
+  ✔ GET the package.json.bak file contains a dependency on epilogue-js for "Typosquatting" challenge (9.527424ms)
+  ✔ GET file /ftp/quarantine/juicy_malware_linux_amd_64.url (3.4967ms)
+  ✔ GET file /ftp/quarantine/juicy_malware_linux_arm_64.url (4.185498ms)
+  ✔ GET existing file /ftp/quarantine/juicy_malware_macos_64.url (3.72791ms)
+  ✔ GET existing file /ftp/quarantine/juicy_malware_windows_64.exe.url (6.313643ms)
+✔ /ftp (5345.692314ms)
+(node:393381) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ HTTP
+  ✖ response must contain CORS header allowing all origins (112.352231ms)
+  ✖ response must contain sameorigin frameguard header (59.046975ms)
+  ✖ response must contain CORS header allowing all origins (43.32466ms)
+  ✖ response must not contain recruiting header (35.792047ms)
+  ✖ response must not contain XSS protection header (40.430549ms)
+  ✔ unexpected path under known sub-path caught by generic error handler (110.253377ms)
+✖ HTTP (4316.680031ms)
+▶ Required Internet resource
+  ▶ PasteBin paste for "Leaked Unsafe Product" challenge available
+    ✖ for default configuration (https://pastebin.com/90dUgd7s) (9.721717ms)
+    ✖ for 7MS configuration (https://pastebin.com/8SMbWPxc) (0.952551ms)
+    ✖ for BodgeIt Store configuration (https://pastebin.com/G47LrDr0) (1.847893ms)
+    ✖ for Mozilla configuration (https://pastebin.com/t8jqE1y7) (0.555838ms)
+    ✖ for All Day DevOps configuration (https://pastebin.com/RXrihEMS) (0.629506ms)
+  ✖ PasteBin paste for "Leaked Unsafe Product" challenge available (17.477582ms)
+  ✖ Comment on "Top 10 Fruits you probably dont know" blog post with PasteBin paste URL spoiler available (2.375189ms)
+  ✖ PasteBin paste (https://pastebin.com/4U1V1UjU) for "Leaked Access Logs" challenge available (1.463139ms)
+  ﹣ StackOverflow question "Less verbose access logs using expressjs/morgan" with log snippet and PasteBin paste URL spoiler available (2.92807ms) # FIXME StackOverflow blocking with 403 error
+  ✖ GitHub issue (https://github.com/apostrophecms/sanitize-html/issues/29) for "Server-side XSS Protection" challenge available (1.167803ms)
+✖ Required Internet resource (34.315158ms)
+(node:393481) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/languages
+  ✖ GET all languages (147.694815ms)
+✖ /rest/languages (3944.4948ms)
+(node:393498) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /support/logs/:file
+  ✔ GET access log file for the current day (140.207411ms)
+  ✔ GET log file whose name contains a forward slash fails with a 403 error (51.802907ms)
+✔ /support/logs/:file (4086.426893ms)
+(node:393515) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/user/login
+  ✔ POST login newly created user (767.03872ms)
+  ✔ POST login non-existing user (46.878735ms)
+  ✔ POST login without credentials (74.051743ms)
+  ✔ POST login with admin credentials (363.5999ms)
+  ✔ POST login with support-team credentials (149.24333ms)
+  ✔ POST login with MC SafeSearch credentials (53.465798ms)
+  ✔ POST login with Amy credentials (58.020925ms)
+  ✔ POST login with wurstbrot credentials expects 2FA token (28.696938ms)
+  ✔ POST login as bjoern.kimminich@gmail.com with known password (232.482659ms)
+  ✔ POST login with WHERE-clause disabling SQL injection attack (52.508913ms)
+  ✔ POST login with known email "admin@juice-sh.op" in SQL injection attack (109.614246ms)
+  ✔ POST login with known email "jim@juice-sh.op" in SQL injection attack (107.22614ms)
+  ✔ POST login with known email "bender@juice-sh.op" in SQL injection attack (145.370001ms)
+  ✔ POST login with non-existing email "acc0unt4nt@juice-sh.op" via UNION SELECT injection attack (104.00461ms)
+  ✔ POST login with query-breaking SQL Injection attack (60.030985ms)
+✔ /rest/user/login (5032.442807ms)
+▶ /rest/saveLoginIp
+  ✔ GET last login IP will be saved as True-Client-IP header value (432.353552ms)
+  ✖ GET last login IP will be saved as remote IP when True-Client-IP is not present (92.82292ms)
+  ✔ GET last login IP returns 401 Unauthorized when no token is provided (79.508461ms)
+✖ /rest/saveLoginIp (611.57879ms)
+(node:393524) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/memories
+  ✔ GET memories via public API (334.707002ms)
+  ✔ GET memories via a valid authorization token (783.248206ms)
+  ✖ POST new memory is forbidden via public API (149.096245ms)
+  ✔ POST new memory image file invalid type (265.775057ms)
+  ✔ POST new memory image file is not passed - 1 (134.141603ms)
+  ✔ POST new memory image file is not passed - 2 (188.946163ms)
+  ✖ POST new memory with valid for JPG format image (143.913279ms)
+  ✔ Should not crash the node-js server when sending invalid content like described in CVE-2022-24434 (20.987824ms)
+✖ /rest/memories (5440.67138ms)
+(node:393574) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /metrics
+  ▶ challenge tracking
+    ✔ GET with an ignored scraper user agent does not solve exposedMetricsChallenge (179.141696ms)
+    ✔ GET with a regular browser user agent solves exposedMetricsChallenge (50.679479ms)
+  ✔ challenge tracking (232.452368ms)
+  ▶ response format
+    ✔ GET returns 200 with text/plain content type (43.307701ms)
+  ✔ response format (45.335346ms)
+  ▶ update loop
+    ✔ GET includes version info gauge after update loop runs (73.623322ms)
+    ✔ GET includes per-difficulty and per-category challenge solved/total gauges (55.885154ms)
+    ✔ GET includes cheat score gauge (53.682675ms)
+    ✔ GET includes coding challenge progress gauges for all three phases (32.373473ms)
+    ✔ GET includes registered user counts from update loop (52.257662ms)
+    ✔ GET includes http request counter incremented by the request middleware (118.512205ms)
+  ✔ update loop (397.148468ms)
+  ▶ file upload metrics
+    ✔ GET includes file upload success counter after a valid upload (116.408269ms)
+    ✔ GET includes file upload error counter after an upload that triggers a downstream error (98.52485ms)
+  ✔ file upload metrics (216.255172ms)
+✔ /metrics (3862.590066ms)
+(node:393707) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ Web3 NFT Minting
+  ﹣ /rest/web3/nftMintListen (1.104219ms) # ALCHEMY_API_KEY not set
+error: WebSocket error (NFT Mint Listener): External connection disallowed in isolated API fixture
+  ▶ /rest/web3/nftMintListen (error cases)
+    ✔ GET call returns 500 error if listener creation fails (1063.566735ms)
+  ✔ /rest/web3/nftMintListen (error cases) (1071.452809ms)
+  ▶ /rest/web3/walletNFTVerify
+    ✔ POST missing wallet address fails to solve minting challenge (142.371764ms)
+    ✔ POST invalid wallet address fails to solve minting challenge (49.928514ms)
+    ✔ POST minted wallet address successfully solves minting challenge (48.626418ms)
+    ✔ POST leads to 500 error if check fails (39.72646ms)
+  ✔ /rest/web3/walletNFTVerify (286.167334ms)
+✔ Web3 NFT Minting (6592.978788ms)
+(node:393714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/order-history
+  ✔ GET own previous orders (538.296512ms)
+✔ /rest/order-history (4623.470894ms)
+▶ /rest/order-history/orders
+  ✔ GET all orders is forbidden for customers (184.552163ms)
+  ✔ GET all orders is forbidden for admin (274.887519ms)
+  ✔ GET all orders for accountant (265.693223ms)
+✔ /rest/order-history/orders (727.732222ms)
+▶ /rest/order-history/:id/delivery-status
+  ✔ PUT delivery status is forbidden for admin (201.341198ms)
+  ✔ PUT delivery status is forbidden for customer (78.775787ms)
+  ✔ PUT delivery status is allowed for accountant (193.823709ms)
+✔ /rest/order-history/:id/delivery-status (479.001076ms)
+(node:393739) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/user/change-password
+  ✔ GET password change for newly created user with recognized token as Authorization header (973.201797ms)
+  ✔ GET password change with passing wrong current password (145.730088ms)
+  ✔ GET password change without passing any passwords (61.420457ms)
+  ✔ GET password change with passing wrong repeated password (64.667487ms)
+  ✔ GET password change without passing an authorization token (71.307133ms)
+  ✔ GET password change with passing unrecognized authorization token (54.929812ms)
+  ✔ GET password change for Bender without current password using GET request (725.183657ms)
+✔ /rest/user/change-password (7272.42747ms)
+▶ /rest/user/reset-password
+  ✔ POST password reset for Jim with correct answer to his security question (174.392525ms)
+  ✔ POST password reset for Bender with correct answer to his security question (225.645761ms)
+  ✔ POST password reset for Bjoern´s internal account with correct answer to his security question (88.114459ms)
+  ✔ POST password reset for Bjoern´s OWASP account with correct answer to his security question (34.635828ms)
+  ✔ POST password reset for Morty with correct answer to his security question (66.8983ms)
+  ✔ POST password reset with wrong answer to security question (113.492741ms)
+  ✔ POST password reset without any data is blocked (77.044188ms)
+  ✔ POST password reset without new password throws a 401 error (49.975265ms)
+  ✔ POST password reset with mismatching passwords throws a 401 error (28.876274ms)
+  ✔ POST password reset with no email address throws a 412 error (77.860029ms)
+  ✔ POST password reset with no answer to the security question throws a 412 error (25.828536ms)
+✔ /rest/user/reset-password (974.30264ms)
+(node:393757) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Cards
+  ✔ GET all cards is forbidden via public API (50.070391ms)
+  ✔ GET all cards (41.142056ms)
+  ✔ POST new card is forbidden via public API (16.823576ms)
+  ✔ POST new card with all valid fields (227.022732ms)
+  ✔ GET all cards returns masked card numbers (25.060154ms)
+  ✔ POST new card with invalid card number (49.627261ms)
+  ✔ POST new card with invalid expMonth (92.908463ms)
+  ✔ POST new card with invalid expYear (77.446525ms)
+✔ /api/Cards (5793.936849ms)
+▶ /api/Cards/:id
+  ✔ GET card by id is forbidden via public API (18.634468ms)
+  ✔ PUT update card is forbidden via public API (16.957203ms)
+  ✔ DELETE card by id is forbidden via public API (30.642415ms)
+  ✔ GET card by id (29.986159ms)
+  ✔ GET card by id returns masked card number (18.283299ms)
+  ✔ GET card by non-existing id returns 400 for authorized user (13.594504ms)
+  ✔ PUT update card by id is forbidden via authorized API call (35.509378ms)
+  ✔ DELETE card by id (32.490474ms)
+  ✔ DELETE card by id again returns 400 for authorized user (12.024572ms)
+✔ /api/Cards/:id (576.874253ms)
+(node:393772) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/PrivacyRequests
+  ✔ POST new complaint (484.245084ms)
+  ✔ GET all privacy requests is forbidden via public API (58.154508ms)
+✔ /api/PrivacyRequests (4740.982839ms)
+▶ /api/PrivacyRequests/:id
+  ✔ GET all privacy requests is forbidden (65.495454ms)
+  ✔ GET existing privacy request by id is forbidden (31.916636ms)
+  ✔ PUT update existing privacy request is forbidden (46.583316ms)
+  ✔ DELETE existing privacy request is forbidden (22.044042ms)
+✔ /api/PrivacyRequests/:id (174.725237ms)
+(node:393824) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/products/:id/reviews
+  ✔ GET product reviews by product id (144.879246ms)
+  ✔ GET product reviews attack by injecting a mongoDB sleep command (111.63164ms)
+  ﹣ GET product reviews by alphanumeric non-mongoDB-command product id (0.586798ms) # SKIP
+  ✔ PUT single product review can be created (392.238504ms)
+✔ /rest/products/:id/reviews (4206.686948ms)
+▶ /rest/products/reviews
+  ✔ PATCH single product review can be edited (108.659446ms)
+  ✔ PATCH single product review editing need an authenticated user (128.253964ms)
+  ✔ PATCH single product review returns 500 when the update fails (55.255982ms)
+  ✔ PATCH single product review evaluates forged review criteria for an unauthenticated user (43.529371ms)
+  ✔ PATCH single product review evaluates forged review criteria for a different user (32.482474ms)
+  ✔ PATCH missing product review evaluates forged review criteria without an original review (77.794569ms)
+  ✔ POST non-existing product review cannot be liked (937.159705ms)
+  ✔ POST single product review can be liked (409.891422ms)
+  ✔ PATCH multiple product review via injection (106.011379ms)
+✔ /rest/products/reviews (1996.069855ms)
+(node:393847) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Products
+  ✔ GET all products (263.260659ms)
+  ✔ POST new product is forbidden via public API (246.844712ms)
+  ✖ POST new product does not filter XSS attacks (271.879407ms)
+✖ /api/Products (5246.196039ms)
+▶ /api/Products/:id
+  ✔ GET existing product by id (111.095468ms)
+  ✔ GET non-existing product by id (139.684156ms)
+  ✔ PUT update existing product is possible due to Missing Function-Level Access Control vulnerability (141.569924ms)
+  ✔ DELETE existing product is forbidden via public API (40.692552ms)
+  ✔ DELETE existing product is forbidden via API even when authenticated (11.620527ms)
+✔ /api/Products/:id (449.903301ms)
+(node:393914) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /profile/image/file
+  ✔ POST profile image file valid for JPG format (638.302667ms)
+  ✔ POST profile image file invalid type (828.649511ms)
+  ✔ POST profile image file forbidden for anonymous user (68.929236ms)
+  ✔ POST profile image file rejected for unrecognizable file content (116.753605ms)
+✔ /profile/image/file (7580.87664ms)
+▶ /profile/image/url
+  ✔ POST profile image URL valid for image available online (234.210675ms)
+  ✔ POST profile image URL redirects even for invalid image URL (131.781456ms)
+  ﹣ POST profile image URL forbidden for anonymous user (4.541252ms) # FIXME runs into "socket hang up"
+  ✔ POST valid image with tampered content length (98.559767ms)
+✔ /profile/image/url (474.27249ms)
+▶ /profile/image/url (with local mock server)
+  ✔ POST with non-OK response falls back to storing URL as profile image (9.344005ms)
+  ✔ POST with empty-body response (204) falls back to storing URL as profile image (30.320453ms)
+  ✔ POST with valid response writes file and redirects to profile (40.442758ms)
+  ✖ POST with PNG URL extension saves file using PNG extension (40.156922ms)
+  ✖ POST with unrecognised URL extension defaults to JPG extension (39.079995ms)
+✖ /profile/image/url (with local mock server) (235.296811ms)
+(node:393946) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /promotion
+  ✖ GET promotion video page is publicly accessible
+  ✖ GET promotion video page contains embedded video
+  ✖ GET promotion video page contains subtitles as <script>
+✖ /promotion (0.849133ms)
+▶ /video
+  ✖ GET promotion video is publicly accessible
+  ✖ GET promotion video supports byte ranges
+  ✖ GET promotion video supports open-ended byte ranges
+  ✖ GET promotion video uses the default video when configuration value is null
+✖ /video (0.047583ms)
+(node:393977) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Quantitys
+  ✔ GET quantity of all items for customers (1388.396936ms)
+  ✔ GET quantity of all items for admin (841.4888ms)
+  ✔ GET quantity of all items for accounting users (321.14704ms)
+  ✔ POST quantity is forbidden for customers (333.299656ms)
+  ✔ POST quantity forbidden for admin (581.500671ms)
+  ✔ POST quantity is forbidden for accounting users (261.976355ms)
+✔ /api/Quantitys (10223.614991ms)
+▶ /api/Quantitys/:ids
+  ✔ GET quantity of all items is forbidden for customers (406.670558ms)
+  ✔ GET quantity of all items is forbidden for admin (222.007185ms)
+Access denied to IP address: 127.0.0.1
+  ✔ GET quantity of all items for accounting users blocked by IP filter (458.93147ms)
+  ﹣ GET quantity of all items for accounting users from IP 123.456.789 (0.935509ms) # SKIP
+  ✔ PUT quantity is forbidden for customers (279.523271ms)
+  ✔ PUT quantity is forbidden for admin (304.120713ms)
+Access denied to IP address: 127.0.0.1
+  ✔ PUT quantity as accounting user blocked by IP filter (320.783037ms)
+  ﹣ PUT quantity as accounting user from IP 123.456.789 (0.200376ms) # SKIP
+  ✔ DELETE quantity is forbidden for accountant (162.184744ms)
+  ✔ DELETE quantity is forbidden for admin (322.578138ms)
+  ✔ DELETE quantity is forbidden for users (243.999101ms)
+✔ /api/Quantitys/:ids (2741.255117ms)
+(node:393982) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /ftp/quarantine/:file
+  ✔ GET serves a known quarantined file (157.139446ms)
+  ✔ GET responds with 403 when filename contains a forward slash (256.907307ms)
+✔ /ftp/quarantine/:file (6443.476915ms)
+(node:394028) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Recycles
+  ✔ POST new recycle (1094.86224ms)
+  ✔ Will prevent GET all recycles from this endpoint (138.321976ms)
+  ✔ Will GET existing recycle from this endpoint (316.64283ms)
+  ✔ PUT update existing recycle is forbidden (87.897124ms)
+  ✔ DELETE existing recycle is forbidden (50.032807ms)
+✔ /api/Recycles (7113.629426ms)
+(node:394029) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /redirect
+  ✔ GET redirected to https://github.com/juice-shop/juice-shop when this URL is passed as "to" parameter (535.568279ms)
+  ✔ GET redirected to https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm when this URL is passed as "to" parameter (333.100903ms)
+  ✔ GET redirected to http://shop.spreadshirt.com/juiceshop when this URL is passed as "to" parameter (238.160921ms)
+  ✔ GET redirected to http://shop.spreadshirt.de/juiceshop when this URL is passed as "to" parameter (101.354542ms)
+  ✔ GET redirected to https://www.stickeryou.com/products/owasp-juice-shop/794 when this URL is passed as "to" parameter (175.372827ms)
+  ✔ GET redirected to https://explorer.dash.org/address/Xr556RzuwX6hg5EGpkybbv5RanJoZN17kW when this URL is passed as "to" parameter (180.923462ms)
+  ✔ GET redirected to https://etherscan.io/address/0x0f933ab9fcaaa782d0279c300d73750e1311eae6 when this URL is passed as "to" parameter (89.693557ms)
+  ✔ GET error message with information leakage when calling /redirect without query parameter (248.368059ms)
+  ✔ GET error message with information leakage when calling /redirect with unrecognized query parameter (248.630396ms)
+  ✔ GET error message hinting at allowlist validation when calling /redirect with an unrecognized "to" target (241.898373ms)
+  ✖ GET redirected to target URL in "to" parameter when a allow-listed URL is part of the query string (177.375471ms)
+✖ /redirect (9544.381312ms)
+(node:394042) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/repeat-notification
+  ✔ GET triggers repeating notification without passing a challenge (531.789993ms)
+  ✔ GET triggers repeating notification passing an unsolved challenge (176.490588ms)
+  ✔ GET triggers repeating notification passing a solved challenge (234.117883ms)
+✔ /rest/repeat-notification (7117.695422ms)
+(node:394082) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/products/search
+  ✔ GET product search with no matches returns no products (502.570508ms)
+  ✔ GET product search with one match returns found product (371.580059ms)
+  ✔ GET product search fails with error message that exposes ins SQL Injection vulnerability (303.495123ms)
+  ✔ GET product search SQL Injection fails from two missing closing parenthesis (234.142633ms)
+  ✔ GET product search SQL Injection fails from one missing closing parenthesis (188.94108ms)
+  ✔ GET product search SQL Injection fails for SELECT * FROM attack due to wrong number of returned columns (382.047117ms)
+  ✔ GET product search can create UNION SELECT with Users table and fixed columns (394.166482ms)
+  ✔ GET product search can create UNION SELECT with Users table and required columns (378.225373ms)
+  ✔ GET product search can create UNION SELECT with sqlite_master table and required column (1165.873579ms)
+  ✔ GET product search cannot select logically deleted christmas special by default (512.52531ms)
+  ✔ GET product search by description cannot select logically deleted christmas special due to forced early where-clause termination (337.459444ms)
+  ✔ GET product search can select logically deleted christmas special by forcibly commenting out the remainder of where clause (460.573402ms)
+  ✔ GET product search can select logically deleted unsafe product by forcibly commenting out the remainder of where clause (175.259159ms)
+  ✔ GET product search with empty search parameter returns all products (363.786235ms)
+  ✔ GET product search without search parameter returns all products (312.983796ms)
+  ✔ GET product search returns alternateImages as array with format and size descriptor (219.598995ms)
+✔ /rest/products/search (13904.179168ms)
+(node:394185) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/SecurityAnswers
+  ✔ GET all security answers is forbidden via public API even when authenticated (209.428607ms)
+  ✔ POST new security answer for existing user fails from unique constraint (1784.967219ms)
+✔ /api/SecurityAnswers (11797.37689ms)
+▶ /api/SecurityAnswers/:id
+  ✔ GET existing security answer by id is forbidden via public API even when authenticated (415.066416ms)
+  ✔ POST security answer for a newly registered user (677.33352ms)
+  ✔ PUT update existing security answer is forbidden via public API even when authenticated (94.313042ms)
+  ✔ DELETE existing security answer is forbidden via public API even when authenticated (79.378627ms)
+✔ /api/SecurityAnswers/:id (1270.705822ms)
+(node:394250) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/SecurityQuestions
+  ✔ GET all security questions  (2801.493555ms)
+  ✔ POST new security question is forbidden via public API even when authenticated (947.657379ms)
+✔ /api/SecurityQuestions (13723.957303ms)
+▶ /api/SecurityQuestions/:id
+  ✔ GET existing security question by id is forbidden via public API even when authenticated (229.648285ms)
+  ✔ PUT update existing security question is forbidden via public API even when authenticated (133.561683ms)
+  ✔ DELETE existing security question is forbidden via public API even when authenticated (146.822079ms)
+✔ /api/SecurityQuestions/:id (520.524955ms)
+▶ /rest/user/security-question
+  ✔ GET security question for an existing user's email address (533.387263ms)
+  ✔ GET security question returns nothing for an unknown email address (383.87403ms)
+  ✔ GET security question throws error for missing email address (278.727952ms)
+  ✔ GET security question is not susceptible to SQL Injection attacks (597.250094ms)
+✔ /rest/user/security-question (1805.151555ms)
+(node:394335) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ WebSocket
+  ✔ server handles confirmation messages for emitted challenge resolutions (1353.873947ms)
+  ✔ server handles confirmation message for a non-existent challenge (170.323339ms)
+  ✔ server handles empty confirmation message (171.052388ms)
+✔ WebSocket (12637.523731ms)
+(node:394361) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/track-order/:id
+  ✔ GET tracking results for the order id (891.998264ms)
+  ✖ GET all orders by injecting into orderId (372.305902ms)
+✖ /rest/track-order/:id (12659.969646ms)
+(node:394362) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /profile
+  ✔ GET user profile is forbidden for unauthenticated user (279.577836ms)
+  ✔ GET user profile of authenticated user (3655.390232ms)
+  ✔ GET user profile contains role and deluxe membership link if user is customer (635.30068ms)
+  ✔ GET user profile contains role but NO deluxe membership link if user is already deluxe (1983.155353ms)
+  ✔ POST update username of authenticated user (636.357901ms)
+  ✔ POST update profile is forbidden for unauthenticated user (189.027296ms)
+  ✖ GET user profile renders evaluated SSTI payload for username containing valid expression (1462.115393ms)
+  ✔ GET user profile falls back gracefully when SSTI payload throws (895.966101ms)
+  ✖ GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username (856.121869ms)
+  ✔ GET user profile does NOT evaluate SSTI payload in safe mode (409.804483ms)
+  ✔ should be solved when origin header matches configured CSRF URL (150.660622ms)
+  ✔ should have the configured CSRF URL in the challenge description (0.651007ms)
+  ✔ should NOT be solved when origin header does NOT match configured CSRF URL (188.635499ms)
+✖ /profile (26469.544901ms)
+(node:394390) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Users
+  ✔ GET all users is forbidden via public API (95.938393ms)
+  ✔ GET all users (580.175572ms)
+  ✔ GET all users doesnt include passwords (196.852298ms)
+  ✔ POST new user (628.116851ms)
+  ✔ POST new admin (515.975363ms)
+  ✔ POST new blank user (1075.066911ms)
+  ✔ POST same blank user in database (981.286292ms)
+  ✔ POST whitespaces user (877.261686ms)
+  ✔ POST new deluxe user (674.762033ms)
+  ✔ POST new accounting user (425.772118ms)
+  ✔ POST user not belonging to customer, deluxe, accounting, admin is forbidden (144.544137ms)
+  ✖ POST new user with XSS attack in email address (605.528685ms)
+✖ /api/Users (18855.137376ms)
+▶ /api/Users/:id
+  ✔ GET existing user by id is forbidden via public API (441.205288ms)
+  ✔ PUT update existing user is forbidden via public API (192.871546ms)
+  ✔ DELETE existing user is forbidden via public API (76.84664ms)
+  ✔ GET existing user by id (570.793552ms)
+  ✔ PUT update existing user is forbidden via API even when authenticated (78.397948ms)
+  ✔ DELETE existing user is forbidden via API even when authenticated (94.980132ms)
+✔ /api/Users/:id (1461.37751ms)
+▶ /rest/user/whoami
+  ✔ GET own user id and email on who-am-i request (709.818378ms)
+  ✔ GET who-am-i request returns nothing on missing auth token (137.782397ms)
+  ✔ GET who-am-i request returns nothing on invalid auth token (125.815431ms)
+  ✔ GET who-am-i request returns nothing on broken auth token (155.076295ms)
+  ✔ GET who-am-i request returns nothing on expired auth token (260.307249ms)
+  ✔ GET who-am-i with fields parameter returns only requested fields (794.541355ms)
+  ✔ GET who-am-i with fields parameter does not return password by default (393.9396ms)
+  ✔ GET who-am-i with fields parameter can be tricked into returning password (710.977058ms)
+✔ /rest/user/whoami (3293.687989ms)
+(node:394584) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /snippets/fixes/:key
+  ✔ GET fixes for unknown challenge key throws error (1243.187517ms)
+  ✔ GET fixes for existing challenge key (420.743604ms)
+✔ /snippets/fixes/:key (9569.663653ms)
+▶ /snippets/fixes
+  ✔ POST fix for non-existing challenge key throws error (1412.195883ms)
+  ✔ POST wrong fix for existing challenge key gives negative verdict and explanation (517.919385ms)
+  ✔ POST non-existing fix for existing challenge key gives negative verdict and no explanation (325.637221ms)
+  ✔ POST correct fix for existing challenge key gives positive verdict and explanation (1402.983531ms)
+✔ /snippets/fixes (3673.626267ms)
+(node:394684) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /snippets/:challenge
+  ✔ GET code snippet retrieval for unknown challenge key throws error (353.538278ms)
+  ✔ GET code snippet retrieval for challenge without code snippet throws error (51.893448ms)
+  ✔ GET code snippet retrieval for challenge with code snippet (90.714168ms)
+✔ /snippets/:challenge (9817.550057ms)
+▶ snippets/verdict
+  ✔ should check for the incorrect lines (521.083003ms)
+  ✔ should check for the correct lines (320.751875ms)
+  ✔ POST with unknown challenge key returns 404 (175.505104ms)
+  ✔ POST without selectedLines returns false verdict (52.363287ms)
+  ✔ POST with empty selectedLines array returns false verdict (61.963934ms)
+✔ snippets/verdict (1138.629196ms)
+▶ snippets/verdict (hint progression for loginAdminChallenge)
+  ✔ returns no hint on the first wrong attempt (40.47728ms)
+  ✔ returns the first hint text on the second wrong attempt (75.014828ms)
+  ✔ returns a line-number hint after all text hints are exhausted (158.641543ms)
+✔ snippets/verdict (hint progression for loginAdminChallenge) (276.283509ms)
+(node:394796) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /api/Wallets
+  ✔ GET wallet is forbidden via public API (69.379474ms)
+  ✔ GET wallet retrieves wallet amount of requesting user (266.580443ms)
+  ✔ PUT wallet is forbidden via public API (27.082257ms)
+  ✔ PUT charge wallet from credit card of requesting user (220.149139ms)
+  ✔ PUT charge wallet from foreign credit card is forbidden (72.716219ms)
+  ✔ PUT charge wallet without credit card is forbidden (42.967224ms)
+  ✔ GET wallet balance for user without a wallet returns 404 (361.726535ms)
+✔ /api/Wallets (4805.262302ms)
+(node:394815) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+﹣ /rest/web3/walletExploitAddress (6.94216ms) # ALCHEMY_API_KEY not set
+ℹ tests 556
+ℹ suites 112
+ℹ pass 485
+ℹ fail 58
+ℹ cancelled 7
+ℹ skipped 6
+ℹ todo 0
+ℹ duration_ms 131158.087288
+
+✖ failing tests:
+
+test at test/api/angular-dist.test.ts:2:1157
+✖ GET main.js contains Cryptocurrency URLs (164.783977ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/angular-dist.test.ts:24:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/angular-dist.test.ts:2:1737
+✖ GET main.js contains password hint for support team (91.446199ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/angular-dist.test.ts:34:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:1563
+✖ POST endless loop exploit in "orderLinesData" will raise explicit error (471.489963ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/b2b-order.test.ts:33:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:1965
+✖ POST busy spinning regex attack does not raise an error (101.887007ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/b2b-order.test.ts:45:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:2269
+✖ POST sandbox breakout attack in "orderLinesData" will raise error (59.922192ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/b2b-order.test.ts:56:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:1890
+✖ POST returns streamed text content as SSE events (710.111472ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('Hello'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:134:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:3147
+✖ POST includes system prompt and user messages in LLM request (57.357043ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'messages')
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:167:29)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/chat.test.ts:4:3923
+✖ POST sends searchProducts tool definition to LLM (88.037333ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'tools')
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:186:26)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/chat.test.ts:4:4762
+✖ POST handles searchProducts tool call and returns follow-up response (50.385061ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('Apple Juice'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:222:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:6877
+✖ POST includes authenticated user name in system prompt (671.937361ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'messages')
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:274:26)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/chat.test.ts:4:7577
+✖ POST handles getProductReviews tool call by returning matching reviews (44.078667ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(toolResult !== undefined)
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:300:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:8360
+✖ POST handles getOrderById tool call by reporting unauthenticated customer (22.873092ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(toolResult?.includes('Customer not authenticated'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:326:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:9168
+✖ POST handles getOrderById tool call by reporting order not found for authenticated customer (153.912666ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(toolResult?.includes('Order not found'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:353:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:10105
+✖ POST handles generateCoupon tool call and includes coupon code in tool response (16.348613ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(toolResult)
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:379:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/chat.test.ts:4:11013
+✖ POST response SSE data lines contain valid JSON (25.703118ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(parsed.choices)
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/chat.test.ts:405:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/data-export.test.ts:2:8985
+✖ Export data including memories without use of CAPTCHA (539.202771ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'caption')
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/data-export.test.ts:211:41)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/data-export.test.ts:2:13965
+✖ Export data including memories with use of CAPTCHA (875.216536ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'caption')
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/data-export.test.ts:314:41)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/erasure-request.test.ts:2:4610
+✖ POST erasure request with existing file path as layout parameter returns content truncated (775.38209ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('......'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/erasure-request.test.ts:115:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/feedback.test.ts:2:2494
+✖ POST fails to sanitize masked XSS-attack by not applying sanitization recursively (537.926259ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'The sanitize-html module up to at least version 1.4.2 has this issue: '
+  - 'The sanitize-html module up to at least version 1.4.2 has this issue: <iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/feedback.test.ts:68:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'The sanitize-html module up to at least version 1.4.2 has this issue: ',
+    expected: 'The sanitize-html module up to at least version 1.4.2 has this issue: <iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:1429
+✖ GET responds with index.html when visiting application URL (468.574728ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:35:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:1882
+✖ GET responds with index.html when visiting application URL with any path (284.605653ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:45:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:2357
+✖ GET a restricted file directly from file system path on server via URL-encoded Directory Traversal attack loads index.html instead (91.608701ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:55:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:4536
+✖ GET tracking image for "Score Board" page access challenge (144.53866ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:108:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:4844
+✖ GET tracking image for "Administration" page access challenge (174.915864ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:115:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:5156
+✖ GET tracking image for "Token Sale" page access challenge (89.333095ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:122:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:5464
+✖ GET tracking image for "Privacy Policy" page access challenge (56.833913ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:129:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:7025
+✖ GET the second easter egg by visiting the Base64>ROT13-decrypted URL (58.275885ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:167:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:7471
+✖ GET the premium content by visiting the AES decrypted URL (85.079347ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:175:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:8151
+✖ GET Klingon translation file for "Extra Language" challenge (180.048913ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:188:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:8462
+✖ GET blueprint file for "Retrieve Blueprint" challenge (183.854324ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:195:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-serving.test.ts:2:8700
+✖ GET crazy cat photo for "Missing Encoding" challenge (94.821564ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-serving.test.ts:201:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-upload.test.ts:2:3676
+✖ POST file type XML with Billion Laughs attack is caught by parser (151.815646ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('Maximum entity amplification factor exceeded'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-upload.test.ts:86:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/file-upload.test.ts:2:5696
+✖ POST zip file with password protection (29.384903ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  204 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-upload.test.ts:137:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 204,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/http.test.ts:2:1202
+✖ response must contain CORS header allowing all origins (112.352231ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/http.test.ts:23:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/http.test.ts:2:1477
+✖ response must contain sameorigin frameguard header (59.046975ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/http.test.ts:29:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/http.test.ts:2:1745
+✖ response must contain CORS header allowing all origins (43.32466ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/http.test.ts:35:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/http.test.ts:2:2021
+✖ response must not contain recruiting header (35.792047ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/http.test.ts:41:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/http.test.ts:2:2326
+✖ response must not contain XSS protection header (40.430549ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/http.test.ts:47:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/internet-resources.test.ts:2:1060
+✖ for default configuration (https://pastebin.com/90dUgd7s) (9.721717ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:12:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at node:internal/test_runner/test:1903:71
+      at node:internal/per_context/primordials:504:82
+      at new Promise (<anonymous>)
+      at new SafePromise (node:internal/per_context/primordials:478:3)
+      at node:internal/per_context/primordials:504:9
+
+test at test/api/internet-resources.test.ts:2:1444
+✖ for 7MS configuration (https://pastebin.com/8SMbWPxc) (0.952551ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:20:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+
+test at test/api/internet-resources.test.ts:2:1992
+✖ for BodgeIt Store configuration (https://pastebin.com/G47LrDr0) (1.847893ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:29:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/internet-resources.test.ts:2:2663
+✖ for Mozilla configuration (https://pastebin.com/t8jqE1y7) (0.555838ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:39:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/internet-resources.test.ts:2:3377
+✖ for All Day DevOps configuration (https://pastebin.com/RXrihEMS) (0.629506ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:51:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/internet-resources.test.ts:2:3865
+✖ Comment on "Top 10 Fruits you probably dont know" blog post with PasteBin paste URL spoiler available (2.375189ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:61:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Suite.postRun (node:internal/test_runner/test:1542:19)
+      at Suite.run (node:internal/test_runner/test:1921:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+
+test at test/api/internet-resources.test.ts:2:4327
+✖ PasteBin paste (https://pastebin.com/4U1V1UjU) for "Leaked Access Logs" challenge available (1.463139ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:69:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/internet-resources.test.ts:2:5310
+✖ GitHub issue (https://github.com/apostrophecms/sanitize-html/issues/29) for "Server-side XSS Protection" challenge available (1.167803ms)
+  Error: Fetch disallowed in isolated API fixture
+      at globalThis.fetch ($WORKSPACE/isolation.cjs:43:9)
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/internet-resources.test.ts:85:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/api/languages.test.ts:2:1168
+✖ GET all languages (147.694815ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/languages.test.ts:24:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/login.test.ts:2:9586
+✖ GET last login IP will be saved as remote IP when True-Client-IP is not present (92.82292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '' !== '127.0.0.1'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/login.test.ts:279:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '127.0.0.1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/memory.test.ts:2:1891
+✖ POST new memory is forbidden via public API (149.096245ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 401
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/memory.test.ts:46:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/memory.test.ts:2:3683
+✖ POST new memory with valid for JPG format image (143.913279ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  500 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/memory.test.ts:100:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 500,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/product.test.ts:2:2736
+✖ POST new product does not filter XSS attacks (271.879407ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '<iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/product.test.ts:69:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '<iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/profile-image-upload.test.ts:2:7865
+✖ POST with PNG URL extension saves file using PNG extension (40.156922ms)
+  AssertionError [ERR_ASSERTION]: Expected file frontend/dist/frontend/assets/public/images/uploads/2.png to exist
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/profile-image-upload.test.ts:229:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/profile-image-upload.test.ts:2:8355
+✖ POST with unrecognised URL extension defaults to JPG extension (39.079995ms)
+  AssertionError [ERR_ASSERTION]: Expected file frontend/dist/frontend/assets/public/images/uploads/2.jpg to exist
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/profile-image-upload.test.ts:242:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/promotion-video.test.ts:2:1828
+✖ GET promotion video page is publicly accessible
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:2029
+✖ GET promotion video page contains embedded video
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:2351
+✖ GET promotion video page contains subtitles as <script>
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:1782
+✖ /promotion (0.849133ms)
+  Error: ENOENT: no such file or directory, copyfile 'data/static/owasp_promo.vtt' -> '$WORKSPACE/basket-repair/frontend/dist/frontend/assets/public/videos/owasp_promo.vtt'
+      at Object.copyFileSync (node:fs:3210:11)
+      at TestContext.timeout ($WORKSPACE/basket-repair/test/api/promotion-video.test.ts:22:8)
+      at TestHook.runInAsyncScope (node:async_hooks:227:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at fs ($WORKSPACE/basket-repair/test/api/promotion-video.test.ts:20:1)
+      at Object.<anonymous> ($WORKSPACE/basket-repair/test/api/promotion-video.test.ts:102:2)
+      at Module._compile (node:internal/modules/cjs/loader:1929:14)
+      at Object.transformer ($WORKSPACE/basket-repair/node_modules/tsx/dist/register-B1c7OH6V.cjs:22:2188)
+      at Module.load (node:internal/modules/cjs/loader:1651:32)
+      at Module.<anonymous> (node:internal/modules/cjs/loader:1443:12)
+      at Module._load ($WORKSPACE/isolation.cjs:8:31)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'data/static/owasp_promo.vtt',
+    dest: '$WORKSPACE/basket-repair/frontend/dist/frontend/assets/public/videos/owasp_promo.vtt'
+  }
+
+test at test/api/promotion-video.test.ts:2:2765
+✖ GET promotion video is publicly accessible
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:3034
+✖ GET promotion video supports byte ranges
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:3584
+✖ GET promotion video supports open-ended byte ranges
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:4136
+✖ GET promotion video uses the default video when configuration value is null
+  'test did not finish before its parent and was cancelled'
+
+test at test/api/promotion-video.test.ts:2:2723
+✖ /video (0.047583ms)
+  Error: ENOENT: no such file or directory, copyfile 'data/static/owasp_promo.vtt' -> '$WORKSPACE/basket-repair/frontend/dist/frontend/assets/public/videos/owasp_promo.vtt'
+      at Object.copyFileSync (node:fs:3210:11)
+      at TestContext.timeout ($WORKSPACE/basket-repair/test/api/promotion-video.test.ts:22:8)
+      at TestHook.runInAsyncScope (node:async_hooks:227:14)
+      at TestHook.run (node:internal/test_runner/test:1402:25)
+      at TestHook.run (node:internal/test_runner/test:1757:18)
+      at TestHook.run (node:internal/util:581:20)
+      at Test.createHook (node:internal/test_runner/test:1117:33)
+      at node:internal/test_runner/harness:426:12
+      at fs ($WORKSPACE/basket-repair/test/api/promotion-video.test.ts:20:1)
+      at Object.<anonymous> ($WORKSPACE/basket-repair/test/api/promotion-video.test.ts:102:2)
+      at Module._compile (node:internal/modules/cjs/loader:1929:14)
+      at Object.transformer ($WORKSPACE/basket-repair/node_modules/tsx/dist/register-B1c7OH6V.cjs:22:2188)
+      at Module.load (node:internal/modules/cjs/loader:1651:32)
+      at Module.<anonymous> (node:internal/modules/cjs/loader:1443:12)
+      at Module._load ($WORKSPACE/isolation.cjs:8:31)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'copyfile',
+    path: 'data/static/owasp_promo.vtt',
+    dest: '$WORKSPACE/basket-repair/frontend/dist/frontend/assets/public/videos/owasp_promo.vtt'
+  }
+
+test at test/api/redirect.test.ts:2:5351
+✖ GET redirected to target URL in "to" parameter when a allow-listed URL is part of the query string (177.375471ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/redirect.test.ts:105:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/track-result.test.ts:2:1394
+✖ GET all orders by injecting into orderId (372.305902ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'string'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/track-result.test.ts:34:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'string',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/user-profile.test.ts:2:4044
+✖ GET user profile renders evaluated SSTI payload for username containing valid expression (1462.115393ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('>49<'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/user-profile.test.ts:102:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/user-profile.test.ts:2:5102
+✖ GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username (856.121869ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('A49'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/user-profile.test.ts:136:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/user.test.ts:2:7043
+✖ POST new user with XSS attack in email address (605.528685ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '<iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/user.test.ts:193:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '<iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

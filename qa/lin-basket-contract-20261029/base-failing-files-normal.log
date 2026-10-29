@@ -1,0 +1,395 @@
+▶ /b2b/v2/orders
+  ✖ POST endless loop exploit in "orderLinesData" will raise explicit error (193.612847ms)
+  ✖ POST busy spinning regex attack does not raise an error (105.170957ms)
+  ✖ POST sandbox breakout attack in "orderLinesData" will raise error (83.619012ms)
+  ✔ POST new B2B order is forbidden without authorization token (25.016145ms)
+  ✔ POST new B2B order accepts arbitrary valid JSON (31.410287ms)
+  ✔ POST new B2B order has passed "cid" in response (41.772422ms)
+✖ /b2b/v2/orders (5299.389433ms)
+▶ /dataerasure
+  ✔ GET erasure form for logged-in users includes their email and security question (864.988878ms)
+  ✔ GET erasure form rendering fails for users without assigned security answer (406.724038ms)
+  ✔ GET erasure form rendering fails on unauthenticated access (57.581732ms)
+  ✔ POST erasure request does not actually delete the user (311.606963ms)
+  ✔ POST erasure form  fails on unauthenticated access (68.910794ms)
+  ✔ POST erasure request with empty layout parameter returns (247.374003ms)
+  ✔ POST erasure request with non-existing file path as layout parameter throws error (101.510258ms)
+  ✖ POST erasure request with existing file path as layout parameter returns content truncated (96.529046ms)
+✖ /dataerasure (5969.827123ms)
+▶ /api/Feedbacks
+  ✔ GET all feedback (149.231526ms)
+  ✔ POST sanitizes unsafe HTML from comment (218.814868ms)
+  ✖ POST fails to sanitize masked XSS-attack by not applying sanitization recursively (113.308657ms)
+  ✔ POST feedback in another users name as anonymous user (121.858235ms)
+  ✔ POST feedback in a non-existing users name as anonymous user fails with constraint error (103.691528ms)
+  ✔ POST feedback is associated with current user (303.18497ms)
+  ✔ POST feedback is associated with any passed user ID (104.111698ms)
+  ✔ POST feedback can be created without actually supplying comment (144.453982ms)
+  ✔ POST feedback cannot be created without actually supplying rating (139.404686ms)
+  ✔ POST feedback cannot be created with wrong CAPTCHA answer (145.029237ms)
+  ✔ POST feedback cannot be created with invalid CAPTCHA id (46.920303ms)
+✖ /api/Feedbacks (6536.098864ms)
+▶ /api/Feedbacks/:id
+  ✔ GET existing feedback by id is forbidden via public API (22.786791ms)
+  ✔ GET existing feedback by id (76.778824ms)
+  ✔ PUT update existing feedback is forbidden via public API (13.921544ms)
+  ✔ PUT update existing feedback (11.448938ms)
+  ✔ DELETE existing feedback is forbidden via public API (2.695233ms)
+  ✔ DELETE existing feedback (274.813294ms)
+✔ /api/Feedbacks/:id (404.830271ms)
+▶ /file-upload
+  ✔ POST file valid PDF for client and API (63.731581ms)
+  ✔ POST file too large for client validation but valid for API (36.912211ms)
+  ✔ POST file with illegal type for client validation but valid for API (26.978204ms)
+  ✔ POST file type XML deprecated for API (46.284129ms)
+  ✔ POST large XML file near upload size limit (42.100425ms)
+  ✔ POST file type XML with XXE attack against Windows (21.1344ms)
+  ✔ POST file type XML with XXE attack against Linux (11.925025ms)
+  ✖ POST file type XML with Billion Laughs attack is caught by parser (34.040101ms)
+  ✔ POST file type XML with Quadratic Blowup attack (33.250095ms)
+  ✔ POST file type XML with dev/random attack (43.582314ms)
+  ✔ POST file type YAML with Billion Laughs-style attack (21.127442ms)
+  ✔ POST file too large for API (39.902114ms)
+  ✔ POST zip file with directory traversal payload (14.254505ms)
+  ✖ POST zip file with password protection (11.498105ms)
+  ﹣ POST valid file with tampered content length (1.493055ms) # Fails on CI/CD pipeline
+✖ /file-upload (3940.969019ms)
+▶ /rest/user/login
+  ✔ POST login newly created user (422.055677ms)
+  ✔ POST login non-existing user (37.20038ms)
+  ✔ POST login without credentials (79.977812ms)
+  ✔ POST login with admin credentials (160.713172ms)
+  ✔ POST login with support-team credentials (50.807255ms)
+  ✔ POST login with MC SafeSearch credentials (101.759844ms)
+  ✔ POST login with Amy credentials (117.553113ms)
+  ✔ POST login with wurstbrot credentials expects 2FA token (81.19049ms)
+  ✔ POST login as bjoern.kimminich@gmail.com with known password (281.317604ms)
+  ✔ POST login with WHERE-clause disabling SQL injection attack (124.939971ms)
+  ✔ POST login with known email "admin@juice-sh.op" in SQL injection attack (81.242699ms)
+  ✔ POST login with known email "jim@juice-sh.op" in SQL injection attack (103.204898ms)
+  ✔ POST login with known email "bender@juice-sh.op" in SQL injection attack (65.04555ms)
+  ✔ POST login with non-existing email "acc0unt4nt@juice-sh.op" via UNION SELECT injection attack (82.98438ms)
+  ✔ POST login with query-breaking SQL Injection attack (20.600104ms)
+✔ /rest/user/login (5091.095745ms)
+▶ /rest/saveLoginIp
+  ✔ GET last login IP will be saved as True-Client-IP header value (139.950941ms)
+  ✖ GET last login IP will be saved as remote IP when True-Client-IP is not present (113.387074ms)
+  ✔ GET last login IP returns 401 Unauthorized when no token is provided (74.007549ms)
+✖ /rest/saveLoginIp (328.579118ms)
+▶ /api/Products
+  ✔ GET all products (267.463686ms)
+  ✔ POST new product is forbidden via public API (161.525387ms)
+  ✖ POST new product does not filter XSS attacks (232.286991ms)
+✖ /api/Products (4184.705781ms)
+▶ /api/Products/:id
+  ✔ GET existing product by id (134.611851ms)
+  ✔ GET non-existing product by id (167.41465ms)
+  ✔ PUT update existing product is possible due to Missing Function-Level Access Control vulnerability (145.958621ms)
+  ✔ DELETE existing product is forbidden via public API (34.224562ms)
+  ✔ DELETE existing product is forbidden via API even when authenticated (27.292749ms)
+✔ /api/Products/:id (513.222174ms)
+▶ /rest/track-order/:id
+  ✔ GET tracking results for the order id (94.185399ms)
+  ✖ GET all orders by injecting into orderId (71.859196ms)
+✖ /rest/track-order/:id (4596.267863ms)
+▶ /profile
+  ✔ GET user profile is forbidden for unauthenticated user (46.412881ms)
+  ✔ GET user profile of authenticated user (301.316995ms)
+  ✔ GET user profile contains role and deluxe membership link if user is customer (97.902016ms)
+  ✔ GET user profile contains role but NO deluxe membership link if user is already deluxe (137.564545ms)
+  ✔ POST update username of authenticated user (43.0226ms)
+  ✔ POST update profile is forbidden for unauthenticated user (22.216036ms)
+  ✖ GET user profile renders evaluated SSTI payload for username containing valid expression (176.04002ms)
+  ✔ GET user profile falls back gracefully when SSTI payload throws (119.545463ms)
+  ✖ GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username (80.13873ms)
+  ✔ GET user profile does NOT evaluate SSTI payload in safe mode (95.809873ms)
+  ✔ should be solved when origin header matches configured CSRF URL (68.659375ms)
+  ✔ should have the configured CSRF URL in the challenge description (0.432837ms)
+  ✔ should NOT be solved when origin header does NOT match configured CSRF URL (37.544384ms)
+✖ /profile (2896.294463ms)
+▶ /api/Users
+  ✔ GET all users is forbidden via public API (40.08074ms)
+  ✔ GET all users (81.927038ms)
+  ✔ GET all users doesnt include passwords (41.418294ms)
+  ✔ POST new user (71.325566ms)
+  ✔ POST new admin (44.26307ms)
+  ✔ POST new blank user (39.754154ms)
+  ✔ POST same blank user in database (95.725664ms)
+  ✔ POST whitespaces user (48.917154ms)
+  ✔ POST new deluxe user (46.640258ms)
+  ✔ POST new accounting user (37.554676ms)
+  ✔ POST user not belonging to customer, deluxe, accounting, admin is forbidden (19.655346ms)
+  ✖ POST new user with XSS attack in email address (81.248365ms)
+✖ /api/Users (1984.955079ms)
+▶ /api/Users/:id
+  ✔ GET existing user by id is forbidden via public API (12.731699ms)
+  ✔ PUT update existing user is forbidden via public API (6.213223ms)
+  ✔ DELETE existing user is forbidden via public API (4.20783ms)
+  ✔ GET existing user by id (46.975928ms)
+  ✔ PUT update existing user is forbidden via API even when authenticated (9.119541ms)
+  ✔ DELETE existing user is forbidden via API even when authenticated (3.891786ms)
+✔ /api/Users/:id (84.079391ms)
+▶ /rest/user/whoami
+  ✔ GET own user id and email on who-am-i request (73.244792ms)
+  ✔ GET who-am-i request returns nothing on missing auth token (13.748792ms)
+  ✔ GET who-am-i request returns nothing on invalid auth token (10.519013ms)
+  ✔ GET who-am-i request returns nothing on broken auth token (10.031175ms)
+  ✔ GET who-am-i request returns nothing on expired auth token (19.174675ms)
+  ✔ GET who-am-i with fields parameter returns only requested fields (177.753869ms)
+  ✔ GET who-am-i with fields parameter does not return password by default (89.811318ms)
+  ✔ GET who-am-i with fields parameter can be tricked into returning password (79.019803ms)
+✔ /rest/user/whoami (474.432613ms)
+ℹ tests 113
+ℹ suites 14
+ℹ pass 99
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 19923.243585
+
+✖ failing tests:
+
+test at test/api/b2b-order.test.ts:2:1563
+✖ POST endless loop exploit in "orderLinesData" will raise explicit error (193.612847ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/b2b-order.test.ts:33:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:1965
+✖ POST busy spinning regex attack does not raise an error (105.170957ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/b2b-order.test.ts:45:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:2269
+✖ POST sandbox breakout attack in "orderLinesData" will raise error (83.619012ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/b2b-order.test.ts:56:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/erasure-request.test.ts:2:4610
+✖ POST erasure request with existing file path as layout parameter returns content truncated (96.529046ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('......'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/erasure-request.test.ts:115:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/feedback.test.ts:2:2494
+✖ POST fails to sanitize masked XSS-attack by not applying sanitization recursively (113.308657ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'The sanitize-html module up to at least version 1.4.2 has this issue: '
+  - 'The sanitize-html module up to at least version 1.4.2 has this issue: <iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/feedback.test.ts:68:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'The sanitize-html module up to at least version 1.4.2 has this issue: ',
+    expected: 'The sanitize-html module up to at least version 1.4.2 has this issue: <iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-upload.test.ts:2:3676
+✖ POST file type XML with Billion Laughs attack is caught by parser (34.040101ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('Maximum entity amplification factor exceeded'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/file-upload.test.ts:86:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/file-upload.test.ts:2:5696
+✖ POST zip file with password protection (11.498105ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  204 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/file-upload.test.ts:137:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 204,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/login.test.ts:2:9586
+✖ GET last login IP will be saved as remote IP when True-Client-IP is not present (113.387074ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '' !== '127.0.0.1'
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/login.test.ts:279:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '127.0.0.1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/product.test.ts:2:2736
+✖ POST new product does not filter XSS attacks (232.286991ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '<iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/product.test.ts:69:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '<iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/track-result.test.ts:2:1394
+✖ GET all orders by injecting into orderId (71.859196ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'string'
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/track-result.test.ts:34:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'string',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/user-profile.test.ts:2:4044
+✖ GET user profile renders evaluated SSTI payload for username containing valid expression (176.04002ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('>49<'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/user-profile.test.ts:102:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/user-profile.test.ts:2:5102
+✖ GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username (80.13873ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('A49'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/user-profile.test.ts:136:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/user.test.ts:2:7043
+✖ POST new user with XSS attack in email address (81.248365ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '<iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/base-control/test/api/user.test.ts:193:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '<iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

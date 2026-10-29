@@ -1,0 +1,1039 @@
+
+> juice-shop@20.3.0 test:api
+> node --import ./test/api/helpers/test-env.mjs --import tsx --test --test-force-exit "test/api/**/*.test.ts"
+
+▶ /rest/2fa/verify
+  ✔ POST should return a valid authentication when a valid tmp token is passed (555.995095ms)
+  ✔ POST should fail if a invalid totp token is used (53.95019ms)
+  ✔ POST should fail if a unsigned tmp token is used (21.982213ms)
+  ✔ POST should fail if the token type is invalid (17.129249ms)
+  ✔ POST should fail if the user doesn't exist (52.625343ms)
+✔ /rest/2fa/verify (15305.603776ms)
+▶ /rest/2fa/status
+  ✔ GET should indicate 2fa is setup for 2fa enabled users (444.392138ms)
+  ✔ GET should indicate 2fa is not setup for users with 2fa disabled (240.529622ms)
+  ✔ GET should return 401 when not logged in (60.39496ms)
+✔ /rest/2fa/status (753.825136ms)
+▶ /rest/2fa/setup
+  ✔ POST should be able to setup 2fa for accounts without 2fa enabled (571.932207ms)
+  ✔ POST should fail if the password doesnt match (804.746296ms)
+  ✔ POST should fail if the initial token is incorrect (815.987447ms)
+  ✔ POST should fail if the token is of the wrong type (503.939007ms)
+  ✔ POST should fail if the account has already set up 2fa (321.056444ms)
+  ✔ POST should fail if the user doesn't exist (48.277093ms)
+✔ /rest/2fa/setup (3068.669645ms)
+▶ /rest/2fa/disable
+  ✔ POST should be able to disable 2fa for account with 2fa enabled (808.693585ms)
+  ✔ POST should not be possible to disable 2fa without the correct password (485.481245ms)
+  ✔ POST should fail if the user doesn't exist (26.480382ms)
+✔ /rest/2fa/disable (1326.226931ms)
+▶ /api/Addresss
+  ✔ GET all addresses is forbidden via public API (44.419847ms)
+  ✔ GET all addresses (41.320609ms)
+  ✔ POST new address with all valid fields (350.263144ms)
+  ✔ POST new address with invalid pin code (133.371792ms)
+  ✔ POST new address with invalid mobile number (83.413433ms)
+  ✔ POST new address is forbidden via public API (38.074411ms)
+✔ /api/Addresss (16474.975979ms)
+▶ /api/Addresss/:id
+  ✔ GET address by id is forbidden via public API (36.002808ms)
+  ✔ PUT update address is forbidden via public API (68.691499ms)
+  ✔ DELETE address by id is forbidden via public API (27.80627ms)
+  ✔ GET address by id (67.582155ms)
+  ✔ GET address by non-existing id returns 400 for authorized user (68.731291ms)
+  ✔ PUT update address by id (244.800413ms)
+  ✔ PUT update address by id with invalid mobile number is forbidden (318.803713ms)
+  ✔ PUT update address by id with invalid pin code is forbidden (110.292402ms)
+  ✔ DELETE address by id (22.252924ms)
+  ✔ DELETE address by id again returns 400 for authorized user (43.34292ms)
+✔ /api/Addresss/:id (1450.993973ms)
+▶ /rest/admin/application-version
+  ✔ GET application version from package.json (941.511579ms)
+✔ /rest/admin/application-version (14382.147996ms)
+▶ /rest/admin/application-configuration
+  ✔ GET application configuration (793.242935ms)
+✔ /rest/admin/application-configuration (809.99068ms)
+▶ /api
+  ✔ GET main.js contains Cryptocurrency URLs (383.319713ms)
+  ✔ GET main.js contains password hint for support team (429.372534ms)
+✔ /api (16649.21925ms)
+▶ /api
+  ✔ GET error when query /api without actual resource (690.653566ms)
+✔ /api (15073.987657ms)
+▶ /rest
+  ✔ GET error message with information leakage when calling unrecognized path with /rest in it (111.583831ms)
+✔ /rest (118.375522ms)
+▶ /rest/user/authentication-details
+  ✔ GET all users with password replaced by asterisks (1391.421938ms)
+  ✔ GET returns lastLoginTime for users with active sessions (767.343809ms)
+✔ /rest/user/authentication-details (16755.269777ms)
+▶ /b2b/v2/orders
+  ✖ POST endless loop exploit in "orderLinesData" will raise explicit error (1838.432935ms)
+  ✖ POST busy spinning regex attack does not raise an error (272.70935ms)
+  ✖ POST sandbox breakout attack in "orderLinesData" will raise error (179.375946ms)
+  ✔ POST new B2B order is forbidden without authorization token (145.672744ms)
+  ✔ POST new B2B order accepts arbitrary valid JSON (217.001769ms)
+  ✔ POST new B2B order has passed "cid" in response (77.682086ms)
+✖ /b2b/v2/orders (16371.649394ms)
+▶ /api/BasketItems
+  ✔ GET all basket items is forbidden via public API (49.067059ms)
+  ✔ POST new basket item is forbidden via public API (53.536935ms)
+  ✔ GET all basket items (203.461096ms)
+  ✔ POST new basket item (64.243998ms)
+  ✔ POST new basket item with more than available quantity is forbidden (36.795981ms)
+  ✔ POST new basket item with more than allowed quantity is forbidden (47.789046ms)
+  ✔ POST new basket item with invalid basket ID is forbidden (30.348461ms)
+  ✔ POST new basket item with non-existent product ID is forbidden (54.848657ms)
+✔ /api/BasketItems (4935.151435ms)
+▶ /api/BasketItems/:id
+  ✔ GET basket item by id is forbidden via public API (30.394336ms)
+  ✔ PUT update basket item is forbidden via public API (21.133622ms)
+  ✔ DELETE basket item is forbidden via public API (11.309484ms)
+  ✔ GET newly created basket item by id (125.327506ms)
+  ✔ PUT update newly created basket item (358.137136ms)
+  ✔ PUT update basket ID of basket item is forbidden (221.560396ms)
+  ✔ PUT update basket ID of basket item without basket ID (135.89565ms)
+  ✔ PUT update product ID of basket item is forbidden (190.693347ms)
+  ✔ PUT update newly created basket item with more than available quantity is forbidden (38.02891ms)
+  ✔ PUT update basket item with more than allowed quantity is forbidden (50.883076ms)
+  ✔ DELETE newly created basket item (201.409784ms)
+  ✔ PUT update non-existent basket item (19.949277ms)
+  ✔ PUT update basket item with failing quantity lookup returns 500 (58.608693ms)
+✔ /api/BasketItems/:id (1473.366106ms)
+▶ /rest/basket/:id
+  ✔ GET existing basket by id is not allowed via public API (106.24482ms)
+  ✔ GET empty basket when requesting non-existing basket id (209.513571ms)
+  ✔ GET existing basket with contained products by id (368.445069ms)
+  ✔ GET own basket as a regular user (347.277573ms)
+  ✔ GET basket rejects forged JWTs without an authenticated user (176.98159ms)
+  ✔ GET basket rejects a forged JWT claiming the owner identity (70.027511ms)
+  ✔ GET basket rejects a signed token missing the user identity (99.520256ms)
+  ✔ GET enforces ownership for two populated baskets with distinct user and basket IDs (986.48289ms)
+  ✔ GET populated basket of another user is forbidden for a regular user (116.955175ms)
+✔ /rest/basket/:id (6316.402816ms)
+▶ /api/Baskets
+  ✔ POST new basket is not part of API (37.717157ms)
+  ✔ GET all baskets is not part of API (26.861051ms)
+✔ /api/Baskets (66.223683ms)
+▶ /api/Baskets/:id
+  ✔ GET existing basket is not part of API (41.439568ms)
+  ✔ PUT update existing basket is not part of API (67.536404ms)
+  ✔ DELETE existing basket is not part of API (44.640683ms)
+✔ /api/Baskets/:id (154.967251ms)
+▶ /rest/basket/:id
+  ✔ GET existing basket of another user is forbidden (298.710894ms)
+✔ /rest/basket/:id (299.668237ms)
+▶ /rest/basket/:id/checkout
+  ✔ POST placing an order for a basket is not allowed via public API (21.987838ms)
+  ✔ POST placing an order for an existing basket returns orderId (928.962624ms)
+  ✔ POST placing an order for a non-existing basket fails (122.557063ms)
+  ✔ POST placing an order for a basket with a negative total cost is possible (237.268673ms)
+  ✔ POST placing an order for a basket with 99% discount is possible (463.923036ms)
+  ✔ POST placing an order applies campaign discount and delivery method for deluxe user (527.782613ms)
+  ✔ POST placing an order charges the wallet when the balance is sufficient (370.408505ms)
+  ✔ POST placing an order returns an error when the wallet balance is insufficient (432.655316ms)
+  ▶ error cases
+    ✔ should return 500 if QuantityModel.findOne fails during checkout (396.261464ms)
+    ✔ should return 500 if WalletModel.findOne fails during checkout (434.528918ms)
+    ✔ should return 500 if ordersCollection.insert fails during checkout (316.321064ms)
+    ✔ should return 500 if basket item cleanup fails after checkout (253.273578ms)
+    ✔ should return 500 if wallet bonus increment fails during checkout (309.155703ms)
+  ✔ error cases (1711.849543ms)
+✔ /rest/basket/:id/checkout (4822.467136ms)
+▶ /rest/basket/:id/coupon/:coupon
+  ✔ PUT apply valid coupon to existing basket (226.849406ms)
+  ✔ PUT apply invalid coupon is not accepted (124.980544ms)
+  ✔ PUT apply outdated coupon is not accepted (51.196996ms)
+  ✔ PUT apply valid coupon to non-existing basket throws error (79.229685ms)
+✔ /rest/basket/:id/coupon/:coupon (485.50812ms)
+▶ /api/Challenges
+  ✔ GET all challenges (338.901742ms)
+  ✔ POST new challenge is forbidden via public API even when authenticated (147.640847ms)
+✔ /api/Challenges (5268.131119ms)
+▶ /api/Challenges/:id
+  ✔ GET existing challenge by id is forbidden via public API even when authenticated (56.825425ms)
+  ✔ PUT update existing challenge is forbidden via public API even when authenticated (60.341626ms)
+  ✔ DELETE existing challenge is forbidden via public API even when authenticated (23.639896ms)
+✔ /api/Challenges/:id (143.062594ms)
+▶ /rest/continue-code
+  ✔ GET can retrieve continue code for currently solved challenges (102.188114ms)
+  ✔ PUT invalid continue code is rejected (alphanumeric) (45.369565ms)
+  ✔ PUT invalid continue code is rejected (non-alphanumeric) (51.273663ms)
+  ✔ PUT continue code for more than one challenge is accepted (97.701863ms)
+  ✔ PUT continue code for non-existent challenge #999 is accepted (65.286716ms)
+✔ /rest/continue-code (364.710658ms)
+▶ /rest/continue-code-findIt
+  ✔ GET can retrieve continue code for currently solved challenges (431.107135ms)
+  ✔ PUT invalid continue code is rejected (alphanumeric) (39.614509ms)
+  ✔ PUT completely invalid continue code is rejected (non-alphanumeric) (62.594648ms)
+  ✔ PUT continue code for more than one challenge is accepted (241.946968ms)
+✔ /rest/continue-code-findIt (779.682053ms)
+▶ /rest/continue-code-fixIt
+  ✔ GET can retrieve continue code for currently solved challenges (175.883246ms)
+  ✔ PUT invalid continue code is rejected (alphanumeric) (57.207304ms)
+  ✔ PUT completely invalid continue code is rejected (non-alphanumeric) (44.551265ms)
+  ✔ PUT continue code for more than one challenge is accepted (225.220681ms)
+✔ /rest/continue-code-fixIt (505.679024ms)
+▶ /rest/chat
+  ✔ POST returns streamed text content as SSE events (391.902714ms)
+  ✔ POST sets correct SSE response headers (165.628688ms)
+  ✔ POST includes system prompt and user messages in LLM request (83.758603ms)
+  ✔ POST sends searchProducts tool definition to LLM (284.407047ms)
+  ✔ POST handles searchProducts tool call and returns follow-up response (734.756993ms)
+  ✔ POST handles LLM API error gracefully (67.30736ms)
+  ✔ POST with empty messages returns error SSE stream (36.096891ms)
+  ✔ POST includes authenticated user name in system prompt (437.738949ms)
+  ✔ POST handles getProductReviews tool call by returning matching reviews (193.136412ms)
+  ✔ POST handles getOrderById tool call by reporting unauthenticated customer (218.484158ms)
+  ✔ POST handles getOrderById tool call by reporting order not found for authenticated customer (506.125278ms)
+  ✔ POST handles generateCoupon tool call and includes coupon code in tool response (78.131549ms)
+  ✔ POST response SSE data lines contain valid JSON (42.480787ms)
+✔ /rest/chat (7838.239851ms)
+▶ Web3 Key Derivation & NFT Unlock
+  ▶ /rest/web3/submitKey
+    ✔ POST missing key in request body gets rejected as non-Ethereum key (952.604978ms)
+    ✔ POST arbitrary string in request body gets rejected as non-Ethereum key (170.914323ms)
+    ✔ POST public wallet key in request body gets rejected as such (70.327265ms)
+    ✔ POST wallet address in request body gets rejected as such (52.861137ms)
+    ✔ POST private key in request body gets accepted (76.854577ms)
+  ✔ /rest/web3/submitKey (1330.259387ms)
+  ▶ /rest/web3/nftUnlocked
+    ✔ GET solution status of "Unlock NFT" challenge (47.140331ms)
+  ✔ /rest/web3/nftUnlocked (47.579294ms)
+✔ Web3 Key Derivation & NFT Unlock (6209.983618ms)
+▶ /api/Complaints
+  ✔ POST new complaint (478.000464ms)
+  ✔ GET all complaints is forbidden via public API (47.042123ms)
+  ✔ GET all complaints (178.145476ms)
+✔ /api/Complaints (5250.512199ms)
+▶ /api/Complaints/:id
+  ✔ GET existing complaint by id is forbidden (54.20365ms)
+  ✔ PUT update existing complaint is forbidden (17.411961ms)
+  ✔ DELETE existing complaint is forbidden (13.796926ms)
+✔ /api/Complaints/:id (87.255387ms)
+▶ /rest/country-mapping
+  ✔ GET no country mapping present in default configuration (178.02535ms)
+✔ /rest/country-mapping (3524.973941ms)
+▶ /rest/user/data-export
+  ✔ Export data without authentication is rejected (334.890161ms)
+  ✔ Export data with invalid Bearer [REDACTED] is rejected (81.394289ms)
+  ✔ Export data with empty Bearer [REDACTED] is rejected (60.871214ms)
+  ✔ Export data with empty JSON body but valid token still succeeds without CAPTCHA (664.153643ms)
+  ✔ CAPTCHA cannot be requested without authentication (230.956196ms)
+  ✔ Export data without use of CAPTCHA (313.906916ms)
+  ✔ Export data when CAPTCHA requested need right answer (327.123169ms)
+  ✔ Export data using right answer to CAPTCHA (327.567131ms)
+  ✔ Export data including orders without use of CAPTCHA (1240.55881ms)
+  ✔ Export data including reviews without use of CAPTCHA (454.760489ms)
+  ✔ Export data including memories without use of CAPTCHA (478.733888ms)
+  ✔ Export data including orders with use of CAPTCHA (610.756042ms)
+  ✔ Export data including reviews with use of CAPTCHA (371.192637ms)
+  ✔ Export data including memories with use of CAPTCHA (487.191845ms)
+  ▶ error cases
+    ✔ should return 500 if MemoryModel.findAll fails (293.742429ms)
+    ✔ should return 500 if ordersCollection.find fails (222.250444ms)
+    ✔ should return 500 if reviewsCollection.find fails (110.573154ms)
+  ✔ error cases (628.190211ms)
+✔ /rest/user/data-export (12076.601578ms)
+▶ /api/Deliverys
+  ▶ for regular customer
+    ✔ GET delivery methods (57.768435ms)
+  ✔ for regular customer (407.310445ms)
+  ▶ for deluxe customer
+    ✔ GET delivery methods (49.697356ms)
+  ✔ for deluxe customer (232.449418ms)
+✔ /api/Deliverys (5124.311726ms)
+▶ /api/Deliverys/:id
+  ▶ for regular customer
+    ✔ GET delivery method (28.732778ms)
+    ✔ GET non-existing delivery method returns 400 (20.62695ms)
+  ✔ for regular customer (179.943244ms)
+  ▶ for deluxe customer
+    ✔ GET delivery method (16.231782ms)
+  ✔ for deluxe customer (72.506994ms)
+✔ /api/Deliverys/:id (253.218703ms)
+▶ /rest/deluxe-membership
+  ✔ GET deluxe membership status for customers (401.843101ms)
+  ✔ GET deluxe membership status for deluxe members throws error (198.753926ms)
+  ✔ GET deluxe membership status for admin throws error (308.498947ms)
+  ✔ GET deluxe membership status for accountant throws error (227.64358ms)
+  ✔ POST upgrade deluxe membership status for customers with card payment (427.376057ms)
+  ✔ POST upgrade deluxe membership status for customers with wallet payment (272.567473ms)
+  ✔ POST upgrade deluxe membership fails for customers with insufficient wallet balance (84.278692ms)
+  ✔ POST deluxe membership status with wrong card id throws error (145.374034ms)
+  ✔ POST deluxe membership status for deluxe members throws error (292.988172ms)
+  ✔ POST deluxe membership status for admin throws error (236.682168ms)
+  ✔ POST deluxe membership status for accountant throws error (119.35374ms)
+✔ /rest/deluxe-membership (7862.586212ms)
+▶ /dataerasure
+  ✔ GET erasure form for logged-in users includes their email and security question (475.855943ms)
+  ✔ GET erasure form rendering fails for users without assigned security answer (157.60411ms)
+  ✔ GET erasure form rendering fails on unauthenticated access (76.612409ms)
+  ✔ POST erasure request does not actually delete the user (256.379984ms)
+  ✔ POST erasure form  fails on unauthenticated access (33.792411ms)
+  ✔ POST erasure request with empty layout parameter returns (251.921857ms)
+  ✔ POST erasure request with non-existing file path as layout parameter throws error (228.66934ms)
+  ✖ POST erasure request with existing file path as layout parameter returns content truncated (201.188824ms)
+✖ /dataerasure (6409.118839ms)
+▶ /api/Feedbacks
+  ✔ GET all feedback (467.469529ms)
+  ✔ POST sanitizes unsafe HTML from comment (290.369938ms)
+  ✖ POST fails to sanitize masked XSS-attack by not applying sanitization recursively (164.564136ms)
+  ✔ POST feedback in another users name as anonymous user (267.547842ms)
+  ✔ POST feedback in a non-existing users name as anonymous user fails with constraint error (153.858282ms)
+  ✔ POST feedback is associated with current user (222.931119ms)
+  ✔ POST feedback is associated with any passed user ID (72.39516ms)
+  ✔ POST feedback can be created without actually supplying comment (56.664591ms)
+  ✔ POST feedback cannot be created without actually supplying rating (64.83367ms)
+  ✔ POST feedback cannot be created with wrong CAPTCHA answer (100.022302ms)
+  ✔ POST feedback cannot be created with invalid CAPTCHA id (105.184019ms)
+✖ /api/Feedbacks (6926.913022ms)
+▶ /api/Feedbacks/:id
+  ✔ GET existing feedback by id is forbidden via public API (21.443041ms)
+  ✔ GET existing feedback by id (65.984222ms)
+  ✔ PUT update existing feedback is forbidden via public API (16.820705ms)
+  ✔ PUT update existing feedback (22.623469ms)
+  ✔ DELETE existing feedback is forbidden via public API (6.346645ms)
+  ✔ DELETE existing feedback (354.343683ms)
+✔ /api/Feedbacks/:id (489.803328ms)
+▶ Server
+  ✔ GET responds with index.html when visiting application URL (184.075991ms)
+  ✔ GET responds with index.html when visiting application URL with any path (157.362775ms)
+  ✔ GET a restricted file directly from file system path on server via URL-encoded Directory Traversal attack loads index.html instead (90.631628ms)
+  ✔ GET serves a security.txt file (18.916766ms)
+  ✔ GET serves a security.txt file under well-known subfolder (14.199679ms)
+  ✔ GET serves a robots.txt file (25.713541ms)
+  ✔ GET serves a csaf provider-metadata.json (15.5759ms)
+  ✔ GET serves a csaf index.txt (6.112726ms)
+  ✔ GET serves a csaf changes.csv (13.833092ms)
+  ✔ GET serves a csaf juice-shop-sa-20200513-express-jwt.json (32.689192ms)
+✔ Server (4103.948383ms)
+▶ /public/images/padding
+  ✔ GET tracking image for "Score Board" page access challenge (8.362123ms)
+  ✔ GET tracking image for "Administration" page access challenge (12.412787ms)
+  ✔ GET tracking image for "Token Sale" page access challenge (16.723537ms)
+  ✔ GET tracking image for "Privacy Policy" page access challenge (17.199375ms)
+✔ /public/images/padding (59.206532ms)
+▶ /encryptionkeys
+  ✔ GET serves a directory listing (218.339073ms)
+  ✔ GET a non-existing file in will return a 404 error (38.835126ms)
+  ✔ GET the Premium Content AES key (27.709311ms)
+  ✔ GET a key file whose name contains a "/" fails with a 403 error (21.253123ms)
+✔ /encryptionkeys (307.207935ms)
+▶ Hidden URL
+  ✔ GET the second easter egg by visiting the Base64>ROT13-decrypted URL (44.57839ms)
+  ✔ GET the premium content by visiting the AES decrypted URL (23.93169ms)
+  ✔ GET the missing "Thank you!" image for assembling the URL hidden in the Privacy Policy (23.540019ms)
+  ✔ GET Klingon translation file for "Extra Language" challenge (10.583102ms)
+  ✔ GET blueprint file for "Retrieve Blueprint" challenge (21.028662ms)
+  ✔ GET crazy cat photo for "Missing Encoding" challenge (33.858787ms)
+  ✔ GET folder containing access log files for "Access Log" challenge (34.989547ms)
+✔ Hidden URL (193.464208ms)
+▶ /file-upload
+  ✔ POST file valid PDF for client and API (184.666581ms)
+  ✔ POST file too large for client validation but valid for API (105.344271ms)
+  ✔ POST file with illegal type for client validation but valid for API (75.981778ms)
+  ✔ POST file type XML deprecated for API (114.907071ms)
+  ✔ POST large XML file near upload size limit (94.692001ms)
+  ✔ POST file type XML with XXE attack against Windows (42.435495ms)
+  ✔ POST file type XML with XXE attack against Linux (30.364086ms)
+  ✖ POST file type XML with Billion Laughs attack is caught by parser (41.093065ms)
+  ✔ POST file type XML with Quadratic Blowup attack (45.314022ms)
+  ✔ POST file type XML with dev/random attack (71.864738ms)
+  ✔ POST file type YAML with Billion Laughs-style attack (31.337262ms)
+  ✔ POST file too large for API (44.867643ms)
+  ✔ POST zip file with directory traversal payload (13.296753ms)
+  ✖ POST zip file with password protection (16.220032ms)
+  ﹣ POST valid file with tampered content length (3.937871ms) # Fails on CI/CD pipeline
+✖ /file-upload (5247.064582ms)
+▶ /ftp
+  ✔ GET serves a directory listing (399.316952ms)
+  ✔ GET a non-existing Markdown file in /ftp will return a 404 error (119.16778ms)
+  ✔ GET a non-existing PDF file in /ftp will return a 404 error (76.956453ms)
+  ✔ GET a non-existing file in /ftp will return a 403 error for invalid file type (40.61256ms)
+  ✔ GET an existing file in /ftp will return a 403 error for invalid file type .gg (30.499212ms)
+  ✔ GET existing file /ftp/coupons_2013.md.bak will return a 403 error for invalid file type .bak (26.99122ms)
+  ✔ GET existing file /ftp/package.json.bak will return a 403 error for invalid file type .bak (28.52611ms)
+  ✔ GET existing file /ftp/suspicious_errors.yml will return a 403 error for invalid file type .yml (21.015454ms)
+  ✔ GET the confidential file in /ftp (28.801696ms)
+  ✔ GET the KeePass database in /ftp (50.641366ms)
+  ✔ GET the easter egg file by using Poison Null Byte attack with .pdf suffix (34.378208ms)
+  ✔ GET the easter egg file by using Poison Null Byte attack with .md suffix (36.409227ms)
+  ✔ GET the SIEM signature file by using Poison Null Byte attack with .pdf suffix (19.205644ms)
+  ✔ GET the SIEM signature file by using Poison Null Byte attack with .md suffix (18.843266ms)
+  ✔ GET the 2013 coupon code file by using Poison Null Byte attack with .pdf suffix (20.743159ms)
+  ✔ GET the 2013 coupon code file by using an Poison Null Byte attack with .md suffix (18.692557ms)
+  ✔ GET the package.json.bak file by using Poison Null Byte attack with .pdf suffix (31.549348ms)
+  ✔ GET the package.json.bak file by using Poison Null Byte attack with .md suffix (18.898809ms)
+  ✔ GET a restricted file directly from file system path on server by tricking route definitions fails with 403 error (18.638555ms)
+  ✔ GET a restricted file directly from file system path on server by appending URL parameter fails with 403 error (16.234907ms)
+  ✔ GET a file whose name contains a "/" fails with a 403 error (12.264036ms)
+  ✔ GET an accessible file directly from file system path on server (18.286135ms)
+  ✔ GET a non-existing file via direct server file path /ftp will return a 404 error (9.741303ms)
+  ✔ GET the package.json.bak file contains a dependency on epilogue-js for "Typosquatting" challenge (26.16417ms)
+  ✔ GET file /ftp/quarantine/juicy_malware_linux_amd_64.url (12.965126ms)
+  ✔ GET file /ftp/quarantine/juicy_malware_linux_arm_64.url (11.035482ms)
+  ✔ GET existing file /ftp/quarantine/juicy_malware_macos_64.url (3.665827ms)
+  ✔ GET existing file /ftp/quarantine/juicy_malware_windows_64.exe.url (7.069735ms)
+✔ /ftp (4658.924676ms)
+▶ HTTP
+  ✔ response must contain CORS header allowing all origins (95.932305ms)
+  ✔ response must contain sameorigin frameguard header (24.879074ms)
+  ✔ response must contain CORS header allowing all origins (22.723845ms)
+  ✔ response must not contain recruiting header (21.148664ms)
+  ✔ response must not contain XSS protection header (28.025688ms)
+  ✔ unexpected path under known sub-path caught by generic error handler (92.205768ms)
+✔ HTTP (3535.274206ms)
+▶ Required Internet resource
+  ▶ PasteBin paste for "Leaked Unsafe Product" challenge available
+    ✔ for default configuration (https://pastebin.com/90dUgd7s) (1105.20304ms)
+    ✔ for 7MS configuration (https://pastebin.com/8SMbWPxc) (451.626833ms)
+    ✔ for BodgeIt Store configuration (https://pastebin.com/G47LrDr0) (422.69297ms)
+    ✔ for Mozilla configuration (https://pastebin.com/t8jqE1y7) (634.168435ms)
+    ✔ for All Day DevOps configuration (https://pastebin.com/RXrihEMS) (438.617041ms)
+  ✔ PasteBin paste for "Leaked Unsafe Product" challenge available (3059.278971ms)
+  ✔ Comment on "Top 10 Fruits you probably dont know" blog post with PasteBin paste URL spoiler available (588.902288ms)
+  ✔ PasteBin paste (https://pastebin.com/4U1V1UjU) for "Leaked Access Logs" challenge available (446.972664ms)
+  ﹣ StackOverflow question "Less verbose access logs using expressjs/morgan" with log snippet and PasteBin paste URL spoiler available (5.790515ms) # FIXME StackOverflow blocking with 403 error
+  ✔ GitHub issue (https://github.com/apostrophecms/sanitize-html/issues/29) for "Server-side XSS Protection" challenge available (902.231907ms)
+✔ Required Internet resource (5030.013188ms)
+▶ /rest/languages
+  ✔ GET all languages (702.576098ms)
+✔ /rest/languages (4893.980453ms)
+▶ /support/logs/:file
+  ✔ GET access log file for the current day (221.639147ms)
+  ✔ GET log file whose name contains a forward slash fails with a 403 error (46.267115ms)
+✔ /support/logs/:file (5056.671821ms)
+▶ /rest/user/login
+  ✔ POST login newly created user (853.494477ms)
+  ✔ POST login non-existing user (89.869746ms)
+  ✔ POST login without credentials (76.89787ms)
+  ✔ POST login with admin credentials (207.2253ms)
+  ✔ POST login with support-team credentials (136.455822ms)
+  ✔ POST login with MC SafeSearch credentials (252.631739ms)
+  ✔ POST login with Amy credentials (294.370727ms)
+  ✔ POST login with wurstbrot credentials expects 2FA token (109.740854ms)
+  ✔ POST login as bjoern.kimminich@gmail.com with known password (372.908237ms)
+  ✔ POST login with WHERE-clause disabling SQL injection attack (199.054012ms)
+  ✔ POST login with known email "admin@juice-sh.op" in SQL injection attack (209.990284ms)
+  ✔ POST login with known email "jim@juice-sh.op" in SQL injection attack (330.527244ms)
+  ✔ POST login with known email "bender@juice-sh.op" in SQL injection attack (374.956716ms)
+  ✔ POST login with non-existing email "acc0unt4nt@juice-sh.op" via UNION SELECT injection attack (245.294376ms)
+  ✔ POST login with query-breaking SQL Injection attack (129.756965ms)
+✔ /rest/user/login (8550.796796ms)
+▶ /rest/saveLoginIp
+  ✔ GET last login IP will be saved as True-Client-IP header value (833.85712ms)
+  ✖ GET last login IP will be saved as remote IP when True-Client-IP is not present (706.322385ms)
+  ✔ GET last login IP returns 401 Unauthorized when no token is provided (147.703973ms)
+✖ /rest/saveLoginIp (1690.578544ms)
+▶ /rest/memories
+  ✔ GET memories via public API (1056.411109ms)
+  ✔ GET memories via a valid authorization token (1010.436206ms)
+  ✔ POST new memory is forbidden via public API (68.11016ms)
+  ✔ POST new memory image file invalid type (168.563925ms)
+  ✔ POST new memory image file is not passed - 1 (271.854259ms)
+  ✔ POST new memory image file is not passed - 2 (350.222101ms)
+  ✔ POST new memory with valid for JPG format image (418.700764ms)
+  ✔ Should not crash the node-js server when sending invalid content like described in CVE-2022-24434 (51.856461ms)
+✔ /rest/memories (8512.465674ms)
+▶ /metrics
+  ▶ challenge tracking
+    ✔ GET with an ignored scraper user agent does not solve exposedMetricsChallenge (367.386559ms)
+    ✔ GET with a regular browser user agent solves exposedMetricsChallenge (249.086539ms)
+  ✔ challenge tracking (622.200361ms)
+  ▶ response format
+    ✔ GET returns 200 with text/plain content type (180.016703ms)
+  ✔ response format (180.831627ms)
+  ▶ update loop
+    ✔ GET includes version info gauge after update loop runs (118.513439ms)
+    ✔ GET includes per-difficulty and per-category challenge solved/total gauges (61.896641ms)
+    ✔ GET includes cheat score gauge (47.007247ms)
+    ✔ GET includes coding challenge progress gauges for all three phases (152.943482ms)
+    ✔ GET includes registered user counts from update loop (155.268129ms)
+    ✔ GET includes http request counter incremented by the request middleware (121.851806ms)
+  ✔ update loop (668.243557ms)
+  ▶ file upload metrics
+    ✔ GET includes file upload success counter after a valid upload (176.089622ms)
+    ✔ GET includes file upload error counter after an upload that triggers a downstream error (128.078532ms)
+  ✔ file upload metrics (305.22504ms)
+✔ /metrics (8261.362866ms)
+▶ Web3 NFT Minting
+  ﹣ /rest/web3/nftMintListen (5.937766ms) # ALCHEMY_API_KEY not set
+  ▶ /rest/web3/nftMintListen (error cases)
+    ✔ GET call returns 500 error if listener creation fails (748.619544ms)
+  ✔ /rest/web3/nftMintListen (error cases) (749.556845ms)
+  ▶ /rest/web3/walletNFTVerify
+    ✔ POST missing wallet address fails to solve minting challenge (103.935174ms)
+    ✔ POST invalid wallet address fails to solve minting challenge (92.453604ms)
+    ✔ POST minted wallet address successfully solves minting challenge (62.579898ms)
+error: WebSocket error (NFT Mint Listener): Unexpected server response: 401
+    ✔ POST leads to 500 error if check fails (181.31809ms)
+  ✔ /rest/web3/walletNFTVerify (442.186826ms)
+✔ Web3 NFT Minting (10404.827382ms)
+▶ /rest/order-history
+  ✔ GET own previous orders (1125.422653ms)
+✔ /rest/order-history (5644.733851ms)
+▶ /rest/order-history/orders
+  ✔ GET all orders is forbidden for customers (810.826563ms)
+  ✔ GET all orders is forbidden for admin (338.43707ms)
+  ✔ GET all orders for accountant (618.123446ms)
+✔ /rest/order-history/orders (1777.398677ms)
+▶ /rest/order-history/:id/delivery-status
+  ✔ PUT delivery status is forbidden for admin (698.820728ms)
+  ✔ PUT delivery status is forbidden for customer (550.896337ms)
+  ✔ PUT delivery status is allowed for accountant (327.236837ms)
+✔ /rest/order-history/:id/delivery-status (1580.985817ms)
+▶ /rest/user/change-password
+  ✔ GET password change for newly created user with recognized token as Authorization header (891.34676ms)
+  ✔ GET password change with passing wrong current password (132.211739ms)
+  ✔ GET password change without passing any passwords (69.946303ms)
+  ✔ GET password change with passing wrong repeated password (76.427032ms)
+  ✔ GET password change without passing an authorization token (148.61894ms)
+  ✔ GET password change with passing unrecognized authorization token (77.462208ms)
+  ✔ GET password change for Bender without current password using GET request (386.840706ms)
+✔ /rest/user/change-password (8923.268279ms)
+▶ /rest/user/reset-password
+  ✔ POST password reset for Jim with correct answer to his security question (187.630776ms)
+  ✔ POST password reset for Bender with correct answer to his security question (112.609841ms)
+  ✔ POST password reset for Bjoern´s internal account with correct answer to his security question (81.132536ms)
+  ✔ POST password reset for Bjoern´s OWASP account with correct answer to his security question (79.896149ms)
+  ✔ POST password reset for Morty with correct answer to his security question (88.917403ms)
+  ✔ POST password reset with wrong answer to security question (182.114181ms)
+  ✔ POST password reset without any data is blocked (42.466745ms)
+  ✔ POST password reset without new password throws a 401 error (55.127451ms)
+  ✔ POST password reset with mismatching passwords throws a 401 error (25.924876ms)
+  ✔ POST password reset with no email address throws a 412 error (29.802622ms)
+  ✔ POST password reset with no answer to the security question throws a 412 error (26.99897ms)
+✔ /rest/user/reset-password (923.942284ms)
+▶ /api/Cards
+  ✔ GET all cards is forbidden via public API (78.185258ms)
+  ✔ GET all cards (42.964791ms)
+  ✔ POST new card is forbidden via public API (21.362832ms)
+  ✔ POST new card with all valid fields (189.329376ms)
+  ✔ GET all cards returns masked card numbers (35.78543ms)
+  ✔ POST new card with invalid card number (57.582932ms)
+  ✔ POST new card with invalid expMonth (44.457223ms)
+  ✔ POST new card with invalid expYear (83.866812ms)
+✔ /api/Cards (6066.358519ms)
+▶ /api/Cards/:id
+  ✔ GET card by id is forbidden via public API (27.525308ms)
+  ✔ PUT update card is forbidden via public API (41.187316ms)
+  ✔ DELETE card by id is forbidden via public API (16.787538ms)
+  ✔ GET card by id (19.069101ms)
+  ✔ GET card by id returns masked card number (52.456925ms)
+  ✔ GET card by non-existing id returns 400 for authorized user (18.843349ms)
+  ✔ PUT update card by id is forbidden via authorized API call (37.257444ms)
+  ✔ DELETE card by id (25.95271ms)
+  ✔ DELETE card by id again returns 400 for authorized user (21.273248ms)
+✔ /api/Cards/:id (777.867119ms)
+▶ /api/PrivacyRequests
+  ✔ POST new complaint (398.598237ms)
+  ✔ GET all privacy requests is forbidden via public API (40.870979ms)
+✔ /api/PrivacyRequests (5364.269634ms)
+▶ /api/PrivacyRequests/:id
+  ✔ GET all privacy requests is forbidden (166.270152ms)
+  ✔ GET existing privacy request by id is forbidden (26.064377ms)
+  ✔ PUT update existing privacy request is forbidden (16.529369ms)
+  ✔ DELETE existing privacy request is forbidden (17.450711ms)
+✔ /api/PrivacyRequests/:id (227.825373ms)
+▶ /rest/products/:id/reviews
+  ✔ GET product reviews by product id (223.368789ms)
+  ✔ GET product reviews attack by injecting a mongoDB sleep command (132.577659ms)
+  ﹣ GET product reviews by alphanumeric non-mongoDB-command product id (0.765841ms) # SKIP
+  ✔ PUT single product review can be created (179.865784ms)
+✔ /rest/products/:id/reviews (5014.318244ms)
+▶ /rest/products/reviews
+  ✔ PATCH single product review can be edited (61.57643ms)
+  ✔ PATCH single product review editing need an authenticated user (102.086864ms)
+  ✔ PATCH single product review returns 500 when the update fails (232.147499ms)
+  ✔ PATCH single product review evaluates forged review criteria for an unauthenticated user (118.618066ms)
+  ✔ PATCH single product review evaluates forged review criteria for a different user (265.924951ms)
+  ✔ PATCH missing product review evaluates forged review criteria without an original review (127.930948ms)
+  ✔ POST non-existing product review cannot be liked (1018.590242ms)
+  ✔ POST single product review can be liked (421.591125ms)
+  ✔ PATCH multiple product review via injection (60.830048ms)
+✔ /rest/products/reviews (2440.299724ms)
+▶ /api/Products
+  ✔ GET all products (346.978278ms)
+  ✔ POST new product is forbidden via public API (266.864835ms)
+  ✖ POST new product does not filter XSS attacks (413.367505ms)
+✖ /api/Products (4616.796601ms)
+▶ /api/Products/:id
+  ✔ GET existing product by id (453.493018ms)
+  ✔ GET non-existing product by id (259.506722ms)
+  ✔ PUT update existing product is possible due to Missing Function-Level Access Control vulnerability (281.469936ms)
+  ✔ DELETE existing product is forbidden via public API (15.206481ms)
+  ✔ DELETE existing product is forbidden via API even when authenticated (81.84371ms)
+✔ /api/Products/:id (1095.08165ms)
+▶ /profile/image/file
+  ✔ POST profile image file valid for JPG format (673.000353ms)
+  ✔ POST profile image file invalid type (502.856955ms)
+  ✔ POST profile image file forbidden for anonymous user (171.967166ms)
+  ✔ POST profile image file rejected for unrecognizable file content (214.358577ms)
+✔ /profile/image/file (6150.730961ms)
+▶ /profile/image/url
+  ✔ POST profile image URL valid for image available online (189.492127ms)
+  ✔ POST profile image URL redirects even for invalid image URL (355.898406ms)
+  ﹣ POST profile image URL forbidden for anonymous user (0.777466ms) # FIXME runs into "socket hang up"
+  ✔ POST valid image with tampered content length (298.947812ms)
+✔ /profile/image/url (850.518447ms)
+▶ /profile/image/url (with local mock server)
+  ✔ POST with non-OK response falls back to storing URL as profile image (156.375598ms)
+  ✔ POST with empty-body response (204) falls back to storing URL as profile image (116.765422ms)
+  ✔ POST with valid response writes file and redirects to profile (179.748991ms)
+  ✔ POST with PNG URL extension saves file using PNG extension (208.916316ms)
+  ✔ POST with unrecognised URL extension defaults to JPG extension (125.20538ms)
+✔ /profile/image/url (with local mock server) (1129.83482ms)
+▶ /promotion
+  ✔ GET promotion video page is publicly accessible (1514.755716ms)
+  ✔ GET promotion video page contains embedded video (269.11794ms)
+  ✔ GET promotion video page contains subtitles as <script> (176.691295ms)
+✔ /promotion (8829.871457ms)
+▶ /video
+  ✔ GET promotion video is publicly accessible (136.31807ms)
+  ✔ GET promotion video supports byte ranges (150.678334ms)
+  ✔ GET promotion video supports open-ended byte ranges (54.300651ms)
+  ✔ GET promotion video uses the default video when configuration value is null (95.983305ms)
+✔ /video (438.795959ms)
+▶ /api/Quantitys
+  ✔ GET quantity of all items for customers (677.433771ms)
+  ✔ GET quantity of all items for admin (791.769795ms)
+  ✔ GET quantity of all items for accounting users (514.554318ms)
+  ✔ POST quantity is forbidden for customers (473.704964ms)
+  ✔ POST quantity forbidden for admin (480.816283ms)
+  ✔ POST quantity is forbidden for accounting users (151.094047ms)
+✔ /api/Quantitys (9100.075992ms)
+▶ /api/Quantitys/:ids
+  ✔ GET quantity of all items is forbidden for customers (239.324152ms)
+  ✔ GET quantity of all items is forbidden for admin (202.848299ms)
+Access denied to IP address: 127.0.0.1
+  ✔ GET quantity of all items for accounting users blocked by IP filter (168.183129ms)
+  ﹣ GET quantity of all items for accounting users from IP 123.456.789 (1.877143ms) # SKIP
+  ✔ PUT quantity is forbidden for customers (121.66997ms)
+  ✔ PUT quantity is forbidden for admin (258.455504ms)
+Access denied to IP address: 127.0.0.1
+  ✔ PUT quantity as accounting user blocked by IP filter (261.998038ms)
+  ﹣ PUT quantity as accounting user from IP 123.456.789 (0.410837ms) # SKIP
+  ✔ DELETE quantity is forbidden for accountant (159.570587ms)
+  ✔ DELETE quantity is forbidden for admin (214.440161ms)
+  ✔ DELETE quantity is forbidden for users (96.176807ms)
+✔ /api/Quantitys/:ids (1746.598878ms)
+▶ /ftp/quarantine/:file
+  ✔ GET serves a known quarantined file (84.404818ms)
+  ✔ GET responds with 403 when filename contains a forward slash (111.964293ms)
+✔ /ftp/quarantine/:file (4918.353564ms)
+▶ /api/Recycles
+  ✔ POST new recycle (690.927944ms)
+  ✔ Will prevent GET all recycles from this endpoint (93.846909ms)
+  ✔ Will GET existing recycle from this endpoint (448.609679ms)
+  ✔ PUT update existing recycle is forbidden (86.75684ms)
+  ✔ DELETE existing recycle is forbidden (127.030106ms)
+✔ /api/Recycles (7525.260319ms)
+▶ /redirect
+  ✔ GET redirected to https://github.com/juice-shop/juice-shop when this URL is passed as "to" parameter (247.093769ms)
+  ✔ GET redirected to https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm when this URL is passed as "to" parameter (58.451566ms)
+  ✔ GET redirected to http://shop.spreadshirt.com/juiceshop when this URL is passed as "to" parameter (53.434226ms)
+  ✔ GET redirected to http://shop.spreadshirt.de/juiceshop when this URL is passed as "to" parameter (52.601926ms)
+  ✔ GET redirected to https://www.stickeryou.com/products/owasp-juice-shop/794 when this URL is passed as "to" parameter (90.650336ms)
+  ✔ GET redirected to https://explorer.dash.org/address/Xr556RzuwX6hg5EGpkybbv5RanJoZN17kW when this URL is passed as "to" parameter (48.317051ms)
+  ✔ GET redirected to https://etherscan.io/address/0x0f933ab9fcaaa782d0279c300d73750e1311eae6 when this URL is passed as "to" parameter (57.63235ms)
+  ✔ GET error message with information leakage when calling /redirect without query parameter (223.495874ms)
+  ✔ GET error message with information leakage when calling /redirect with unrecognized query parameter (209.818616ms)
+  ✔ GET error message hinting at allowlist validation when calling /redirect with an unrecognized "to" target (220.808389ms)
+  ✔ GET redirected to target URL in "to" parameter when a allow-listed URL is part of the query string (159.197376ms)
+✔ /redirect (7034.685567ms)
+▶ /rest/repeat-notification
+  ✔ GET triggers repeating notification without passing a challenge (135.0531ms)
+  ✔ GET triggers repeating notification passing an unsolved challenge (92.775898ms)
+  ✔ GET triggers repeating notification passing a solved challenge (57.522932ms)
+✔ /rest/repeat-notification (6870.146973ms)
+▶ /rest/products/search
+  ✔ GET product search with no matches returns no products (261.146197ms)
+  ✔ GET product search with one match returns found product (354.119055ms)
+  ✔ GET product search fails with error message that exposes ins SQL Injection vulnerability (275.660795ms)
+  ✔ GET product search SQL Injection fails from two missing closing parenthesis (262.945714ms)
+  ✔ GET product search SQL Injection fails from one missing closing parenthesis (228.939343ms)
+  ✔ GET product search SQL Injection fails for SELECT * FROM attack due to wrong number of returned columns (267.79447ms)
+  ✔ GET product search can create UNION SELECT with Users table and fixed columns (203.749473ms)
+  ✔ GET product search can create UNION SELECT with Users table and required columns (199.909395ms)
+  ✔ GET product search can create UNION SELECT with sqlite_master table and required column (285.869936ms)
+  ✔ GET product search cannot select logically deleted christmas special by default (135.9669ms)
+  ✔ GET product search by description cannot select logically deleted christmas special due to forced early where-clause termination (151.040546ms)
+  ✔ GET product search can select logically deleted christmas special by forcibly commenting out the remainder of where clause (185.522631ms)
+  ✔ GET product search can select logically deleted unsafe product by forcibly commenting out the remainder of where clause (147.230968ms)
+  ✔ GET product search with empty search parameter returns all products (558.440952ms)
+  ✔ GET product search without search parameter returns all products (421.675502ms)
+  ✔ GET product search returns alternateImages as array with format and size descriptor (109.809272ms)
+✔ /rest/products/search (9272.50487ms)
+▶ /api/SecurityAnswers
+  ✔ GET all security answers is forbidden via public API even when authenticated (162.719618ms)
+  ✔ POST new security answer for existing user fails from unique constraint (474.352054ms)
+✔ /api/SecurityAnswers (6030.06825ms)
+▶ /api/SecurityAnswers/:id
+  ✔ GET existing security answer by id is forbidden via public API even when authenticated (112.054752ms)
+  ✔ POST security answer for a newly registered user (766.184256ms)
+  ✔ PUT update existing security answer is forbidden via public API even when authenticated (66.634604ms)
+  ✔ DELETE existing security answer is forbidden via public API even when authenticated (51.163495ms)
+✔ /api/SecurityAnswers/:id (1000.215607ms)
+▶ /api/SecurityQuestions
+  ✔ GET all security questions  (613.293358ms)
+  ✔ POST new security question is forbidden via public API even when authenticated (257.884831ms)
+✔ /api/SecurityQuestions (6301.553256ms)
+▶ /api/SecurityQuestions/:id
+  ✔ GET existing security question by id is forbidden via public API even when authenticated (45.976863ms)
+  ✔ PUT update existing security question is forbidden via public API even when authenticated (56.711175ms)
+  ✔ DELETE existing security question is forbidden via public API even when authenticated (40.77352ms)
+✔ /api/SecurityQuestions/:id (145.470493ms)
+▶ /rest/user/security-question
+  ✔ GET security question for an existing user's email address (320.877692ms)
+  ✔ GET security question returns nothing for an unknown email address (166.04615ms)
+  ✔ GET security question throws error for missing email address (57.123803ms)
+  ✔ GET security question is not susceptible to SQL Injection attacks (275.909339ms)
+✔ /rest/user/security-question (828.261482ms)
+▶ WebSocket
+  ✔ server handles confirmation messages for emitted challenge resolutions (185.540922ms)
+  ✔ server handles confirmation message for a non-existent challenge (199.192305ms)
+  ✔ server handles empty confirmation message (125.611383ms)
+✔ WebSocket (5796.0799ms)
+▶ /rest/track-order/:id
+  ✔ GET tracking results for the order id (178.9619ms)
+  ✖ GET all orders by injecting into orderId (160.149343ms)
+✖ /rest/track-order/:id (5015.899717ms)
+▶ /profile
+  ✔ GET user profile is forbidden for unauthenticated user (183.987908ms)
+  ✔ GET user profile of authenticated user (1458.000208ms)
+  ✔ GET user profile contains role and deluxe membership link if user is customer (326.559205ms)
+  ✔ GET user profile contains role but NO deluxe membership link if user is already deluxe (495.783803ms)
+  ✔ POST update username of authenticated user (54.521612ms)
+  ✔ POST update profile is forbidden for unauthenticated user (121.313259ms)
+  ✖ GET user profile renders evaluated SSTI payload for username containing valid expression (812.517997ms)
+  ✔ GET user profile falls back gracefully when SSTI payload throws (485.341285ms)
+  ✖ GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username (344.058708ms)
+  ✔ GET user profile does NOT evaluate SSTI payload in safe mode (370.291087ms)
+  ✔ should be solved when origin header matches configured CSRF URL (114.252857ms)
+  ✔ should have the configured CSRF URL in the challenge description (2.25323ms)
+  ✔ should NOT be solved when origin header does NOT match configured CSRF URL (161.787734ms)
+✖ /profile (10400.742176ms)
+▶ /api/Users
+  ✔ GET all users is forbidden via public API (89.959413ms)
+  ✔ GET all users (273.109271ms)
+  ✔ GET all users doesnt include passwords (129.803424ms)
+  ✔ POST new user (199.856853ms)
+  ✔ POST new admin (199.319764ms)
+  ✔ POST new blank user (106.98812ms)
+  ✔ POST same blank user in database (133.652462ms)
+  ✔ POST whitespaces user (69.764926ms)
+  ✔ POST new deluxe user (67.947575ms)
+  ✔ POST new accounting user (46.058613ms)
+  ✔ POST user not belonging to customer, deluxe, accounting, admin is forbidden (32.366231ms)
+  ✖ POST new user with XSS attack in email address (75.574607ms)
+✖ /api/Users (8552.746648ms)
+▶ /api/Users/:id
+  ✔ GET existing user by id is forbidden via public API (26.503882ms)
+  ✔ PUT update existing user is forbidden via public API (6.742857ms)
+  ✔ DELETE existing user is forbidden via public API (3.646119ms)
+  ✔ GET existing user by id (51.062704ms)
+  ✔ PUT update existing user is forbidden via API even when authenticated (25.06616ms)
+  ✔ DELETE existing user is forbidden via API even when authenticated (8.967712ms)
+✔ /api/Users/:id (123.107859ms)
+▶ /rest/user/whoami
+  ✔ GET own user id and email on who-am-i request (209.027942ms)
+  ✔ GET who-am-i request returns nothing on missing auth token (79.335227ms)
+  ✔ GET who-am-i request returns nothing on invalid auth token (79.124516ms)
+  ✔ GET who-am-i request returns nothing on broken auth token (93.491822ms)
+  ✔ GET who-am-i request returns nothing on expired auth token (28.889238ms)
+  ✔ GET who-am-i with fields parameter returns only requested fields (305.429834ms)
+  ✔ GET who-am-i with fields parameter does not return password by default (71.60311ms)
+  ✔ GET who-am-i with fields parameter can be tricked into returning password (62.718691ms)
+✔ /rest/user/whoami (931.084645ms)
+▶ /snippets/fixes/:key
+  ✔ GET fixes for unknown challenge key throws error (232.333626ms)
+  ✔ GET fixes for existing challenge key (91.033132ms)
+✔ /snippets/fixes/:key (4918.838152ms)
+▶ /snippets/fixes
+  ✔ POST fix for non-existing challenge key throws error (177.224425ms)
+  ✔ POST wrong fix for existing challenge key gives negative verdict and explanation (89.930871ms)
+  ✔ POST non-existing fix for existing challenge key gives negative verdict and no explanation (50.463322ms)
+  ✔ POST correct fix for existing challenge key gives positive verdict and explanation (297.200296ms)
+✔ /snippets/fixes (622.430697ms)
+▶ /snippets/:challenge
+  ✔ GET code snippet retrieval for unknown challenge key throws error (69.422548ms)
+  ✔ GET code snippet retrieval for challenge without code snippet throws error (49.088893ms)
+  ✔ GET code snippet retrieval for challenge with code snippet (45.305231ms)
+✔ /snippets/:challenge (3566.548426ms)
+▶ snippets/verdict
+  ✔ should check for the incorrect lines (127.073482ms)
+  ✔ should check for the correct lines (189.517961ms)
+  ✔ POST with unknown challenge key returns 404 (71.160772ms)
+  ✔ POST without selectedLines returns false verdict (28.033272ms)
+  ✔ POST with empty selectedLines array returns false verdict (58.738444ms)
+✔ snippets/verdict (476.5762ms)
+▶ snippets/verdict (hint progression for loginAdminChallenge)
+  ✔ returns no hint on the first wrong attempt (25.830167ms)
+  ✔ returns the first hint text on the second wrong attempt (39.681051ms)
+  ✔ returns a line-number hint after all text hints are exhausted (96.120973ms)
+✔ snippets/verdict (hint progression for loginAdminChallenge) (163.312124ms)
+▶ /api/Wallets
+  ✔ GET wallet is forbidden via public API (76.314156ms)
+  ✔ GET wallet retrieves wallet amount of requesting user (122.868648ms)
+  ✔ PUT wallet is forbidden via public API (31.087718ms)
+  ✔ PUT charge wallet from credit card of requesting user (147.11855ms)
+  ✔ PUT charge wallet from foreign credit card is forbidden (38.426206ms)
+  ✔ PUT charge wallet without credit card is forbidden (16.638578ms)
+  ✔ GET wallet balance for user without a wallet returns 404 (185.070251ms)
+✔ /api/Wallets (5074.466368ms)
+﹣ /rest/web3/walletExploitAddress (1.406347ms) # ALCHEMY_API_KEY not set
+ℹ tests 556
+ℹ suites 112
+ℹ pass 537
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 6
+ℹ todo 0
+ℹ duration_ms 140357.882617
+
+✖ failing tests:
+
+test at test/api/b2b-order.test.ts:2:1563
+✖ POST endless loop exploit in "orderLinesData" will raise explicit error (1838.432935ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/b2b-order.test.ts:33:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1905:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:1965
+✖ POST busy spinning regex attack does not raise an error (272.70935ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 503
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/b2b-order.test.ts:45:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/b2b-order.test.ts:2:2269
+✖ POST sandbox breakout attack in "orderLinesData" will raise error (179.375946ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/b2b-order.test.ts:56:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/erasure-request.test.ts:2:4610
+✖ POST erasure request with existing file path as layout parameter returns content truncated (201.188824ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('......'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/erasure-request.test.ts:115:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/feedback.test.ts:2:2494
+✖ POST fails to sanitize masked XSS-attack by not applying sanitization recursively (164.564136ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'The sanitize-html module up to at least version 1.4.2 has this issue: '
+  - 'The sanitize-html module up to at least version 1.4.2 has this issue: <iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/feedback.test.ts:68:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'The sanitize-html module up to at least version 1.4.2 has this issue: ',
+    expected: 'The sanitize-html module up to at least version 1.4.2 has this issue: <iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/file-upload.test.ts:2:3676
+✖ POST file type XML with Billion Laughs attack is caught by parser (41.093065ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('Maximum entity amplification factor exceeded'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-upload.test.ts:86:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/file-upload.test.ts:2:5696
+✖ POST zip file with password protection (16.220032ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  204 !== 500
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/file-upload.test.ts:137:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 204,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/login.test.ts:2:9586
+✖ GET last login IP will be saved as remote IP when True-Client-IP is not present (706.322385ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '' !== '127.0.0.1'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/login.test.ts:279:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '127.0.0.1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/product.test.ts:2:2736
+✖ POST new product does not filter XSS attacks (413.367505ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '<iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/product.test.ts:69:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '<iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/track-result.test.ts:2:1394
+✖ GET all orders by injecting into orderId (160.149343ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'string'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/track-result.test.ts:34:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'string',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/api/user-profile.test.ts:2:4044
+✖ GET user profile renders evaluated SSTI payload for username containing valid expression (812.517997ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('>49<'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/user-profile.test.ts:102:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/user-profile.test.ts:2:5102
+✖ GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username (344.058708ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(res.text.includes('A49'))
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/user-profile.test.ts:136:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test/api/user.test.ts:2:7043
+✖ POST new user with XSS attack in email address (75.574607ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '<iframe src="javascript:alert(`xss`)">'
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/user.test.ts:193:14)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '<iframe src="javascript:alert(`xss`)">',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

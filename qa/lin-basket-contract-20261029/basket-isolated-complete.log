@@ -1,0 +1,56 @@
+(node:392426) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/basket/:id
+  ✔ GET existing basket by id is not allowed via public API (24.794193ms)
+  ✔ GET empty basket when requesting non-existing basket id (60.35853ms)
+  ✔ GET existing basket with contained products by id (107.440559ms)
+  ✔ GET own basket as a regular user (62.701635ms)
+  ✔ GET basket rejects forged JWTs without an authenticated user (16.746908ms)
+  ✔ GET basket rejects a forged JWT claiming the owner identity (20.23115ms)
+  ✔ GET basket rejects a signed token missing the user identity (32.535392ms)
+  ✔ GET enforces ownership for two populated baskets with distinct user and basket IDs (348.605384ms)
+  ✔ GET populated basket of another user is forbidden for a regular user (26.818795ms)
+✔ /rest/basket/:id (2311.121837ms)
+▶ /api/Baskets
+  ✔ POST new basket is not part of API (17.187204ms)
+  ✔ GET all baskets is not part of API (17.183579ms)
+✔ /api/Baskets (34.987039ms)
+▶ /api/Baskets/:id
+  ✔ GET existing basket is not part of API (12.082072ms)
+  ✔ PUT update existing basket is not part of API (14.25501ms)
+  ✔ DELETE existing basket is not part of API (11.446983ms)
+✔ /api/Baskets/:id (38.224071ms)
+▶ /rest/basket/:id
+  ✔ GET existing basket of another user is forbidden (128.20088ms)
+✔ /rest/basket/:id (128.574508ms)
+▶ /rest/basket/:id/checkout
+  ✔ POST placing an order for a basket is not allowed via public API (4.666836ms)
+  ✔ POST placing an order for an existing basket returns orderId (206.283578ms)
+  ✔ POST placing an order for a non-existing basket fails (25.512117ms)
+  ✔ POST placing an order for a basket with a negative total cost is possible (44.956717ms)
+  ✔ POST placing an order for a basket with 99% discount is possible (66.967467ms)
+  ✔ POST placing an order applies campaign discount and delivery method for deluxe user (79.2155ms)
+  ✔ POST placing an order charges the wallet when the balance is sufficient (90.866569ms)
+  ✔ POST placing an order returns an error when the wallet balance is insufficient (60.832201ms)
+  ▶ error cases
+    ✔ should return 500 if QuantityModel.findOne fails during checkout (76.73856ms)
+    ✔ should return 500 if WalletModel.findOne fails during checkout (59.670607ms)
+    ✔ should return 500 if ordersCollection.insert fails during checkout (69.837078ms)
+    ✔ should return 500 if basket item cleanup fails after checkout (98.281389ms)
+    ✔ should return 500 if wallet bonus increment fails during checkout (68.572357ms)
+  ✔ error cases (374.238084ms)
+✔ /rest/basket/:id/checkout (954.516619ms)
+▶ /rest/basket/:id/coupon/:coupon
+  ✔ PUT apply valid coupon to existing basket (25.868245ms)
+  ✔ PUT apply invalid coupon is not accepted (23.351554ms)
+  ✔ PUT apply outdated coupon is not accepted (20.474486ms)
+  ✔ PUT apply valid coupon to non-existing basket throws error (33.57686ms)
+✔ /rest/basket/:id/coupon/:coupon (103.893025ms)
+ℹ tests 32
+ℹ suites 7
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6821.83983

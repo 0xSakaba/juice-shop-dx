@@ -1,0 +1,54 @@
+▶ /rest/basket/:id
+  ✔ GET existing basket by id is not allowed via public API (258.005707ms)
+  ✔ GET empty basket when requesting non-existing basket id (1329.792466ms)
+  ✔ GET existing basket with contained products by id (1592.290134ms)
+  ✔ GET own basket as a regular user (954.353287ms)
+  ✔ GET basket rejects forged JWTs without an authenticated user (404.11379ms)
+  ✔ GET basket rejects a forged JWT claiming the owner identity (200.515735ms)
+  ✔ GET basket rejects a signed token missing the user identity (343.657246ms)
+  ✔ GET enforces ownership for two populated baskets with distinct user and basket IDs (3847.91211ms)
+  ✔ GET populated basket of another user is forbidden for a regular user (352.54879ms)
+✔ /rest/basket/:id (25918.558117ms)
+▶ /api/Baskets
+  ✔ POST new basket is not part of API (139.826146ms)
+  ✔ GET all baskets is not part of API (50.7362ms)
+✔ /api/Baskets (191.915067ms)
+▶ /api/Baskets/:id
+  ✔ GET existing basket is not part of API (35.749263ms)
+  ✔ PUT update existing basket is not part of API (100.764184ms)
+  ✔ DELETE existing basket is not part of API (70.941063ms)
+✔ /api/Baskets/:id (208.590396ms)
+▶ /rest/basket/:id
+  ✔ GET existing basket of another user is forbidden (1642.493704ms)
+✔ /rest/basket/:id (1643.39042ms)
+▶ /rest/basket/:id/checkout
+  ✔ POST placing an order for a basket is not allowed via public API (13.916884ms)
+  ✔ POST placing an order for an existing basket returns orderId (1411.552049ms)
+  ✔ POST placing an order for a non-existing basket fails (155.250129ms)
+  ✔ POST placing an order for a basket with a negative total cost is possible (265.179985ms)
+  ✔ POST placing an order for a basket with 99% discount is possible (382.598914ms)
+  ✔ POST placing an order applies campaign discount and delivery method for deluxe user (216.779475ms)
+  ✔ POST placing an order charges the wallet when the balance is sufficient (208.521145ms)
+  ✔ POST placing an order returns an error when the wallet balance is insufficient (367.611186ms)
+  ▶ error cases
+    ✔ should return 500 if QuantityModel.findOne fails during checkout (197.041492ms)
+    ✔ should return 500 if WalletModel.findOne fails during checkout (414.156137ms)
+    ✔ should return 500 if ordersCollection.insert fails during checkout (475.176062ms)
+    ✔ should return 500 if basket item cleanup fails after checkout (347.967204ms)
+    ✔ should return 500 if wallet bonus increment fails during checkout (497.490903ms)
+  ✔ error cases (1933.577732ms)
+✔ /rest/basket/:id/checkout (4962.057904ms)
+▶ /rest/basket/:id/coupon/:coupon
+  ✔ PUT apply valid coupon to existing basket (99.494798ms)
+  ✔ PUT apply invalid coupon is not accepted (111.25487ms)
+  ✔ PUT apply outdated coupon is not accepted (142.550964ms)
+  ✔ PUT apply valid coupon to non-existing basket throws error (94.535666ms)
+✔ /rest/basket/:id/coupon/:coupon (448.761223ms)
+ℹ tests 32
+ℹ suites 7
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50300.306347

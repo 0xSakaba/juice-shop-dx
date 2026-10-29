@@ -1,0 +1,629 @@
+
+> juice-shop@20.3.0 test:server
+> node --import ./test/server/helpers/test-env.mjs --import tsx --test --test-force-exit "test/server/**/*.unit.test.ts"
+
+▶ accuracy
+  ✔ should calculate accuracy as 1.0 when solved on first attempt (8.22487ms)
+  ✔ should calculate accuracy as 0.5 when solved on second attempt (1.238136ms)
+  ✔ should calculate accuracy as 0.3333333333333333 when solved on third attempt (1.316804ms)
+  ✔ should not increase attempts after challenge is solved (0.914926ms)
+  ✔ should calculate fix it accuracy independently (0.51238ms)
+  ✔ should return 0 attempts for unknown challenge (0.104876ms)
+  ✔ should return 0 accuracy for unsolved challenge (0.619381ms)
+  ✔ should calculate total accuracy for multiple solved challenges (1.304013ms)
+  ✔ should return NaN for total accuracy when no challenges are solved (6.767772ms)
+  ✔ should calculate accuracy as 0.2 for solved on fifth attempt (7.863159ms)
+✔ accuracy (41.614646ms)
+▶ angular
+  ✔ should serve index.html for any URL (15.048185ms)
+  ✔ should raise error for /api endpoint URL (0.707632ms)
+  ✔ should raise error for /rest endpoint URL (0.218336ms)
+✔ angular (29.727824ms)
+▶ antiCheat
+  ▶ calculateCheatScore
+    ✔ should return cheat score of 0 if challenge is tightly coupled to the previously solved one (3061.36218ms)
+    ✔ should return cheat score of 0 if challenge is loosely coupled to the previously solved one (2.991195ms)
+    ✔ should return cheat score of 0 if challenge is loosely coupled to one in the past (4.328083ms)
+    ✔ should assume cheating if two unrelated challenges are solved after each other (9.89222ms)
+  ✔ calculateCheatScore (3081.499872ms)
+  ▶ totalCheatScore
+    ✔ should return 0 if no challenges are solved (9.401589ms)
+    ✔ should return the median cheat score of all solves (10.410641ms)
+  ✔ totalCheatScore (21.552372ms)
+  ▶ checkForPreSolveInteractions
+    ✔ should mark interaction as true if URL matches a fragment (158.599468ms)
+  ✔ checkForPreSolveInteractions (205.835084ms)
+  ▶ checkForSourceFileOverlap
+    ✔ should not flag short submissions as cheating (135.232537ms)
+    ✔ should not flag submissions for challenges without source file mapping (42.766116ms)
+    ✔ should flag 1:1 copy-paste of package.json.bak as cheating (27.905432ms)
+    ✔ should not flag a partial submission from package.json.bak (24.480816ms)
+    ✔ should not flag a minimal correct answer (10.883728ms)
+    ✔ should flag 1:1 copy-paste of docker-compose.yml as cheating (19.878314ms)
+    ✔ should use cache when loading same source file again (24.807278ms)
+  ✔ checkForSourceFileOverlap (294.465677ms)
+  ▶ calculateCheatScore
+    ✔ should return cheat score of 1 if isCheating is true (20.9937ms)
+  ✔ calculateCheatScore (21.391079ms)
+  ▶ calculateFindItCheatScore
+    ✔ should return 0 if no code snippet exists for challenge (1533.563013ms)
+    ✔ should return cheat score for challenge with code snippet (46.695819ms)
+  ✔ calculateFindItCheatScore (1581.500637ms)
+  ▶ calculateFixItCheatScore
+    ✔ should return cheat score for challenge with fixes (14.578388ms)
+  ✔ calculateFixItCheatScore (14.723307ms)
+  ▶ checkForIdenticalSolvedChallenge
+    ✔ should return false if challenge is not a coding challenge (11.562027ms)
+    ✔ should detect identical solved challenge and reduce time factor in calculateFindItCheatScore (1.648974ms)
+    ✔ should return false if coding challenge has no snippet (10.536975ms)
+  ✔ checkForIdenticalSolvedChallenge (23.983103ms)
+  ▶ loadSourceFile
+    ✔ should return empty string if source file cannot be read (9.729551ms)
+  ✔ loadSourceFile (9.923761ms)
+  ▶ reset
+    ✔ should reset solves and interactions (18.243382ms)
+  ✔ reset (23.400931ms)
+✔ antiCheat (5293.858679ms)
+▶ appConfiguration
+  ✔ should return configuration object (32.292849ms)
+  ✔ should not expose chatBot.llmApiUrl (10.837644ms)
+✔ appConfiguration (64.870618ms)
+▶ appVersion
+  ✔ <anonymous> (19.021556ms)
+✔ appVersion (38.795369ms)
+▶ b2bOrder
+  ﹣ infinite loop payload does not succeed but solves "rceChallenge" (4.439834ms) # SKIP
+  ﹣ timeout after 2 seconds solves "rceOccupyChallenge" (0.367295ms) # SKIP
+  ✔ deserializing JSON as documented in Swagger should not solve "rceChallenge" (95.979205ms)
+  ✔ deserializing arbitrary JSON should not solve "rceChallenge" (30.183787ms)
+  ✔ deserializing broken JSON should not solve "rceChallenge" (26.429543ms)
+✔ b2bOrder (175.093875ms)
+▶ blueprint
+  ▶ checkExifData
+    ✔ should contain properties from exifForBlueprintChallenge (143.076112ms)
+  ✔ checkExifData (146.977815ms)
+✔ blueprint (155.335812ms)
+▶ challengeCountryMapping
+  ✔ should have a country mapping for every challenge (17.651793ms)
+  ✔ should have unique country codes in every mapping (1.78985ms)
+✔ challengeCountryMapping (484.883699ms)
+▶ Challenge Tags
+  ✔ should be present in en.json (8.176828ms)
+✔ Challenge Tags (14.953767ms)
+▶ challengeTutorialSequence
+  ✔ should have unique tutorial orders (12.018698ms)
+✔ challengeTutorialSequence (779.822172ms)
+▶ challengeUtils
+  ▶ findChallengeByName
+    ✔ returns undefined for non-existing challenge (41.560188ms)
+    ✔ returns existing challenge (0.942468ms)
+  ✔ findChallengeByName (44.296339ms)
+  ▶ findChallengeById
+    ✔ returns undefined for non-existing challenge (2.389981ms)
+    ✔ returns existing challenge (4.738295ms)
+  ✔ findChallengeById (9.387756ms)
+  ▶ notSolved
+    ✔ returns true for unsolved challenge (5.324759ms)
+    ✔ returns false for solved challenge (0.899841ms)
+    ✔ returns falsy for null challenge (0.712173ms)
+  ✔ notSolved (7.585739ms)
+  ▶ solve
+    ✔ should mark challenge as solved and save it (15.181145ms)
+    ✔ should not calculate cheat score if it is a restore (2.595358ms)
+    ✔ should log error if webhook notification fails (122.89992ms)
+  ✔ solve (144.822211ms)
+  ▶ solveIf
+    ✔ should solve challenge if criteria is met and not yet solved (5.418635ms)
+  ✔ solveIf (5.581678ms)
+  ▶ sendCodingChallengeNotification
+    ✔ should emit "code challenge solved" event via socket.io (0.32667ms)
+  ✔ sendCodingChallengeNotification (0.439254ms)
+  ▶ solveFindIt
+    ✔ should update status and calculate accuracy/cheat score (3372.6436ms)
+    ✔ should not calculate accuracy/cheat score if it is a restore (0.765383ms)
+  ✔ solveFindIt (3373.683111ms)
+  ▶ solveFixIt
+    ✔ should update status and calculate accuracy/cheat score (8.027993ms)
+    ✔ should not calculate accuracy/cheat score if it is a restore (0.765924ms)
+  ✔ solveFixIt (9.08442ms)
+  ▶ sendNotification
+    ✔ should return early if challenge is not solved (0.778633ms)
+    ✔ should push notification to datacache and emit via socket.io (1.896226ms)
+    ✔ should handle missing fullChallenge (0.884383ms)
+    ✔ should respect showSolvedNotifications config (0.697881ms)
+    ✔ should handle codingChallengesEnabled set to "never" (0.260169ms)
+  ✔ sendNotification (5.192383ms)
+✔ challengeUtils (3605.199231ms)
+▶ chat
+  ▶ summarizeLlmError
+    ✔ should handle non-Error objects (2.276147ms)
+    ✔ should return reachable message for connection errors (0.755757ms)
+    ✔ should return status code if available (0.158835ms)
+    ✔ should return first line of message otherwise (0.963425ms)
+  ✔ summarizeLlmError (8.804334ms)
+  ▶ buildSystemPrompt
+    ✔ should include user name if provided (7.382945ms)
+    ✔ should not include user name if not provided (0.449796ms)
+  ✔ buildSystemPrompt (13.890591ms)
+  ▶ getUserId
+    ✔ should return undefined if no token is present (5.486927ms)
+    ✔ should return user ID from decoded token (39.237749ms)
+  ✔ getUserId (46.074313ms)
+  ▶ getUserNameFromToken
+    ✔ should return undefined if no user ID is found (1.008885ms)
+    ✔ should return username from database (28.207727ms)
+  ✔ getUserNameFromToken (40.85068ms)
+✔ chat (114.278087ms)
+▶ vulnCodeSnippet
+  ✔ should assert single correctly selected vuln line as correct (10.101596ms)
+  ✔ should assert multiple correctly selected vuln lines as correct in any order (0.322253ms)
+  ✔ should ignore selected neutral lines during correct assertion (0.125043ms)
+  ✔ should assert missing vuln lines as wrong (0.231878ms)
+  ✔ should assert additionally selected lines as wrong (0.110126ms)
+  ✔ should assert lack of selected lines as wrong (0.07675ms)
+  ✔ should assert empty edge case as correct (0.099126ms)
+✔ vulnCodeSnippet (17.230247ms)
+▶ codingChallengeFixes
+  ✔ should have a correct fix for each coding challenge (18.500759ms)
+  ✔ should have a total of three or more fix options for each coding challenge (0.691799ms)
+  ✔ should have an info YAML file for each coding challenge (0.420462ms)
+✔ codingChallengeFixes (1400.261411ms)
+▶ codingChallenges
+  ✔ should find files with code challenges in the project structure (809.740624ms)
+  ✔ should log warning and continue if a path does not exist (34.569662ms)
+  ✔ should successfully retrieve coding challenges map (827.923547ms)
+  ✔ BrokenBoundary error should have correct properties (0.990509ms)
+  ✔ should throw BrokenBoundary error if snippet boundaries are broken (6.030599ms)
+✔ codingChallenges (1686.286383ms)
+▶ configValidation
+  ▶ checkUnambiguousMandatorySpecialProducts
+    ✔ should accept a valid config (1.341471ms)
+    ✔ should fail if multiple products are configured for the same challenge (2.889111ms)
+    ✔ should fail if a required challenge product is missing (1.199303ms)
+  ✔ checkUnambiguousMandatorySpecialProducts (6.880357ms)
+  ▶ checkNecessaryExtraKeysOnSpecialProducts
+    ✔ should accept a valid config (0.452505ms)
+    ✔ should fail if product has no exifForBlueprintChallenge (0.401671ms)
+  ✔ checkNecessaryExtraKeysOnSpecialProducts (2.454065ms)
+  ▶ checkUniqueSpecialOnProducts
+    ✔ should accept a valid config (1.10101ms)
+    ✔ should fail if a product is configured for multiple challenges (1.950143ms)
+  ✔ checkUniqueSpecialOnProducts (6.029724ms)
+  ▶ checkMinimumRequiredNumberOfProducts
+    ✔ should accept a valid config (3.849328ms)
+    ✔ should fail if less than 4 products are configured (1.65714ms)
+  ✔ checkMinimumRequiredNumberOfProducts (7.021734ms)
+  ▶ checkUnambiguousMandatorySpecialMemories
+    ✔ should accept a valid config (1.785851ms)
+    ✔ should fail if multiple memories are configured for the same challenge (0.295169ms)
+    ✔ should fail if a required challenge memory is missing (0.760799ms)
+    ✔ should fail if memories have mixed up the required challenge keys (1.989311ms)
+  ✔ checkUnambiguousMandatorySpecialMemories (5.176049ms)
+▶ continueCode
+  ✔ should be empty when no challenges are solved (93.797893ms)
+  ✔ should be hashid value of IDs of solved challenges (5.122799ms)
+✔ continueCode (103.567361ms)
+▶ countryMapping
+  ✔ should return configured country mappings (12.622287ms)
+  ✔ should return server error when configuration has no country mappings (2.398815ms)
+  ✔ should return server error for active configuration from config/test.yml (6.640397ms)
+✔ countryMapping (32.264557ms)
+▶ currentUser
+  ✔ should return neither ID nor email if no cookie was present in the request headers (4.108039ms)
+  ✔ should return ID and email of user belonging to cookie from the request (8.87046ms)
+✔ currentUser (15.864359ms)
+▶ customizeApplication
+  ✔ should not return a filename when a custom file download fails (6.81819ms)
+✔ customizeApplication (17.667377ms)
+▶ dataExport
+  ✔ should call next with error if user is not authenticated (3.390408ms)
+  ✔ should call next with error if MemoryModel.findAll fails (1.645557ms)
+  ✔ should call next with error if ordersCollection.find fails (2.136145ms)
+  ✔ should call next with error if reviewsCollection.find fails (0.49688ms)
+✔ dataExport (15.156019ms)
+▶ easterEgg
+  ✔ should serve /frontend/dist/frontend/assets/private/threejs-demo.html (23.823185ms)
+  ✔ should solve "easterEggLevelTwoChallenge" (9.05967ms)
+✔ easterEgg (48.730089ms)
+▶ fileServer
+  ✔ should serve PDF files from folder /ftp (32.376266ms)
+  ✔ should serve Markdown files from folder /ftp (0.673506ms)
+  ✔ should serve incident-support.kdbx files from folder /ftp (0.262669ms)
+  ✔ should raise error for slashes in filename (10.314598ms)
+  ✔ should raise error for disallowed file type (1.940227ms)
+  ✔ should solve "directoryListingChallenge" when requesting acquisitions.md (20.182609ms)
+  ✔ should solve "easterEggLevelOneChallenge" when requesting eastere.gg with Poison Null Byte attack (7.374528ms)
+  ✔ should solve "forgottenDevBackupChallenge" when requesting package.json.bak with Poison Null Byte attack (10.350057ms)
+  ✔ should solve "forgottenBackupChallenge" when requesting coupons_2013.md.bak with Poison Null Byte attack (8.409164ms)
+  ✔ should solve "misplacedSignatureFileChallenge" when requesting suspicious_errors.yml with Poison Null Byte attack (0.794591ms)
+✔ fileServer (109.680752ms)
+▶ fileUpload
+  ▶ should not solve "uploadSizeChallenge" when file size is
+    ✔ 0 bytes (2.552691ms)
+    ✔ 1 bytes (0.355795ms)
+    ✔ 100 bytes (0.146252ms)
+    ✔ 1000 bytes (0.323836ms)
+    ✔ 10000 bytes (8.93796ms)
+    ✔ 99999 bytes (1.352929ms)
+    ✔ 100000 bytes (0.250961ms)
+  ✔ should not solve "uploadSizeChallenge" when file size is (16.717075ms)
+  ✔ should solve "uploadSizeChallenge" when file size exceeds 100000 bytes (2.129395ms)
+  ✔ should solve "uploadTypeChallenge" when file type is not PDF (2.369522ms)
+  ✔ should not solve "uploadTypeChallenge" when file type is PDF (2.811985ms)
+✔ fileUpload (46.804612ms)
+▶ insecurity
+  ▶ cutOffPoisonNullByte
+    ✔ returns string unchanged if it contains no null byte (4.731795ms)
+    ✔ returns string up to null byte (0.280586ms)
+  ✔ cutOffPoisonNullByte (10.385432ms)
+  ▶ userEmailFrom
+    ✔ returns content of "x-user-email" header if present (0.281628ms)
+    ✔ returns undefined if header "x-user-email" is not present (0.202377ms)
+  ✔ userEmailFrom (0.920926ms)
+  ▶ generateCoupon
+    ✔ returns base85-encoded month, year and discount as coupon code (21.650289ms)
+    ✔ uses current month and year if not specified (0.841342ms)
+    ✔ does not encode day of month or time into coupon code (0.494588ms)
+  ✔ generateCoupon (23.91531ms)
+  ▶ discountFromCoupon
+    ✔ returns undefined when not passing in a coupon code (0.240753ms)
+    ✔ returns undefined for malformed coupon code (0.174668ms)
+    ✔ returns undefined for coupon code not according to expected pattern (33.268942ms)
+    ✔ returns undefined for expired coupon code (1.515223ms)
+    ✔ returns discount from valid coupon code (7.990493ms)
+  ✔ discountFromCoupon (51.675409ms)
+  ▶ authenticatedUsers
+    ✔ returns user by associated token (2.021311ms)
+    ✔ returns undefined if no token is passed in (0.101335ms)
+    ✔ returns token by associated user (0.482755ms)
+    ✔ returns user by associated token from request (5.484636ms)
+    ✔ returns undefined if no token is present in request (0.098043ms)
+  ✔ authenticatedUsers (12.262325ms)
+  ▶ sanitizeHtml
+    ✔ handles empty inputs by returning their string representation (0.812216ms)
+    ✔ returns input unchanged for plain text input (0.214002ms)
+    ✔ returns input unchanged for HTML input with only harmless text formatting (1.174303ms)
+    ✔ returns input unchanged for HTML input with only harmless links (11.984073ms)
+    ✔ removes all Javascript from HTML input (4.341208ms)
+    ✔ can be bypassed by exploiting lack of recursive sanitization (1.156552ms)
+  ✔ sanitizeHtml (20.359235ms)
+  ▶ sanitizeLegacy
+    ✔ returns empty string for undefined input (0.473546ms)
+    ✔ returns input unchanged for plain text input (0.083542ms)
+    ✔ removes all opening tags and subsequent character from HTML input (0.063209ms)
+    ✔ can be bypassed to allow working HTML payload to be returned (0.058501ms)
+  ✔ sanitizeLegacy (0.879467ms)
+  ▶ sanitizeSecure
+    ✔ handles empty inputs by returning their string representation (4.322541ms)
+    ✔ returns input unchanged for plain text input (0.717257ms)
+    ✔ returns input unchanged for HTML input with only harmless text formatting (7.644947ms)
+    ✔ returns input unchanged for HTML input with only harmless links (3.093946ms)
+    ✔ removes all Javascript from HTML input (1.048177ms)
+    ✔ cannot be bypassed by exploiting lack of recursive sanitization (0.598672ms)
+  ✔ sanitizeSecure (17.896878ms)
+  ▶ hash
+    ✔ returns MD5 hash for any input string (0.516963ms)
+  ✔ hash (0.693799ms)
+  ▶ hmac
+    ✔ returns SHA-256 HMAC with "pa4qacea4VK9t9nGv7yZtwmj" as salt any input string (5.343759ms)
+  ✔ hmac (6.14135ms)
+  ▶ deluxeToken
+    ✔ returns SHA-256 HMAC with private key as salt for email and deluxe role (2.917237ms)
+  ✔ deluxeToken (3.223614ms)
+  ▶ isCustomer
+    ✔ returns true if decoded token has customer role (40.833222ms)
+    ✔ returns false if decoded token has other role (5.406885ms)
+    ✔ returns false if no token is present (0.121334ms)
+  ✔ isCustomer (46.588194ms)
+  ▶ isDeluxe
+    ✔ returns true if decoded token has deluxe role and valid deluxe token (1.91931ms)
+    ✔ returns false if decoded token has deluxe role but invalid deluxe token (8.604373ms)
+    ✔ returns false if decoded token has other role (3.377741ms)
+  ✔ isDeluxe (14.201844ms)
+  ▶ isRedirectAllowed
+    ✔ returns true for allowed URLs (0.338962ms)
+    ✔ returns true for URLs containing allowed URLs (0.079001ms)
+    ✔ returns false for disallowed URLs (0.058376ms)
+  ✔ isRedirectAllowed (2.450148ms)
+  ▶ sanitizeFilename
+    ✔ returns sanitized filename (1.379888ms)
+  ✔ sanitizeFilename (1.475764ms)
+  ▶ authenticatedUsers.updateFrom
+    ✔ updates user in token map (0.257503ms)
+  ✔ authenticatedUsers.updateFrom (0.321836ms)
+  ▶ middlewares
+    ✔ isAccounting should allow next() for accounting role (4.717504ms)
+    ✔ isAccounting should return 403 for other roles (1.019301ms)
+    ✔ appendUserId should append user id to req.body (0.254128ms)
+    ✔ appendUserId should return 401 if token is invalid or missing (0.383837ms)
+    ✔ updateAuthenticatedUsers should call next() (0.272169ms)
+    ✔ isAuthorized returns a middleware (0.157418ms)
+    ✔ denyAll returns a middleware (0.405462ms)
+  ✔ middlewares (7.504655ms)
+✔ insecurity (234.616316ms)
+▶ isDocker
+  ✔ should return false if no docker markers are present (44.721051ms)
+  ✔ should return true if /.dockerenv exists (39.672002ms)
+  ✔ should return true if /proc/self/cgroup contains "docker" (8.123244ms)
+  ✔ should return true if /proc/self/mountinfo contains "/docker/containers/" (19.006264ms)
+✔ isDocker (138.422692ms)
+▶ keyServer
+  ✔ should serve requested file from folder /encryptionkeys (18.96093ms)
+  ✔ should raise error for slashes in filename (2.80061ms)
+✔ keyServer (39.718503ms)
+▶ noUpdate
+  ✔ should throw an error when trying to update a non-updatable key (18.29059ms)
+  ✔ should not throw when the non-updatable key is not changed (1.666474ms)
+  ✔ should not throw when isNewRecord is true (0.635839ms)
+  ✔ should not throw when validate option is false (0.34192ms)
+  ✔ should not throw when there are no changed keys (0.388087ms)
+  ✔ should not throw when previous value is null or undefined (0.235586ms)
+✔ noUpdate (51.498073ms)
+▶ order
+  ✔ should call next with error if basket does not exist (13.934508ms)
+  ✔ should call next with error if QuantityModel.findOne fails (672.220148ms)
+  ✔ should call next with error if QuantityModel.update fails (30.6825ms)
+  ✔ should call next with error if WalletModel.decrement fails (53.859762ms)
+  ✔ should call next with error if WalletModel.increment fails (19.88619ms)
+  ✔ should call next with error if DeliveryModel.findOne fails (18.907388ms)
+  ✔ should call next with error if ordersCollection.insert fails (31.889554ms)
+  ✔ should call next with error if BasketItemModel.destroy fails (171.718468ms)
+  ✔ should handle base64 coupon data in calculateApplicableDiscount (109.854712ms)
+  ✔ should call next with error if wallet balance is insufficient (33.326859ms)
+✔ order (1164.649293ms)
+▶ preconditionValidation
+  ▶ checkIfRunningOnSupportedNodeVersion
+    ✔ should define the supported semver range as 22 - 26 (112.723948ms)
+    ✔ should accept a supported version (5.044298ms)
+    ✔ should fail for an unsupported version (0.895259ms)
+  ✔ checkIfRunningOnSupportedNodeVersion (138.522069ms)
+  ▶ checkIfPortIsAvailable
+    ✔ should resolve when port 3000 is closed (180.511176ms)
+    ▶ open a server before running the test
+      ✔ should reject when port 3000 is open (37.512816ms)
+    ✔ open a server before running the test (89.450435ms)
+  ✔ checkIfPortIsAvailable (272.19934ms)
+  ▶ checkIfEnvironmentVariableExists
+    ✔ should return true if environment variable is present (0.611506ms)
+    ✔ should return false if environment variable is not present (0.235418ms)
+    ✔ should return false if a non-existing environment variable is checked (0.135418ms)
+  ✔ checkIfEnvironmentVariableExists (1.405388ms)
+  ▶ isOllamaUrl
+    ✔ should detect URL with Ollama default port 11434 (7.081692ms)
+    ✔ should detect URL with ollama hostname (1.135469ms)
+    ✔ should detect URL with /ollama path prefix (0.250585ms)
+    ✔ should not flag non-Ollama URLs (0.124918ms)
+    ✔ should handle invalid URLs gracefully (0.330337ms)
+  ✔ isOllamaUrl (16.205237ms)
+  ▶ checkIfOllamaModelAvailable
+    ✔ should succeed when model is listed in Ollama response (8.304162ms)
+    ✔ should warn when configured model tag does not match pulled model tag (8.331829ms)
+    ✔ should warn when model is not in the available list (0.649881ms)
+    ✔ should handle empty model list (1.17397ms)
+    ✔ should handle non-ok response gracefully (0.869884ms)
+    ✔ should handle fetch error gracefully (0.33242ms)
+  ✔ checkIfOllamaModelAvailable (20.129025ms)
+  ▶ checkIfDomainReachable
+    ✔ should return true if domain is reachable (2.988653ms)
+    ✔ should return false and log warnings if domain is not reachable (0.771924ms)
+  ✔ checkIfDomainReachable (3.912496ms)
+✔ preconditionValidation (473.158754ms)
+▶ premiumReward
+  ✔ should serve /frontend/dist/frontend/assets/private/JuiceShop_Wallpaper_1920x1080_VR.jpg (17.183205ms)
+  ✔ should solve "premiumPaywallChallenge" (1.735974ms)
+✔ premiumReward (43.966377ms)
+▶ redirect
+  ▶ should be performed for all allowlisted URLs
+    ✔ https://github.com/juice-shop/juice-shop (44.223754ms)
+    ✔ https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm (0.528046ms)
+    ✔ https://explorer.dash.org/address/Xr556RzuwX6hg5EGpkybbv5RanJoZN17kW (2.760943ms)
+    ✔ https://etherscan.io/address/0x0f933ab9fcaaa782d0279c300d73750e1311eae6 (1.154303ms)
+    ✔ http://shop.spreadshirt.com/juiceshop (10.986272ms)
+    ✔ http://shop.spreadshirt.de/juiceshop (2.752318ms)
+    ✔ https://www.stickeryou.com/products/owasp-juice-shop/794 (0.24446ms)
+    ✔ http://leanpub.com/juice-shop (8.639124ms)
+  ✔ should be performed for all allowlisted URLs (85.698732ms)
+  ✔ should raise error for URL not on allowlist (0.478213ms)
+  ✔ redirecting to https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm should solve the "redirectCryptoCurrencyChallenge" (1.75735ms)
+  ✔ redirecting to https://explorer.dash.org/address/Xr556RzuwX6hg5EGpkybbv5RanJoZN17kW should solve the "redirectCryptoCurrencyChallenge" (0.493588ms)
+  ✔ redirecting to https://etherscan.io/address/0x0f933ab9fcaaa782d0279c300d73750e1311eae6 should solve the "redirectCryptoCurrencyChallenge" (0.258419ms)
+  ✔ tricking the allowlist should solve "redirectChallenge" (0.704673ms)
+✔ redirect (100.239663ms)
+▶ rsnUtil
+  ▶ filterString
+    ✔ should remove carriage return characters (13.914716ms)
+    ✔ should leave unix line endings intact (0.533755ms)
+    ✔ should handle empty string (0.289919ms)
+    ✔ should handle string with only carriage returns (0.285128ms)
+  ✔ filterString (24.098354ms)
+  ▶ findChangedFiles
+    ✔ should return empty array when no changes (9.847468ms)
+    ✔ should detect changed added lines (0.413338ms)
+    ✔ should detect changed removed lines (0.141918ms)
+    ✔ should detect new files not in cache (7.316403ms)
+    ✔ should detect length changes in added lines (9.25663ms)
+    ✔ should detect length changes in removed lines (1.210636ms)
+    ✔ should return multiple changed files (2.191229ms)
+    ✔ should compare correctly regardless of array order (0.501713ms)
+  ✔ findChangedFiles (40.647762ms)
+  ▶ getFixExplanation
+    ✔ should return explanation for standard filename (7.77724ms)
+    ✔ should return explanation for correct fix filename (0.751882ms)
+    ✔ should return null when fix id not found in info (0.249086ms)
+    ✔ should return null when info is null (0.19096ms)
+    ✔ should return null when filename has no id pattern (0.256877ms)
+  ✔ getFixExplanation (9.952595ms)
+  ▶ loadChallengeInfo
+    ✔ should return null when info file does not exist (14.610598ms)
+    ✔ should parse and return challenge info from yml file (18.842262ms)
+  ✔ loadChallengeInfo (33.845114ms)
+✔ rsnUtil (129.031145ms)
+▶ saveLoginIp
+  ✔ should return 401 if user is not authenticated (9.776593ms)
+  ✔ should use the first element if true-client-ip header is an array (21.130535ms)
+  ✔ should call next with error if update fails (12.495953ms)
+✔ saveLoginIp (62.226176ms)
+▶ checkSystemPromptSimilarity
+  ✔ returns true for verbatim system prompt (score ~1.0) (6.22956ms)
+  ✔ returns true for near-verbatim submission with minor rewording (score > 0.25) (3.419408ms)
+  ✔ returns false for verbatim confidential section only (score ~0.22, below 0.25 threshold) (0.755257ms)
+  ✔ returns true for German translation containing same technical terms (score > 0.25) (1.343596ms)
+  ✔ returns true for a scrambled version of 100% of the prompt (score > 0.5) (0.673882ms)
+  ✔ returns false for submission without courtesy discount mention (score ~0.06) (0.305752ms)
+  ✔ returns false for submission with wrong discount percentage (score ~0.07) (0.256919ms)
+  ✔ returns false for keyword stuffing without coherent context (score ~0.13) (0.300836ms)
+  ✔ returns false for completely unrelated text (score ~0.03) (0.349504ms)
+  ✔ returns false for empty string (score 0) (10.176888ms)
+  ✔ treats comparison as case-insensitive (UPPER CASE equals lowercase) (4.946963ms)
+  ✔ respects a custom threshold when provided (2.069769ms)
+  ✔ returns false for null message (3.806995ms)
+  ✔ returns false for undefined message (0.400462ms)
+  ✔ returns false for whitespace only (0.130293ms)
+  ✔ returns false at threshold boundary (random text score << 0.15) (0.221627ms)
+  ✔ handles very long submissions (prompt repeated 3x) (2.152354ms)
+✔ checkSystemPromptSimilarity (48.55692ms)
+✔ returns false when submitting a very long random string (1.167636ms)
+▶ similarity scoring precision
+  ✔ scores exactly 1.0 for identical strings (0.810966ms)
+  ✔ scores >= 0.6 when submitting ~60% of system prompt (0.354545ms)
+  ✔ scores >= 0.8 when submitting ~80% of system prompt (0.362504ms)
+  ✔ scores >= 0.9 when submitting ~90% of system prompt (0.595714ms)
+  ✔ scores < 0.20 when submitting only 10% of system prompt (0.720216ms)
+✔ similarity scoring precision (16.62745ms)
+▶ terraformCustomization
+  ✔ should customize Terraform resource names for a custom application name (7.995242ms)
+  ✔ should leave Terraform content unchanged for the default application name (0.486338ms)
+✔ terraformCustomization (19.83323ms)
+▶ utils
+  ▶ toSimpleIpAddress
+    ✔ returns ipv6 address unchanged (8.08516ms)
+    ✔ returns ipv4 address fully specified as ipv6 unchanged (4.148456ms)
+    ✔ returns ipv6 loopback address as ipv4 address (0.292003ms)
+    ✔ returns ipv4-mapped address as ipv4 address (0.249711ms)
+  ✔ toSimpleIpAddress (20.173108ms)
+  ▶ queryResultToJson
+    ✔ returns object with status success and passed data by default (1.917934ms)
+    ✔ returns object with passed status and passed data (0.120126ms)
+  ✔ queryResultToJson (2.779651ms)
+  ▶ extractFilename
+    ✔ returns standalone filename unchanged (0.249502ms)
+    ✔ returns filename from http:// URL (0.087293ms)
+    ✔ ignores query part of http:// URL (0.077209ms)
+    ✔ also works for file:// URLs (0.158585ms)
+  ✔ extractFilename (0.834674ms)
+  ▶ downloadToFile
+    ✔ uses the HTTPS proxy from the environment (19.588437ms)
+  ✔ downloadToFile (21.148076ms)
+  ▶ matchesSystemIniFile
+    ✔ fails on plain input string (1.361221ms)
+    ✔ passes on Windows 10 system.ini file content (1.888935ms)
+  ✔ matchesSystemIniFile (3.647993ms)
+  ▶ matchesEtcPasswdFile
+    ✔ fails on plain input string (0.599465ms)
+    ✔ passes on Arch Linux passwd file content (0.159085ms)
+  ✔ matchesEtcPasswdFile (0.970884ms)
+  ▶ getChallengeEnablementStatus
+    ✔ challenges without disabledEnv are enabled with safetyMode set to enabled (0.26142ms)
+    ✔ challenges without disabledEnv are enabled with safetyMode set to disabled (0.054708ms)
+    ✔ challenges without disabledEnv are enabled with safetyMode set to auto (0.039501ms)
+    ✔ safetyMode: 'enabled': challenge with disabledOnEnv Docker should be marked as disabled (0.113417ms)
+    ✔ safetyMode: 'auto': challenge with disabledOnEnv Docker should be marked as disabled (0.104042ms)
+    ✔ safetyMode: 'disabled': challenge with disabledOnEnv Docker should be marked as enabled (0.205502ms)
+    ✔ safetyMode: 'enabled': challenge with disabledOnEnv Heroku should be marked as disabled (0.392087ms)
+    ✔ safetyMode: 'auto': challenge with disabledOnEnv Heroku should be marked as disabled (0.062292ms)
+    ✔ safetyMode: 'disabled': challenge with disabledOnEnv Heroku should be marked as enabled (0.049126ms)
+    ✔ safetyMode: 'enabled': challenge with disabledOnEnv Windows should be marked as disabled (0.045875ms)
+    ✔ safetyMode: 'auto': challenge with disabledOnEnv Windows should be marked as disabled (0.038542ms)
+    ✔ safetyMode: 'disabled': challenge with disabledOnEnv Windows should be marked as enabled (0.573714ms)
+  ✔ getChallengeEnablementStatus (2.270105ms)
+  ▶ toISO8601
+    ✔ converts date to ISO 8601 representation (3.728285ms)
+    ✔ prepends single-digit months with a zero (0.09025ms)
+    ✔ prepends single-digit days with a zero (0.072001ms)
+  ✔ toISO8601 (4.010455ms)
+  ▶ parseJsonCustom
+    ✔ parses a simple JSON object (7.035358ms)
+    ✔ parses a nested JSON object (2.06952ms)
+  ✔ parseJsonCustom (9.371714ms)
+  ▶ containsOrEscaped
+    ✔ returns true if string contains element (0.424545ms)
+▶ verify
+  ▶ "forgedFeedbackChallenge"
+    ✔ is not solved when an authenticated user passes his own ID when writing feedback (10.863229ms)
+    ✔ is not solved when an authenticated user passes no ID when writing feedback (0.786132ms)
+    ✔ is solved when an authenticated user passes someone elses ID when writing feedback (2.119687ms)
+    ✔ is solved when an unauthenticated user passes someones ID when writing feedback (2.700567ms)
+  ✔ "forgedFeedbackChallenge" (19.065556ms)
+  ▶ accessControlChallenges
+    ✔ "scoreBoardChallenge" is solved when the 1px.png transpixel is requested (1.774059ms)
+    ✔ "adminSectionChallenge" is solved when the 19px.png transpixel is requested (0.33342ms)
+    ✔ "tokenSaleChallenge" is solved when the 56px.png transpixel is requested (0.15471ms)
+    ✔ "extraLanguageChallenge" is solved when the Klingon translation file is requested (0.153293ms)
+    ✔ "retrieveBlueprintChallenge" is solved when the blueprint file is requested (0.196877ms)
+    ✔ "missingEncodingChallenge" is solved when the crazy cat photo is requested (0.249294ms)
+    ✔ "accessLogDisclosureChallenge" is solved when any server access log file is requested (0.244044ms)
+    ✔ "misplacedIacFiles" is solved when a Terraform .tf file under /infrastructure is requested (0.177294ms)
+    ✔ "misplacedIacFiles" is solved when a Dockerfile under /infrastructure is requested (3.933204ms)
+    ✔ "misplacedIacFiles" is solved when a docker-compose.yml under /infrastructure is requested (0.611131ms)
+  ✔ accessControlChallenges (9.996012ms)
+  ▶ "errorHandlingChallenge"
+    ✔ is solved when an error occurs on a response with OK 200 status code (0.643256ms)
+    ▶ is solved when an error occurs on a response with error
+      ✔ 402 status code (0.636714ms)
+      ✔ 403 status code (0.197877ms)
+      ✔ 404 status code (0.097668ms)
+      ✔ 500 status code (0.122251ms)
+    ✔ is solved when an error occurs on a response with error (1.735225ms)
+    ✔ is not solved when no error occurs on a response with OK 200 status code (1.458014ms)
+    ▶ is not solved when no error occurs on a response with error
+      ✔ 401 status code (0.471838ms)
+      ✔ 402 status code (0.090875ms)
+      ✔ 404 status code (1.403055ms)
+      ✔ 500 status code (0.099835ms)
+    ✔ is not solved when no error occurs on a response with error (2.25323ms)
+    ✔ should pass occurred error on to next route (0.694632ms)
+  ✔ "errorHandlingChallenge" (8.016368ms)
+  ▶ databaseRelatedChallenges
+    ▶ "changeProductChallenge"
+      ✔ is solved when the link in the O-Saft product goes to https://owasp.slack.com (0.596547ms)
+      ✔ is not solved when the link in the O-Saft product is changed to an arbitrary URL (0.204294ms)
+      ✔ is not solved when the link in the O-Saft product remained unchanged (0.137959ms)
+    ✔ "changeProductChallenge" (1.042468ms)
+  ✔ databaseRelatedChallenges (1.225678ms)
+  ▶ jwtChallenges
+    ✔ "jwtUnsignedChallenge" is solved when forged unsigned token has email jwtn3d@juice-sh.op in the payload (8.372704ms)
+    ✔ "jwtUnsignedChallenge" is solved when forged unsigned token has string "jwtn3d@" in the payload (1.526097ms)
+    ✔ "jwtUnsignedChallenge" is not solved via regularly signed token even with email jwtn3d@juice-sh.op in the payload (17.364457ms)
+    ✔ "jwtForgedChallenge" is solved when forged token HMAC-signed with public RSA-key has email rsa_lord@juice-sh.op in the payload (4.723045ms)
+    ✔ "jwtForgedChallenge" is solved when forged token HMAC-signed with public RSA-key has string "rsa_lord@" in the payload (0.604173ms)
+    ✔ "jwtForgedChallenge" is not solved when token regularly signed with private RSA-key has email rsa_lord@juice-sh.op in the payload (6.50277ms)
+    ✔ "iacLeakedKeyChallenge" is solved when RS256-signed token has email cloud-admin@juice-sh.op in the payload (3.447116ms)
+    ✔ "iacLeakedKeyChallenge" is solved when RS256-signed token has string "cloud-admin@" in the payload (8.096369ms)
+    ✔ "iacLeakedKeyChallenge" is not solved when token has wrong email (7.742782ms)
+  ✔ jwtChallenges (59.5384ms)
+  ▶ checkSystemPromptSimilarity
+    ✔ should return true if similarity is above threshold (0.597006ms)
+    ✔ should return false if similarity is below threshold (0.16771ms)
+  ✔ checkSystemPromptSimilarity (0.997759ms)
+✔ verify (104.753955ms)
+▶ webhook
+  ▶ notify
+    ✔ ignores errors where no webhook URL is provided via environment variable (1.723433ms)
+    ✔ fails when supplied webhook is not a valid URL (60.637911ms)
+    ✔ submits POST with payload to existing URL (184.732592ms)
+  ✔ notify (250.391092ms)
+✔ webhook (252.772823ms)
+▶ xml
+  ✔ should parse a simple XML string (709.383544ms)
+  ✔ should expand internal entities (15.093185ms)
+  ✔ should throw error on malformed XML (29.520448ms)
+  ✔ should timeout on entity expansion bomb (17.720377ms)
+✔ xml (775.229212ms)
+ℹ tests 380
+ℹ suites 117
+ℹ pass 378
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 36629.506431

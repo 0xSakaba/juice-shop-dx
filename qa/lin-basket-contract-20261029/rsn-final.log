@@ -1,0 +1,7 @@
+
+> juice-shop@20.3.0 rsn
+> tsx rsn/rsn.ts
+
+WARNING: NODE_ENV value of 'production' did not match any deployment config file names.
+WARNING: See https://github.com/node-config/node-config/wiki/Strict-Mode
+All codefix files match the locked state. No action required.

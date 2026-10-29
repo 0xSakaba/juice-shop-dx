@@ -1,0 +1,75 @@
+(node:391617) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+▶ /rest/basket/:id
+  ✔ GET existing basket by id is not allowed via public API (24.271439ms)
+  ✔ GET empty basket when requesting non-existing basket id (62.631721ms)
+  ✔ GET existing basket with contained products by id (119.757931ms)
+  ✔ GET own basket as a regular user (69.288743ms)
+  ✔ GET basket rejects forged JWTs without an authenticated user (22.342213ms)
+  ✖ GET basket rejects a forged JWT claiming the owner identity (53.106547ms)
+  ✔ GET basket rejects a signed token missing the user identity (49.8986ms)
+  ✔ GET populated basket of another user is forbidden for a regular user (51.799743ms)
+✖ /rest/basket/:id (1595.424644ms)
+▶ /api/Baskets
+  ✔ POST new basket is not part of API (27.33651ms)
+  ✔ GET all baskets is not part of API (20.134608ms)
+✔ /api/Baskets (48.823132ms)
+▶ /api/Baskets/:id
+  ✔ GET existing basket is not part of API (15.859651ms)
+  ✔ PUT update existing basket is not part of API (14.694764ms)
+  ✔ DELETE existing basket is not part of API (12.803497ms)
+✔ /api/Baskets/:id (43.94321ms)
+▶ /rest/basket/:id
+  ✔ GET existing basket of another user is forbidden (158.019004ms)
+✔ /rest/basket/:id (158.383215ms)
+▶ /rest/basket/:id/checkout
+  ✔ POST placing an order for a basket is not allowed via public API (5.113132ms)
+  ✔ POST placing an order for an existing basket returns orderId (237.517053ms)
+  ✔ POST placing an order for a non-existing basket fails (34.92379ms)
+  ✔ POST placing an order for a basket with a negative total cost is possible (67.916313ms)
+  ✔ POST placing an order for a basket with 99% discount is possible (104.181867ms)
+  ✔ POST placing an order applies campaign discount and delivery method for deluxe user (102.379891ms)
+  ✔ POST placing an order charges the wallet when the balance is sufficient (83.492211ms)
+  ✔ POST placing an order returns an error when the wallet balance is insufficient (80.639392ms)
+  ▶ error cases
+    ✔ should return 500 if QuantityModel.findOne fails during checkout (129.516566ms)
+    ✔ should return 500 if WalletModel.findOne fails during checkout (89.215891ms)
+    ✔ should return 500 if ordersCollection.insert fails during checkout (89.679853ms)
+    ✔ should return 500 if basket item cleanup fails after checkout (107.758942ms)
+    ✔ should return 500 if wallet bonus increment fails during checkout (92.918801ms)
+  ✔ error cases (510.148064ms)
+✔ /rest/basket/:id/checkout (1227.413391ms)
+▶ /rest/basket/:id/coupon/:coupon
+  ✔ PUT apply valid coupon to existing basket (23.982937ms)
+  ✔ PUT apply invalid coupon is not accepted (33.157483ms)
+  ✔ PUT apply outdated coupon is not accepted (42.123193ms)
+  ✔ PUT apply valid coupon to non-existing basket throws error (67.633561ms)
+✔ /rest/basket/:id/coupon/:coupon (168.021016ms)
+ℹ tests 31
+ℹ suites 7
+ℹ pass 30
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6225.515171
+
+✖ failing tests:
+
+test at test/api/basket.test.ts:2:4623
+✖ GET basket rejects a forged JWT claiming the owner identity (53.106547ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> ($WORKSPACE/basket-repair/test/api/basket.test.ts:98:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

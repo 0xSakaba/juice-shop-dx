@@ -1,0 +1,44 @@
+
+> juice-shop@20.3.0 build:frontend
+> cd frontend && npm run build
+
+
+> frontend@20.3.0 build
+> ng build --configuration production && npm run sbom
+
+❯ Building...
+✔ Building...
+Initial chunk files                         | Names                           |  Raw size | Estimated transfer size
+main.js                                     | main                            |   1.20 MB |               226.91 kB
+chunk-DGDJeGJK.js                           | -                               | 368.75 kB |                92.94 kB
+chunk-D1iP17li.js                           | -                               | 190.01 kB |                44.51 kB
+styles.css                                  | styles                          | 157.53 kB |                17.21 kB
+polyfills.js                                | polyfills                       |  34.59 kB |                11.33 kB
+scripts.js                                  | scripts                         |  20.70 kB |                 6.09 kB
+chunk-CE5v8pBj.js                           | -                               |   2.46 kB |                 1.10 kB
+rolldown-runtime-kqx1xuJ_.js                | -                               | 262 bytes |               262 bytes
+
+                                            | Initial total                   |   1.97 MB |               400.36 kB
+
+Lazy chunk files                            | Names                           |  Raw size | Estimated transfer size
+chunk-CADFeQCx.js                           | -                               | 522.82 kB |               149.99 kB
+chunk-DLf-Pb_Q.js                           | -                               | 481.85 kB |               133.23 kB
+recycle.component-DZ1kTEZy.js               | recycle-component               | 100.25 kB |                19.36 kB
+about.component-5W4IZbmz.js                 | about-component                 |  90.75 kB |                19.33 kB
+coding-challenge-page.component-B4-LKbiG.js | coding-challenge-page-component |  45.27 kB |                13.48 kB
+hacking-instructor-1cdoXExF.js              | index                           |  36.68 kB |                 9.26 kB
+web3-sandbox.module-COccFCsY.js             | web3-sandbox-module             |  17.65 kB |                 5.59 kB
+faucet.module-DidtAJgw.js                   | faucet-module                   |  12.52 kB |                 3.90 kB
+confetti-DN5d5KdC.js                        | index                           |  11.23 kB |                 4.10 kB
+chunk-6hZgLGBt.js                           | -                               |   9.28 kB |               869 bytes
+wallet-web3.module-DJub80jo.js              | wallet-web3-module              |   7.50 kB |                 2.77 kB
+
+Application bundle generation complete. [75.093 seconds] - 2026-10-29T10:41:40.133Z
+
+Output location: $WORKSPACE/basket-repair/frontend/dist/frontend
+
+
+> frontend@20.3.0 sbom
+> cyclonedx-esbuild --output-reproducible --output-file dist/bom/bom.json dist/frontend/browser-stats.json
+
+LOG   | writing BOM to: dist/bom/bom.json
