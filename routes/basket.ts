@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+import jws from 'jws'
 import { type Request, type Response, type NextFunction } from 'express'
 import { ProductModel } from '../models/product'
 import { BasketModel } from '../models/basket'
@@ -15,8 +16,24 @@ import { challenges } from '../data/datacache'
 export function retrieveBasket () {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const token = utils.jwtFrom(req)
+      let verified = false
+      try {
+        verified = jws.decode(token)?.header.alg === 'RS256' && security.verify(token)
+      } catch {
+        verified = false
+      }
+      const user = security.authenticatedUsers.from(req)
+      if (!verified || !user?.data?.id) {
+        res.status(401).json({ error: 'Unauthorized' })
+        return
+      }
       const id = req.params.id
       const basket = await BasketModel.findOne({ where: { id }, include: [{ model: ProductModel, paranoid: false, as: 'Products' }] })
+      if (basket && basket.UserId !== user.data.id) {
+        res.status(403).json({ error: 'Forbidden' })
+        return
+      }
       /* jshint eqeqeq:false */
       challengeUtils.solveIf(challenges.basketAccessChallenge, () => {
         const user = security.authenticatedUsers.from(req)
