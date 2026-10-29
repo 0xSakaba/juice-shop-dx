@@ -15,8 +15,17 @@ import { challenges } from '../data/datacache'
 export function retrieveBasket () {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const user = security.authenticatedUsers.from(req)
+      if (!user?.data?.id) {
+        res.status(401).json({ error: 'Unauthorized' })
+        return
+      }
       const id = req.params.id
       const basket = await BasketModel.findOne({ where: { id }, include: [{ model: ProductModel, paranoid: false, as: 'Products' }] })
+      if (basket && basket.UserId !== user.data.id) {
+        res.status(403).json({ error: 'Forbidden' })
+        return
+      }
       /* jshint eqeqeq:false */
       challengeUtils.solveIf(challenges.basketAccessChallenge, () => {
         const user = security.authenticatedUsers.from(req)
