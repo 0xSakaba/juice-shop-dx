@@ -9,9 +9,10 @@ import request from 'supertest'
 import type { Express } from 'express'
 import config from 'config'
 import { createTestApp } from './helpers/setup'
-import { login } from './helpers/auth'
+import { login, register } from './helpers/auth'
 import { QuantityModel } from '../../models/quantity'
 import { WalletModel } from '../../models/wallet'
+import { BasketModel } from '../../models/basket'
 import { BasketItemModel } from '../../models/basketitem'
 import * as db from '../../data/mongodb'
 import * as security from '../../lib/insecurity'
@@ -54,22 +55,104 @@ void describe('/rest/basket/:id', () => {
   })
 
   void it('GET existing basket with contained products by id', async () => {
-    const res = await request(app).get('/rest/basket/1').set(authHeader)
+    const { token, bid } = await login(app, { email: 'admin@' + config.get<string>('application.domain'), password: 'admin123' })
+    const basket = await BasketModel.findByPk(1)
+    assert.equal(bid, 1)
+    assert.equal(basket?.UserId, security.authenticatedUsers.get(token)?.data.id)
+    const res = await request(app).get('/rest/basket/1').set({ Authorization: 'Bearer ' + token })
     assert.equal(res.status, 200)
     assert.ok(res.headers['content-type']?.includes('application/json'))
     assert.equal(res.body.data.id, 1)
     assert.equal(res.body.data.Products.length, 3)
   })
 
-  void it('GET basket should accept forged JWTs', async () => {
+  void it('GET own basket as a regular user', async () => {
+    const { token, bid } = await login(app, { email: 'jim@juice-sh.op', password: 'ncc-1701' })
+    const basket = await BasketModel.findByPk(bid)
+    assert.equal(bid, 2)
+    assert.equal(basket?.UserId, security.authenticatedUsers.get(token)?.data.id)
+    const res = await request(app).get('/rest/basket/' + bid).set({ Authorization: 'Bearer ' + token })
+    assert.equal(res.status, 200)
+    assert.equal(res.body.data.id, bid)
+    assert.equal(res.body.data.Products.length, 1)
+  })
+
+  void it('GET basket rejects forged JWTs without an authenticated user', async () => {
     const header = Buffer.from(JSON.stringify({ alg: 'none', typ: 'JWT' })).toString('base64url')
     const payload = Buffer.from(JSON.stringify({ data: { email: 'jim@juice-sh.op' }, iat: 1508639612, exp: 9999999999 })).toString('base64url')
     const unsignedToken = `${header}.${payload}.`
     const res = await request(app)
       .get('/rest/basket/1')
       .set({ Authorization: 'Bearer ' + unsignedToken, 'content-type': 'application/json' })
-    assert.equal(res.status, 200)
+    assert.equal(res.status, 401)
     assert.ok(res.headers['content-type']?.includes('application/json'))
+    assert.equal(res.body.data, undefined)
+  })
+
+  void it('GET basket rejects a forged JWT claiming the owner identity', async () => {
+    const header = Buffer.from(JSON.stringify({ alg: 'none', typ: 'JWT' })).toString('base64url')
+    const payload = Buffer.from(JSON.stringify({ data: { id: 1, email: 'admin@' + config.get<string>('application.domain') }, exp: 9999999999 })).toString('base64url')
+    const res = await request(app)
+      .get('/rest/basket/1')
+      .set({ Authorization: 'Bearer ' + header + '.' + payload + '.' })
+    assert.equal(res.status, 401)
+    assert.equal(res.body.data, undefined)
+    assert.equal(res.body.Products, undefined)
+  })
+
+  void it('GET basket rejects a signed token missing the user identity', async () => {
+    const token = security.authorize({ data: { email: 'jim@' + config.get<string>('application.domain') } })
+    const res = await request(app)
+      .get('/rest/basket/2')
+      .set({ Authorization: 'Bearer ' + token })
+    assert.equal(res.status, 401)
+    assert.equal(res.body.data, undefined)
+    assert.equal(res.body.Products, undefined)
+  })
+
+  void it('GET enforces ownership for two populated baskets with distinct user and basket IDs', async () => {
+    const actors: Array<{ token: string, bid: number, uid: number }> = []
+    for (const name of ['a', 'b']) {
+      const email = 'basket-owner-' + name + '@example.invalid'
+      const password = 'Basket-owner-control-' + name
+      const registration = await register(app, { email, password })
+      assert.equal(registration.status, 201)
+      const { token, bid } = await login(app, { email, password })
+      const uid = registration.body.data.id
+      assert.notEqual(uid, bid)
+      const basket = await BasketModel.findByPk(bid)
+      assert.equal(basket?.UserId, uid)
+      await BasketItemModel.create({ BasketId: bid, ProductId: 1, quantity: 2 })
+      actors.push({ token, bid, uid })
+    }
+    assert.notEqual(actors[0].uid, actors[1].uid)
+    assert.notEqual(actors[0].bid, actors[1].bid)
+    for (const actor of actors) {
+      const own = await request(app).get('/rest/basket/' + actor.bid).set({ Authorization: 'Bearer ' + actor.token })
+      assert.equal(own.status, 200)
+      assert.equal(own.body.data.id, actor.bid)
+      assert.equal(own.body.data.UserId, actor.uid)
+      assert.equal(own.body.data.Products.length, 1)
+      assert.equal(own.body.data.Products[0].BasketItem.quantity, 2)
+      const other = actors.find(target => target.uid !== actor.uid)!
+      const cross = await request(app).get('/rest/basket/' + other.bid).set({ Authorization: 'Bearer ' + actor.token })
+      assert.equal(cross.status, 403)
+      assert.deepEqual(cross.body, { error: 'Forbidden' })
+      for (const token of [undefined, 'not-a-jwt']) {
+        const req = request(app).get('/rest/basket/' + actor.bid)
+        if (token) req.set({ Authorization: 'Bearer ' + token })
+        const res = await req
+        assert.equal(res.status, 401)
+        assert.equal(res.body.data, undefined)
+      }
+    }
+  })
+
+  void it('GET populated basket of another user is forbidden for a regular user', async () => {
+    const res = await request(app).get('/rest/basket/1').set(authHeader)
+    assert.equal(res.status, 403)
+    assert.equal(res.body.data, undefined)
+    assert.equal(res.body.Products, undefined)
   })
 })
 
@@ -109,7 +192,7 @@ void describe('/api/Baskets/:id', () => {
 })
 
 void describe('/rest/basket/:id', () => {
-  void it('GET existing basket of another user', async () => {
+  void it('GET existing basket of another user is forbidden', async () => {
     const { token } = await login(app, {
       email: 'bjoern.kimminich@gmail.com',
       password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
@@ -117,9 +200,9 @@ void describe('/rest/basket/:id', () => {
     const res = await request(app)
       .get('/rest/basket/2')
       .set({ Authorization: 'Bearer ' + token })
-    assert.equal(res.status, 200)
+    assert.equal(res.status, 403)
     assert.ok(res.headers['content-type']?.includes('application/json'))
-    assert.equal(res.body.data.id, 2)
+    assert.equal(res.body.data, undefined)
   })
 })
 
