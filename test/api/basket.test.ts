@@ -111,7 +111,7 @@ void describe('/rest/basket/:id', () => {
   })
 
   void it('GET enforces ownership for two populated baskets with distinct user and basket IDs', async () => {
-    const actors = []
+    const actors: Array<{ token: string, bid: number, uid: number }> = []
     for (const name of ['a', 'b']) {
       const email = 'basket-owner-' + name + '@example.invalid'
       const password = 'Basket-owner-control-' + name
