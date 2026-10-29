@@ -1,0 +1,106 @@
+{
+  "candidate": "a81bc029b92209c2475cb144615efaf691900f40",
+  "baseline": "f189f521266f42c6bd05884468292000cee852ed",
+  "candidateTree": "dcb7f91135e092b140fefce335188a72ca85c98a",
+  "baseTrackedDiff": "",
+  "candidateTrackedDiff": "",
+  "changedFiles": [
+    "routes/basket.ts",
+    "test/api/basket.test.ts"
+  ],
+  "seedBlobs": [
+    {
+      "path": "data/datacreator.ts",
+      "base": "2b343f9c9e7702f2a27c22043d2e66d30ea29817",
+      "candidate": "2b343f9c9e7702f2a27c22043d2e66d30ea29817"
+    },
+    {
+      "path": "data/static/users.yml",
+      "base": "6d79e598e169ec12c085b2e02fb25b1647a2192f",
+      "candidate": "6d79e598e169ec12c085b2e02fb25b1647a2192f"
+    }
+  ],
+  "baseOriginalBasket": {
+    "tests": 27,
+    "pass": 27,
+    "fail": 0,
+    "skip": 0
+  },
+  "candidateBasket": {
+    "tests": 32,
+    "pass": 32,
+    "fail": 0,
+    "skip": 0
+  },
+  "normalApi": {
+    "pass": 537,
+    "fail": 13,
+    "cancelled": 0,
+    "skip": 6
+  },
+  "freshBaseFailedFiles": {
+    "pass": 99,
+    "fail": 13,
+    "cancelled": 0,
+    "skip": 1
+  },
+  "sameFailingTests": [
+    {
+      "file": "test/api/b2b-order.test.ts",
+      "test": "POST busy spinning regex attack does not raise an error"
+    },
+    {
+      "file": "test/api/b2b-order.test.ts",
+      "test": "POST endless loop exploit in \"orderLinesData\" will raise explicit error"
+    },
+    {
+      "file": "test/api/b2b-order.test.ts",
+      "test": "POST sandbox breakout attack in \"orderLinesData\" will raise error"
+    },
+    {
+      "file": "test/api/erasure-request.test.ts",
+      "test": "POST erasure request with existing file path as layout parameter returns content truncated"
+    },
+    {
+      "file": "test/api/feedback.test.ts",
+      "test": "POST fails to sanitize masked XSS-attack by not applying sanitization recursively"
+    },
+    {
+      "file": "test/api/file-upload.test.ts",
+      "test": "POST file type XML with Billion Laughs attack is caught by parser"
+    },
+    {
+      "file": "test/api/file-upload.test.ts",
+      "test": "POST zip file with password protection"
+    },
+    {
+      "file": "test/api/login.test.ts",
+      "test": "GET last login IP will be saved as remote IP when True-Client-IP is not present"
+    },
+    {
+      "file": "test/api/product.test.ts",
+      "test": "POST new product does not filter XSS attacks"
+    },
+    {
+      "file": "test/api/track-result.test.ts",
+      "test": "GET all orders by injecting into orderId"
+    },
+    {
+      "file": "test/api/user-profile.test.ts",
+      "test": "GET user profile renders evaluated SSTI payload for username containing valid expression"
+    },
+    {
+      "file": "test/api/user-profile.test.ts",
+      "test": "GET user profile still evaluates SSTI payload when #{} is NOT at the start of the username"
+    },
+    {
+      "file": "test/api/user.test.ts",
+      "test": "POST new user with XSS attack in email address"
+    }
+  ],
+  "baselineEnvironment": "Fresh separate f189 git worktree; same root node_modules and frontend/build assets via symlink; original tracked source and tests unchanged; tsx loads each checkout source. This is a local comparison, not independent QA or fixed Demo harness proof.",
+  "historicalRun": "25e1011d (preserved; not accessed)",
+  "historicalChecksHash": "17106f908206b6d74f76f034fbfdffec352ee7618802de3b0fa439f96f06fc4e (supplied; not independently read back)",
+  "fixedHarness": "Not supplied or executed",
+  "independentQA": "Required; not yet performed"
+}
