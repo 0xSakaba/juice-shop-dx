@@ -30,5 +30,6 @@ You can find our detailed contribution guidelines over here:
 
 ## I18N Contributions
 
-Learn all about our crowdsourced [translation project on Crowdin](https://crowdin.com/project/owasp-juice-shop)
-here: <https://pwning.owasp-juice.shop/companion-guide/latest/part3/translation.html>
+Learn all about our crowdsourced translation project on
+[Crowdin](https://crowdin.com/project/owasp-juice-shop) and in the
+[translation guide](https://pwning.owasp-juice.shop/companion-guide/latest/part3/translation.html).
