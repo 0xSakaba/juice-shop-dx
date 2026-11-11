@@ -197,6 +197,8 @@ We are always happy to get new contributors on board! Please check
 [contribute to our codebase](CONTRIBUTING.md#code-contributions) or the
 [translation into different languages](CONTRIBUTING.md#i18n-contributions)!
 
+To run the test suites locally, use `npm test` (frontend, server and API tests). Individual suites are available via `npm run test:frontend`, `npm run test:server` and `npm run test:api`, and end-to-end tests via `npm start` followed by `npm run test:e2e`.
+
 ## References
 
 Did you write a blog post, magazine article or do a podcast about or mentioning OWASP Juice Shop? Or maybe you held or
