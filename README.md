@@ -42,6 +42,7 @@ For a detailed introduction, full list of features and architecture overview ple
     - [Packaged Distributions](#packaged-distributions)
     - [Docker Container](#docker-container)
     - [Vagrant](#vagrant)
+- [Running the tests](#running-the-tests)
 - [Demo](#demo)
 - [Documentation](#documentation)
     - [Node.js version compatibility](#nodejs-version-compatibility)
@@ -118,6 +119,16 @@ For a detailed introduction, full list of features and architecture overview ple
    of the repository)
 3. Run `cd vagrant && vagrant up`
 4. Browse to [192.168.56.110](http://192.168.56.110)
+
+## Running the tests
+
+1. Install [node.js](#nodejs-version-compatibility) and clone the repository as described in [From Sources](#from-sources)
+2. Run `npm install` to install the server and frontend dependencies (this also builds the application)
+3. Run `npm test` to execute the frontend unit tests, server unit tests and API integration tests
+
+The suites can also be run individually with `npm run test:frontend`, `npm run test:server` and `npm run test:api`.
+For the end-to-end tests, start the application with `npm start` and then run `npm run test:e2e` in a second terminal.
+Cypress needs a browser and, on Linux, its [system dependencies](https://on.cypress.io/required-dependencies) such as Xvfb.
 
 ## Demo
 
