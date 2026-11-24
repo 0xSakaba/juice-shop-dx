@@ -39,6 +39,22 @@ void describe('/rest/products/search', () => {
     assert.equal(res.body.data.length, 1)
   })
 
+  void it('GET product search reports the number of matched products', async () => {
+    const res = await request(app)
+      .get('/rest/products/search?q=o-saft')
+    assert.equal(res.status, 200)
+    assert.equal(res.body.count, 1)
+    assert.equal(res.body.data.length, 1)
+  })
+
+  void it('GET product search with no matches reports a count of zero', async () => {
+    const res = await request(app)
+      .get('/rest/products/search?q=nomatcheswhatsoever')
+    assert.equal(res.status, 200)
+    assert.equal(res.body.count, 0)
+    assert.deepEqual(res.body.data, [])
+  })
+
   void it('GET product search fails with error message that exposes ins SQL Injection vulnerability', async () => {
     const res = await request(app)
       .get("/rest/products/search?q=';")
@@ -202,6 +218,13 @@ void describe('/rest/products/search', () => {
     assert.equal(searchRes.status, 200)
     assert.ok(searchRes.headers['content-type']?.includes('application/json'))
     assert.equal(searchRes.body.data.length, products.length)
+  })
+
+  void it('GET product search without search parameter reports all products in count', async () => {
+    const searchRes = await request(app)
+      .get('/rest/products/search')
+    assert.equal(searchRes.status, 200)
+    assert.equal(searchRes.body.count, searchRes.body.data.length)
   })
 
   void it('GET product search returns alternateImages as array with format and size descriptor', async () => {
