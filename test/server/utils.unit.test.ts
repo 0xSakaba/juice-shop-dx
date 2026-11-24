@@ -227,6 +227,10 @@ void describe('utils', () => {
     void it('prepends single-digit days with a zero', () => {
       assert.equal(utils.toISO8601(new Date(2025, 11, 1)), '2025-12-01')
     })
+
+    void it('formats leap days correctly', () => {
+      assert.equal(utils.toISO8601(new Date(2024, 1, 29)), '2024-02-29')
+    })
   })
 
   void describe('parseJsonCustom', () => {
