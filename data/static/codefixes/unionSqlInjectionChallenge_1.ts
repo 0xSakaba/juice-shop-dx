@@ -13,7 +13,7 @@ export function searchProducts () {
             products[i].alternateImages = JSON.parse(products[i].alternateImages)
           }
         }
-        res.json(utils.queryResultToJson(products))
+        res.json({ ...utils.queryResultToJson(products), count: products.length })
       }).catch((error: ErrorWithParent) => {
         next(error.parent)
       })
