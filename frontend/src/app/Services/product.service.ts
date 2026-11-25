@@ -18,7 +18,17 @@ export class ProductService {
   private readonly host = this.hostServer + '/api/Products'
 
   search (criteria: string) {
-    return this.http.get(`${this.hostServer}/rest/products/search?q=${criteria}`).pipe(map((response: any) => response.data), catchError((err) => { throw err }))
+    return this.http.get(`${this.hostServer}/rest/products/search?q=${criteria}`).pipe(map((response: any) => {
+      const products = response.data
+      if (products && typeof products === 'object') {
+        const count = typeof response.count === 'number' ? response.count : products.length
+        Object.defineProperty(products, 'count', { value: count, writable: true, configurable: true })
+        if (Array.isArray(products)) {
+          Object.defineProperty(products, 'data', { value: products, writable: true, configurable: true })
+        }
+      }
+      return products
+    }), catchError((err) => { throw err }))
   }
 
   find (params: any) {

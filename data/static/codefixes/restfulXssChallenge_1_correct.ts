@@ -2,8 +2,10 @@ ngAfterViewInit () {
     const products = this.productService.search('')
     const quantities = this.quantityService.getAll()
     forkJoin([quantities, products]).subscribe({
-      next: ([quantities, products]) => {
+      next: ([quantities, result]) => {
         const dataTable: ProductTableEntry[] = []
+        const products = this.getSearchProducts(result)
+        const count = this.getSearchResultCount(result, products)
         this.tableData = products
         for (const product of products) {
           dataTable.push({
@@ -31,7 +33,9 @@ ngAfterViewInit () {
         this.dataSource.paginator = this.paginator
         this.setupResponsivePageSize()
         this.gridDataSource = this.dataSource.connect()
-        this.resultsLength = this.dataSource.data.length
+        this.allProductsCount = count
+        this.searchResultCount = count
+        this.resultsLength = count
         this.filterTable()
         this.routerSubscription = this.router.events.subscribe(() => {
           this.filterTable()

@@ -51,11 +51,14 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
   public gridDataSource!: BehaviorSubject<ProductTableEntry[]>
   public searchValue?: SafeHtml
   public resultsLength = 0
+  public searchResultCount = 0
   public currentPageSize = 15
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator
   private routerSubscription?: Subscription
   private gridDataSourceSubscription?: Subscription
+  private searchResultCountSubscription?: Subscription
   private resizeObserver?: ResizeObserver
+  private allProductsCount = 0
   public emptyState = false
 
   // vuln-code-snippet start restfulXssChallenge
@@ -63,8 +66,10 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
     const products = this.productService.search('')
     const quantities = this.quantityService.getAll()
     forkJoin([quantities, products]).subscribe({
-      next: ([quantities, products]) => {
+      next: ([quantities, result]) => {
         const dataTable: ProductTableEntry[] = []
+        const products = this.getSearchProducts(result)
+        const count = this.getSearchResultCount(result, products)
         this.tableData = products
         this.trustProductDescription(products) // vuln-code-snippet neutral-line restfulXssChallenge
         for (const product of products) {
@@ -93,7 +98,9 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
         this.dataSource.paginator = this.paginator
         this.setupResponsivePageSize()
         this.gridDataSource = this.dataSource.connect()
-        this.resultsLength = this.dataSource.data.length
+        this.allProductsCount = count
+        this.searchResultCount = count
+        this.resultsLength = count
         this.filterTable()
         this.routerSubscription = this.router.events.subscribe(() => {
           this.filterTable()
@@ -129,6 +136,10 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
       this.gridDataSourceSubscription.unsubscribe()
     }
 
+    if (this.searchResultCountSubscription) {
+      this.searchResultCountSubscription.unsubscribe()
+    }
+
     if (this.resizeObserver) {
       this.resizeObserver.disconnect()
     }
@@ -154,13 +165,55 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
           this.emptyState = false
         }
       })
+      this.loadSearchResultCount(queryParam)
     } else {
       this.dataSource.filter = ''
       this.searchValue = undefined
       this.emptyState = false
+      this.searchResultCount = this.allProductsCount
+      this.resultsLength = this.allProductsCount
+      if (this.searchResultCountSubscription) {
+        this.searchResultCountSubscription.unsubscribe()
+      }
     }
   }
   // vuln-code-snippet end localXssChallenge xssBonusChallenge
+
+  private loadSearchResultCount (queryParam: string) {
+    if (this.searchResultCountSubscription) {
+      this.searchResultCountSubscription.unsubscribe()
+    }
+    this.searchResultCountSubscription = this.productService.search(queryParam).subscribe({
+      next: (result: any) => {
+        const products = this.getSearchProducts(result)
+        const count = this.getSearchResultCount(result, products)
+        this.searchResultCount = count
+        this.resultsLength = count
+        if (count === 0) {
+          this.emptyState = true
+        }
+        this.cdRef.detectChanges()
+      },
+      error: (err) => { console.log(err) }
+    })
+  }
+
+  private getSearchProducts (result: any): ProductTableEntry[] {
+    if (Array.isArray(result)) {
+      return result
+    }
+    if (Array.isArray(result?.data)) {
+      return result.data
+    }
+    if (Array.isArray(result?.products)) {
+      return result.products
+    }
+    return []
+  }
+
+  private getSearchResultCount (result: any, products: ProductTableEntry[]): number {
+    return typeof result?.count === 'number' ? result.count : products.length
+  }
 
   private setupResponsivePageSize () {
     const grid = this.elRef.nativeElement.querySelector('.products-grid')

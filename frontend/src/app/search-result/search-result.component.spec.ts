@@ -261,6 +261,81 @@ describe('SearchResultComponent', () => {
         })
     })
 
+    describe('search result count', () => {
+        it('should render the server-side match count in the heading for an active search', () => {
+            const products: any = [{ id: 1, name: 'Apple', price: 1, description: 'd', image: 'i' }]
+            products.count = 2
+            productService.search.mockReturnValue(of(products))
+            translateService.get.mockImplementation((key: string, params?: any) => of(key === 'SEARCH_RESULT_COUNT' ? `${params.count} products found` : key))
+            activatedRoute.setQueryParameter('apple')
+            component.ngAfterViewInit()
+            fixture.detectChanges()
+
+            expect(component.searchResultCount).toBe(2)
+            expect(component.resultsLength).toBe(2)
+            expect((fixture.nativeElement as HTMLElement).querySelector('#search-result-heading')?.textContent).toContain('2 products found')
+        })
+
+        it('should accept a search result object carrying data and count', () => {
+            productService.search.mockReturnValue(of({
+                data: [{ id: 1, name: 'Apple', price: 1, description: 'd', image: 'i' }],
+                count: 2
+            }))
+            translateService.get.mockImplementation((key: string, params?: any) => of(key === 'SEARCH_RESULT_COUNT' ? `${params.count} products found` : key))
+            activatedRoute.setQueryParameter('apple')
+            component.ngAfterViewInit()
+            fixture.detectChanges()
+
+            expect(component.searchResultCount).toBe(2)
+            expect(component.resultsLength).toBe(2)
+            expect((fixture.nativeElement as HTMLElement).querySelector('#search-result-heading')?.textContent).toContain('2 products found')
+        })
+
+        it('should keep the match count independent from client-side filtering and paging', () => {
+            const products: any = [{ id: 1, name: 'Apple', price: 1, description: 'd', image: 'i' }]
+            products.count = 2
+            productService.search.mockReturnValue(of(products))
+            translateService.get.mockImplementation((key: string, params?: any) => of(key === 'SEARCH_RESULT_COUNT' ? `${params.count} products found` : key))
+            activatedRoute.setQueryParameter('apple')
+            component.ngAfterViewInit()
+            fixture.detectChanges()
+
+            component.dataSource.filter = 'does-not-match'
+            component.paginator.pageIndex = 1
+            fixture.detectChanges()
+
+            expect(component.searchResultCount).toBe(2)
+            expect(component.resultsLength).toBe(2)
+            expect((fixture.nativeElement as HTMLElement).querySelector('#search-result-heading')?.textContent).toContain('2 products found')
+        })
+
+        it('should hide the count and show the zero-result state when no products match', () => {
+            const products: any = []
+            products.count = 0
+            productService.search.mockReturnValue(of(products))
+            activatedRoute.setQueryParameter('no-such-product')
+            component.ngAfterViewInit()
+            fixture.detectChanges()
+
+            expect(component.searchResultCount).toBe(0)
+            expect(component.emptyState).toBe(true)
+            expect((fixture.nativeElement as HTMLElement).querySelector('.emptyState')).toBeTruthy()
+            expect((fixture.nativeElement as HTMLElement).querySelector('#search-result-heading')?.textContent?.trim()).toBe('')
+        })
+
+        it('should not render the count when no search term is active', () => {
+            const products: any = [{ id: 1, name: 'Apple', price: 1, description: 'd', image: 'i' }]
+            products.count = 1
+            productService.search.mockReturnValue(of(products))
+            activatedRoute.setQueryParameter('')
+            component.ngAfterViewInit()
+            fixture.detectChanges()
+
+            expect(component.searchResultCount).toBe(1)
+            expect((fixture.nativeElement as HTMLElement).querySelector('#search-result-heading')?.textContent?.trim()).toBe('')
+        })
+    })
+
     describe('filterTable empty/non-empty grid state', () => {
         it('should set emptyState to true when filtered grid data source emits no results', () => {
             productService.search.mockReturnValue(of([{ id: 1, name: 'Apple', price: 1, description: 'd', image: 'i' }]))
