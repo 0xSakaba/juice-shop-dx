@@ -1,0 +1,3 @@
+Acceptance note
+Status line: original text alpha
+End of note
