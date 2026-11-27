@@ -13,7 +13,11 @@
     } @else {
       <div>{{ "TITLE_ALL_PRODUCTS" | translate }}</div>
     }
-    <div id="search-result-heading"></div>
+    <div id="search-result-heading">
+      @if (searchValue && searchResultCount > 0) {
+        {{ "SEARCH_RESULT_COUNT" | translate: { count: searchResultCount } }}
+      }
+    </div>
   </div>
 
   @if (!emptyState) {

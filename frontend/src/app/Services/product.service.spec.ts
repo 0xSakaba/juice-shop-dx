@@ -30,9 +30,39 @@ describe('ProductService', () => {
         let res: any
         service.search('1').subscribe((data) => (res = data))
         const req = httpMock.expectOne('http://localhost:3000/rest/products/search?q=1')
-        req.flush({ data: 'apiResponse' })
+        const products = [{ id: 1, name: 'Apple Juice' }]
+        req.flush({ data: products, count: 1 })
         expect(req.request.method).toBe('GET')
-        expect(res).toBe('apiResponse')
+        expect(res).toEqual(products)
+        httpMock.verify()
+    })
+
+    it('should expose the matched product count alongside the search result array', () => {
+        const service = TestBed.inject(ProductService)
+        const httpMock = TestBed.inject(HttpTestingController)
+
+        let res: any
+        service.search('apple').subscribe((data) => (res = data))
+        const req = httpMock.expectOne('http://localhost:3000/rest/products/search?q=apple')
+        const products = [{ id: 1, name: 'Apple Juice' }, { id: 2, name: 'Apple Pomace' }]
+        req.flush({ data: products, count: 7 })
+        expect(res).toEqual(products)
+        expect(res.count).toBe(7)
+        expect(res.data).toBe(res)
+        httpMock.verify()
+    })
+
+    it('should fall back to the number of returned products when the count is missing', () => {
+        const service = TestBed.inject(ProductService)
+        const httpMock = TestBed.inject(HttpTestingController)
+
+        let res: any
+        service.search('apple').subscribe((data) => (res = data))
+        const req = httpMock.expectOne('http://localhost:3000/rest/products/search?q=apple')
+        const products = [{ id: 1, name: 'Apple Juice' }]
+        req.flush({ data: products })
+        expect(res).toEqual(products)
+        expect(res.count).toBe(1)
         httpMock.verify()
     })
 
