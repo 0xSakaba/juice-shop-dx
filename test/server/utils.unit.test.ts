@@ -283,6 +283,10 @@ void describe('utils', () => {
     void it('removes newlines', () => {
       assert.equal(utils.trunc('12\n3', 5), '123')
     })
+
+    void it('returns string of exactly the maximum length unchanged', () => {
+      assert.equal(utils.trunc('12345', 5), '12345')
+    })
   })
 
   void describe('diceCoefficient', () => {
